@@ -43,6 +43,8 @@ export const Route = createRootRoute({
       { name: "twitter:card", content: "summary" },
       { name: "twitter:title", content: "Murilo Ortega — Branding, Conteúdo e Presença Digital" },
       { name: "twitter:description", content: "Organizo marcas que precisam funcionar como marcas. Branding, conteúdo e presença digital conectados em um sistema." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4941153b-251a-4074-bce4-a0fd0ed637e7/id-preview-2dfc6bed--c044de80-1068-46cd-ac1e-69d643fa0638.lovable.app-1776975661590.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4941153b-251a-4074-bce4-a0fd0ed637e7/id-preview-2dfc6bed--c044de80-1068-46cd-ac1e-69d643fa0638.lovable.app-1776975661590.png" },
     ],
     links: [
       {
