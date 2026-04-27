@@ -202,6 +202,10 @@ function HomePage() {
 
       {/* Brand Marquee */}
       <section className="py-32 overflow-hidden">
+        <div className="container-site mb-12">
+          <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-secondary scroll-reveal">Experiência</span>
+          <h3 className="text-xl font-bold uppercase mt-2 scroll-reveal">Marcas que já trabalhei</h3>
+        </div>
         <div className="animate-marquee flex items-center gap-24 whitespace-nowrap">
           {[...brands, ...brands].map((brand, i) => (
             <Link
