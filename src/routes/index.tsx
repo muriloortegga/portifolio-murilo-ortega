@@ -17,21 +17,21 @@ export const Route = createFileRoute("/")({
 const projects = [
   {
     name: "NaTrave App — O Ecossistema do Futebol Amador",
-    category: "Product & Content · 2024",
+    category: "Social Media · 2024",
     image: "https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=800&auto=format&fit=crop",
-    to: "/natrave",
+    to: "/brand/natrave",
   },
   {
     name: "Solid + — Fintech Identity & Systems",
-    category: "Fintech · 2024",
+    category: "Id Visual · 2024",
     image: "/solid-full.png",
-    to: "/solid",
+    to: "/brand/solid",
   },
   {
     name: "Site + posicionamento — Consultoria",
-    category: "Plataforma · 2023",
+    category: "Id Visual · 2023",
     image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80",
-    to: "/trabalho",
+    to: "/brand/consultoria",
   },
 ];
 
@@ -133,12 +133,11 @@ function HomePage() {
           <div 
             className="lg:col-span-5 block mt-12 lg:mt-0 anim-fade-in delay-250"
             style={{ 
-              transform: `translateY(${scrollY * -0.15}px)`,
-              opacity: Math.max(1 - scrollY * 0.0025, 0),
+              transform: `translateY(${scrollY * -0.1}px)`,
               transition: 'transform 0.2s cubic-bezier(0.16, 1, 0.3, 1)'
             }}
           >
-            <Link to="/symplice" className="block group">
+            <Link to="/brand/symplice" className="block group">
               <figure className="project-card relative cursor-none">
                 <div className="media-wrap aspect-[3/4]">
                   <img
