@@ -1,14 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useState, useEffect } from "react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Murilo Ortega — Branding, Conteúdo e Presença Digital" },
-      { name: "description", content: "Organizo marcas que precisam funcionar como marcas. Branding, conteúdo e presença digital conectados em um sistema." },
-      { property: "og:title", content: "Murilo Ortega — Branding, Conteúdo e Presença Digital" },
-      { property: "og:description", content: "Organizo marcas que precisam funcionar como marcas. Branding, conteúdo e presença digital conectados em um sistema." },
+      { title: "Murilo Ortega — Design Estratégico & Identidade de Marca" },
+      { name: "description", content: "Design que confronta o comum e eleva o digital. Branding, conteúdo e presença digital conectados em um sistema de alto nível." },
+      { property: "og:title", content: "Murilo Ortega — Design Estratégico & Identidade de Marca" },
+      { property: "og:description", content: "Design que confronta o comum e eleva o digital. Branding, conteúdo e presença digital conectados em um sistema de alto nível." },
     ],
   }),
   component: HomePage,
@@ -55,50 +55,60 @@ const services = [
 
 function HomePage() {
   const revealRef = useScrollReveal<HTMLDivElement>();
-  const { scrollY } = useScroll();
-  
-  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
-  const y2 = useTransform(scrollY, [0, 500], [0, -150]);
-  const blurValue = useTransform(scrollY, [0, 300], ["blur(0px)", "blur(10px)"]);
-  const opacityValue = useTransform(scrollY, [0, 300], [1, 0.3]);
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <div ref={revealRef}>
       {/* Hero */}
       <section className="min-h-screen flex items-center pt-24 pb-12 overflow-hidden">
         <div className="container-site w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <motion.div 
-            style={{ y: y1, filter: blurValue, opacity: opacityValue }}
+          <div 
             className="lg:col-span-7"
+            style={{ 
+              transform: `translateY(${scrollY * 0.1}px)`,
+              opacity: Math.max(1 - scrollY * 0.003, 0),
+              transition: 'transform 0.2s cubic-bezier(0.16, 1, 0.3, 1)'
+            }}
           >
-            <h1 className="anim-fade-in leading-[0.85]">
-              REDEFININDO A<br />
-              IDENTIDADE DO<br />
-              <span className="text-secondary font-medium italic">FUTURO</span> DIGITAL.
+            <h1 className="anim-fade-in">
+              Marcas que não<br />
+              pedem <span className="text-secondary font-medium">licença</span><br />
+              para liderar.
             </h1>
             <p className="mt-10 text-lg lg:text-xl text-secondary leading-relaxed max-w-[600px] anim-fade-in delay-250">
-              Branding, conteúdo e presença digital conectados em um sistema de alto impacto.
-              Para marcas que não buscam apenas existir, mas liderar a percepção do mercado.
+              Design que confronta o comum e eleva o digital. Branding, conteúdo e presença digital conectados em um sistema de alto nível.
             </p>
             <div className="mt-12 anim-fade-in delay-500">
               <Link to="/trabalho" className="btn btn-arrow">
                 Ver trabalho <span className="arrow" />
               </Link>
             </div>
-          </motion.div>
-          <motion.div 
-            style={{ y: y2 }}
+          </div>
+          <div 
             className="lg:col-span-5 block mt-12 lg:mt-0 anim-fade-in delay-250"
+            style={{ 
+              transform: `translateY(${scrollY * -0.15}px)`,
+              filter: `blur(${Math.min(scrollY * 0.04, 20)}px)`,
+              opacity: Math.max(1 - scrollY * 0.0025, 0),
+              transition: 'transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.2s cubic-bezier(0.16, 1, 0.3, 1)'
+            }}
           >
             <Link to="/symplice" className="block group">
               <figure className="project-card relative cursor-none">
                 <div className="media-wrap aspect-[3/4]">
-                  <motion.img
+                  <img
                     src="/hero-brandding.jpg"
                     alt="Symplice project showcase"
                     className="w-full h-full object-cover"
                     loading="eager"
-                    style={{ filter: blurValue }}
                   />
                 </div>
                 <figcaption className="mt-6 flex items-center justify-between">
@@ -109,7 +119,7 @@ function HomePage() {
                 </figcaption>
               </figure>
             </Link>
-          </motion.div>
+          </div>
         </div>
       </section>
 
