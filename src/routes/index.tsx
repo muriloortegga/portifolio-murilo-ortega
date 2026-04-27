@@ -212,11 +212,11 @@ function HomePage() {
         <div className="animate-marquee flex items-center gap-24 whitespace-nowrap">
           {dynamicLogos.length > 0 ? (
             [...dynamicLogos, ...dynamicLogos].map((logo, i) => (
-              <div key={i} className="flex items-center justify-center min-w-[200px] md:min-w-[300px]">
+              <div key={i} className="flex items-center justify-center min-w-[300px] md:min-w-[450px]">
                 <img 
                   src={logo} 
                   alt={`Logo ${i}`} 
-                  className="h-16 md:h-20 w-auto object-contain grayscale opacity-30 hover:opacity-100 hover:grayscale-0 transition-all duration-500" 
+                  className="h-[160px] md:h-[200px] w-auto object-contain grayscale opacity-30 hover:opacity-100 hover:grayscale-0 transition-all duration-500" 
                 />
               </div>
             ))
