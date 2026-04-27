@@ -82,7 +82,10 @@ const services = [
 ];
 
 const logoFiles = import.meta.glob("/src/assets/logos/*.{png,jpg,jpeg,svg,webp}", { eager: true, as: "url" });
-const dynamicLogos = Object.values(logoFiles);
+const dynamicLogos = Object.entries(logoFiles).map(([path, url]) => {
+  const name = path.split("/").pop()?.split(".")[0] || "";
+  return { name, url: url as string };
+});
 
 const brands = [
   { name: "Symplice", id: "symplice" },
@@ -212,13 +215,17 @@ function HomePage() {
         <div className="animate-marquee flex items-center gap-24 whitespace-nowrap">
           {dynamicLogos.length > 0 ? (
             [...dynamicLogos, ...dynamicLogos].map((logo, i) => (
-              <div key={i} className="flex items-center justify-center min-w-[300px] md:min-w-[450px]">
+              <Link 
+                key={i} 
+                to={["natrave", "solid", "symplice"].includes(logo.name.toLowerCase()) ? `/${logo.name.toLowerCase()}` : `/brand/${logo.name.toLowerCase()}`}
+                className="flex items-center justify-center min-w-[300px] md:min-w-[500px] group transition-transform hover:scale-110 duration-500"
+              >
                 <img 
-                  src={logo} 
-                  alt={`Logo ${i}`} 
-                  className="h-[160px] md:h-[200px] w-auto object-contain grayscale opacity-30 hover:opacity-100 hover:grayscale-0 transition-all duration-500" 
+                  src={logo.url} 
+                  alt={logo.name} 
+                  className="h-[180px] md:h-[240px] w-auto object-contain transition-all duration-500" 
                 />
-              </div>
+              </Link>
             ))
           ) : (
             [...brands, ...brands].map((brand, i) => (
