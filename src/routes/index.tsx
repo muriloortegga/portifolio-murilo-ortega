@@ -160,7 +160,7 @@ function HomePage() {
       </section>
 
       {/* Brand Marquee */}
-      <section className="py-20 border-y border-border overflow-hidden bg-card">
+      <section className="py-32 overflow-hidden">
         <div className="animate-marquee flex items-center gap-24 whitespace-nowrap">
           {[...brands, ...brands].map((brand, i) => (
             <Link
