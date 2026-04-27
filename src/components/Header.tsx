@@ -23,8 +23,8 @@ export function Header() {
     <>
       <header
         className={cn(
-          "site-header fixed top-0 left-0 right-0 z-50 bg-background transition-all duration-300",
-          scrolled && "border-b border-border"
+          "site-header fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+          scrolled ? "bg-background/40 backdrop-blur-3xl border-b border-border/10 shadow-sm" : "bg-transparent"
         )}
       >
         <div className="container-site flex items-center justify-between h-24">

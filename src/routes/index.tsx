@@ -75,7 +75,8 @@ function HomePage() {
             style={{ 
               transform: `translateY(${scrollY * 0.1}px)`,
               opacity: Math.max(1 - scrollY * 0.003, 0),
-              transition: 'transform 0.2s cubic-bezier(0.16, 1, 0.3, 1)'
+              filter: `blur(${scrollY > 20 ? Math.min((scrollY - 20) * 0.04, 12) : 0}px)`,
+              transition: 'transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease-out'
             }}
           >
             <h1 className="anim-fade-in">
@@ -96,9 +97,8 @@ function HomePage() {
             className="lg:col-span-5 block mt-12 lg:mt-0 anim-fade-in delay-250"
             style={{ 
               transform: `translateY(${scrollY * -0.15}px)`,
-              filter: `blur(${Math.min(scrollY * 0.04, 20)}px)`,
               opacity: Math.max(1 - scrollY * 0.0025, 0),
-              transition: 'transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.2s cubic-bezier(0.16, 1, 0.3, 1)'
+              transition: 'transform 0.2s cubic-bezier(0.16, 1, 0.3, 1)'
             }}
           >
             <Link to="/symplice" className="block group">
@@ -167,7 +167,7 @@ function HomePage() {
       </section>
 
       {/* Services */}
-      <section className="section-spacing border-t border-border">
+      <section className="section-spacing border-t border-border relative z-10 bg-background">
         <div className="container-site">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-4">
