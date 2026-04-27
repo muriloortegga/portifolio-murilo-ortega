@@ -217,7 +217,7 @@ function HomePage() {
             [...dynamicLogos, ...dynamicLogos].map((logo, i) => (
               <Link 
                 key={i} 
-                to={["natrave", "solid", "symplice"].includes(logo.name.toLowerCase()) ? `/${logo.name.toLowerCase()}` : `/brand/${logo.name.toLowerCase()}`}
+                to={["natrave", "solid", "symplice", "maxi"].includes(logo.name.toLowerCase()) ? `/${logo.name.toLowerCase()}` : `/brand/${logo.name.toLowerCase()}`}
                 className="flex items-center justify-center min-w-[300px] md:min-w-[500px] group transition-transform hover:scale-110 duration-500"
               >
                 <img 
