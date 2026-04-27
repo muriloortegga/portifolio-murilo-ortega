@@ -106,24 +106,25 @@ function HomePage() {
       {/* Hero */}
       <section className="min-h-screen flex items-center pt-24 pb-12 overflow-hidden">
         <div className="container-site w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div 
-            className="lg:col-span-7"
-            style={{ 
-              transform: `translateY(${scrollY * 0.1}px)`,
-              opacity: Math.max(1 - scrollY * 0.003, 0),
-              filter: `blur(${scrollY > 20 ? Math.min((scrollY - 20) * 0.04, 12) : 0}px)`,
-              transition: 'transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease-out'
-            }}
-          >
-            <h1 className="anim-fade-in">
-              Marcas que não<br />
-              pedem <span className="text-secondary font-medium">licença</span><br />
-              para liderar.
-            </h1>
-            <p className="mt-10 text-lg lg:text-xl text-secondary leading-relaxed max-w-[600px] anim-fade-in delay-250">
-              Design que confronta o comum e eleva o digital. Branding, conteúdo e presença digital conectados em um sistema de alto nível.
-            </p>
-            <div className="mt-12 anim-fade-in delay-500">
+          <div className="lg:col-span-7">
+            <div
+              style={{ 
+                transform: `translateY(${scrollY * 0.1}px)`,
+                opacity: Math.max(1 - scrollY * 0.003, 0),
+                filter: `blur(${scrollY > 20 ? Math.min((scrollY - 20) * 0.04, 12) : 0}px)`,
+                transition: 'transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease-out'
+              }}
+            >
+              <h1 className="anim-fade-in">
+                Marcas que não<br />
+                pedem <span className="text-secondary font-medium">licença</span><br />
+                para liderar.
+              </h1>
+              <p className="mt-10 text-lg lg:text-xl text-secondary leading-relaxed max-w-[600px] anim-fade-in delay-250">
+                Design que confronta o comum e eleva o digital. Branding, conteúdo e presença digital conectados em um sistema de alto nível.
+              </p>
+            </div>
+            <div className="mt-12 anim-fade-in delay-500" style={{ transform: `translateY(${scrollY * 0.1}px)` }}>
               <Link to="/trabalho" className="btn btn-arrow">
                 Ver trabalho <span className="arrow" />
               </Link>
@@ -240,9 +241,6 @@ function HomePage() {
                     src={s.image} 
                     alt={s.title} 
                     className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110"
-                    style={{ 
-                      filter: `blur(${Math.max(0, (scrollY - 1500) * 0.01)}px)`,
-                    }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
                   <div className="absolute bottom-8 left-8 right-8">
