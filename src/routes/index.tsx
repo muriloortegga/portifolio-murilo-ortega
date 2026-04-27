@@ -81,6 +81,9 @@ const services = [
   },
 ];
 
+const logoFiles = import.meta.glob("/src/assets/logos/*.{png,jpg,jpeg,svg,webp}", { eager: true, as: "url" });
+const dynamicLogos = Object.values(logoFiles);
+
 const brands = [
   { name: "Symplice", id: "symplice" },
   { name: "NaTrave", id: "natrave" },
@@ -207,16 +210,28 @@ function HomePage() {
           <h3 className="text-xl font-bold uppercase mt-2 scroll-reveal">Marcas que já trabalhei</h3>
         </div>
         <div className="animate-marquee flex items-center gap-24 whitespace-nowrap">
-          {[...brands, ...brands].map((brand, i) => (
-            <Link
-              key={`${brand.id}-${i}`}
-              to={brand.id === "symplice" || brand.id === "natrave" || brand.id === "solid" ? `/${brand.id}` : "/trabalho"}
-              className="text-4xl md:text-6xl font-bold uppercase tracking-tighter opacity-20 hover:opacity-100 transition-opacity duration-500 flex items-center gap-4"
-            >
-              <span className="w-4 h-4 bg-foreground rounded-full" />
-              {brand.name}
-            </Link>
-          ))}
+          {dynamicLogos.length > 0 ? (
+            [...dynamicLogos, ...dynamicLogos].map((logo, i) => (
+              <div key={i} className="flex items-center justify-center min-w-[150px]">
+                <img 
+                  src={logo} 
+                  alt={`Logo ${i}`} 
+                  className="h-12 md:h-16 w-auto object-contain grayscale opacity-30 hover:opacity-100 hover:grayscale-0 transition-all duration-500" 
+                />
+              </div>
+            ))
+          ) : (
+            [...brands, ...brands].map((brand, i) => (
+              <Link
+                key={`${brand.id}-${i}`}
+                to={brand.id === "symplice" || brand.id === "natrave" || brand.id === "solid" ? `/${brand.id}` : "/trabalho"}
+                className="text-4xl md:text-6xl font-bold uppercase tracking-tighter opacity-20 hover:opacity-100 transition-opacity duration-500 flex items-center gap-4"
+              >
+                <span className="w-4 h-4 bg-foreground rounded-full" />
+                {brand.name}
+              </Link>
+            ))
+          )}
         </div>
       </section>
 
