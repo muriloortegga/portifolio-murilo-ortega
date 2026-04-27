@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -54,37 +55,50 @@ const services = [
 
 function HomePage() {
   const revealRef = useScrollReveal<HTMLDivElement>();
+  const { scrollY } = useScroll();
+  
+  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
+  const y2 = useTransform(scrollY, [0, 500], [0, -150]);
+  const blurValue = useTransform(scrollY, [0, 300], ["blur(0px)", "blur(10px)"]);
+  const opacityValue = useTransform(scrollY, [0, 300], [1, 0.3]);
 
   return (
     <div ref={revealRef}>
       {/* Hero */}
-      <section className="min-h-screen flex items-center pt-24 pb-12">
+      <section className="min-h-screen flex items-center pt-24 pb-12 overflow-hidden">
         <div className="container-site w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-7">
-            <h1 className="anim-fade-in">
-              Organizo marcas que<br />
-              precisam <span className="text-secondary font-medium">funcionar</span><br />
-              como marcas.
+          <motion.div 
+            style={{ y: y1, filter: blurValue, opacity: opacityValue }}
+            className="lg:col-span-7"
+          >
+            <h1 className="anim-fade-in leading-[0.85]">
+              REDEFININDO A<br />
+              IDENTIDADE DO<br />
+              <span className="text-secondary font-medium italic">FUTURO</span> DIGITAL.
             </h1>
             <p className="mt-10 text-lg lg:text-xl text-secondary leading-relaxed max-w-[600px] anim-fade-in delay-250">
-              Branding, conteúdo e presença digital conectados em um sistema.
-              Para empresas que já faturam, mas ainda comunicam abaixo do nível que entregam.
+              Branding, conteúdo e presença digital conectados em um sistema de alto impacto.
+              Para marcas que não buscam apenas existir, mas liderar a percepção do mercado.
             </p>
             <div className="mt-12 anim-fade-in delay-500">
               <Link to="/trabalho" className="btn btn-arrow">
                 Ver trabalho <span className="arrow" />
               </Link>
             </div>
-          </div>
-          <div className="lg:col-span-5 block mt-12 lg:mt-0 anim-fade-in delay-250">
+          </motion.div>
+          <motion.div 
+            style={{ y: y2 }}
+            className="lg:col-span-5 block mt-12 lg:mt-0 anim-fade-in delay-250"
+          >
             <Link to="/symplice" className="block group">
               <figure className="project-card relative cursor-none">
                 <div className="media-wrap aspect-[3/4]">
-                  <img
+                  <motion.img
                     src="/hero-brandding.jpg"
                     alt="Symplice project showcase"
                     className="w-full h-full object-cover"
                     loading="eager"
+                    style={{ filter: blurValue }}
                   />
                 </div>
                 <figcaption className="mt-6 flex items-center justify-between">
@@ -95,7 +109,7 @@ function HomePage() {
                 </figcaption>
               </figure>
             </Link>
-          </div>
+          </motion.div>
         </div>
       </section>
 
