@@ -37,20 +37,56 @@ const projects = [
 
 const services = [
   {
+    id: "branding",
     num: "01",
     title: "Estruturação de Marca",
     body: "Para marcas que cresceram sem base. Posicionamento, identidade visual e brandbook que dão coerência ao que já existe.",
+    image: "https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=800&auto=format&fit=crop",
   },
   {
+    id: "conteudo",
     num: "02",
     title: "Sistema de Conteúdo",
     body: "Para marcas que existem mas não têm consistência. Uma linha editorial que transforma presença digital em algo previsível e alinhado.",
+    image: "https://images.unsplash.com/photo-1557264305-7e2764da873b?q=80&w=800&auto=format&fit=crop",
   },
   {
+    id: "digital",
     num: "03",
     title: "Presença Digital",
     body: "Para marcas que não são bem apresentadas online. Site que organiza a comunicação, melhora percepção de valor e facilita a conversão.",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
   },
+  {
+    id: "impressa",
+    num: "04",
+    title: "Mídia Impressa",
+    body: "Papelaria, catálogos e materiais físicos que tangibilizam a qualidade da sua marca no mundo real.",
+    image: "https://images.unsplash.com/photo-1517842645767-c639042777db?q=80&w=800&auto=format&fit=crop",
+  },
+  {
+    id: "ooh",
+    num: "05",
+    title: "Mídia OOH",
+    body: "Campanhas externas, outdoors e sinalização que dominam a paisagem urbana com impacto visual.",
+    image: "https://images.unsplash.com/photo-1516216628859-9bccecab13ca?q=80&w=800&auto=format&fit=crop",
+  },
+  {
+    id: "influencia",
+    num: "06",
+    title: "Marketing de Influência",
+    body: "Conectando sua marca com vozes que geram confiança e expandem seu alcance de forma autêntica.",
+    image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=800&auto=format&fit=crop",
+  },
+];
+
+const brands = [
+  { name: "Symplice", id: "symplice" },
+  { name: "NaTrave", id: "natrave" },
+  { name: "Solid+", id: "solid" },
+  { name: "Vogue", id: "vogue" },
+  { name: "Natural Pure", id: "natural" },
+  { name: "Tech Flow", id: "tech" },
 ];
 
 function HomePage() {
@@ -123,6 +159,22 @@ function HomePage() {
         </div>
       </section>
 
+      {/* Brand Marquee */}
+      <section className="py-20 border-y border-border overflow-hidden bg-card">
+        <div className="animate-marquee flex items-center gap-24 whitespace-nowrap">
+          {[...brands, ...brands].map((brand, i) => (
+            <Link
+              key={`${brand.id}-${i}`}
+              to={`/brand/${brand.id}`}
+              className="text-4xl md:text-6xl font-bold uppercase tracking-tighter opacity-20 hover:opacity-100 transition-opacity duration-500 flex items-center gap-4"
+            >
+              <span className="w-4 h-4 bg-foreground rounded-full" />
+              {brand.name}
+            </Link>
+          ))}
+        </div>
+      </section>
+
       {/* Positioning */}
       <section className="section-spacing border-t border-border">
         <div className="container-site">
@@ -169,19 +221,40 @@ function HomePage() {
       {/* Services */}
       <section className="section-spacing border-t border-border relative z-10 bg-background">
         <div className="container-site">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20">
             <div className="lg:col-span-4">
-              <span className="text-[10px] font-mono uppercase tracking-tight text-secondary">Serviços</span>
+              <span className="text-[10px] font-mono uppercase tracking-tight text-secondary">Nossa Expertise</span>
+              <h2 className="text-4xl font-bold mt-4">Serviços <br />Estratégicos</h2>
             </div>
-            <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-12">
-              {services.map((s, i) => (
-                <div key={i} className="scroll-reveal" style={{ transitionDelay: `${i * 100}ms` }}>
-                  <span className="text-[10px] font-mono uppercase tracking-tight text-secondary mb-4 block">{s.num}</span>
-                  <h4 className="text-xl font-bold uppercase mb-4">{s.title}</h4>
-                  <p className="text-sm text-secondary leading-relaxed">{s.body}</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((s, i) => (
+              <Link
+                key={s.id}
+                to={`/servico/${s.id}`}
+                className="scroll-reveal group block"
+                style={{ transitionDelay: `${i * 100}ms` }}
+              >
+                <div className="relative overflow-hidden aspect-[4/5] mb-8 bg-card border border-border group-hover:border-foreground/20 transition-colors duration-500">
+                  <img 
+                    src={s.image} 
+                    alt={s.title} 
+                    className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110"
+                    style={{ 
+                      filter: `blur(${Math.max(0, (scrollY - 1500) * 0.01)}px)`,
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
+                  <div className="absolute bottom-8 left-8 right-8">
+                    <span className="text-[10px] font-mono uppercase tracking-tight text-secondary mb-2 block">{s.num}</span>
+                    <h4 className="text-2xl font-bold uppercase leading-tight">{s.title}</h4>
+                  </div>
                 </div>
-              ))}
-            </div>
+                <p className="text-sm text-secondary leading-relaxed max-w-[300px] opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                  {s.body}
+                </p>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
