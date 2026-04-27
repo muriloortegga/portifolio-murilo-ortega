@@ -19,6 +19,7 @@ const projects = [
     name: "NaTrave App — O Ecossistema do Futebol Amador",
     category: "Social Media · 2024",
     image: "https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=800&auto=format&fit=crop",
+    gif: "/natrave-preview.gif",
     to: "/natrave",
   },
   {
@@ -88,6 +89,46 @@ const brands = [
   { name: "Natural Pure", id: "natural" },
   { name: "Tech Flow", id: "tech" },
 ];
+
+function ProjectCard({ project, index }: { project: any, index: number }) {
+  const [isVisible, setIsVisible] = useState(false);
+  const cardRef = (node: any) => {
+    if (node) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            observer.disconnect();
+          }
+        },
+        { threshold: 0.1 }
+      );
+      observer.observe(node);
+    }
+  };
+
+  return (
+    <Link to={project.to} className="group">
+      <figure 
+        ref={cardRef}
+        className="scroll-reveal project-card relative cursor-none" 
+        style={{ transitionDelay: `${index * 100}ms` }}
+      >
+        <div className="media-wrap aspect-[4/3]">
+          <img 
+            src={isVisible && project.gif ? project.gif : project.image} 
+            alt={project.name} 
+            className="w-full h-full object-cover transition-opacity duration-500"
+          />
+        </div>
+        <figcaption className="mt-6">
+          <span className="card-label">{project.category}</span>
+          <span className="font-medium text-lg leading-tight block">{project.name}</span>
+        </figcaption>
+      </figure>
+    </Link>
+  );
+}
 
 function HomePage() {
   const revealRef = useScrollReveal<HTMLDivElement>();
@@ -202,17 +243,7 @@ function HomePage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {projects.map((project, i) => (
-              <Link key={i} to={project.to} className="group">
-                <figure className="scroll-reveal project-card relative cursor-none" style={{ transitionDelay: `${i * 100}ms` }}>
-                  <div className="media-wrap aspect-[4/3]">
-                    <img src={project.image} alt={project.name} />
-                  </div>
-                  <figcaption className="mt-6">
-                    <span className="card-label">{project.category}</span>
-                    <span className="font-medium text-lg leading-tight block">{project.name}</span>
-                  </figcaption>
-                </figure>
-              </Link>
+              <ProjectCard key={i} project={project} index={i} />
             ))}
           </div>
         </div>
