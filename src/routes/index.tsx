@@ -19,19 +19,19 @@ const projects = [
     name: "NaTrave App — O Ecossistema do Futebol Amador",
     category: "Social Media · 2024",
     image: "https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=800&auto=format&fit=crop",
-    to: "/brand/natrave",
+    to: "/natrave",
   },
   {
     name: "Solid + — Fintech Identity & Systems",
     category: "Id Visual · 2024",
     image: "/solid-full.png",
-    to: "/brand/solid",
+    to: "/solid",
   },
   {
     name: "Site + posicionamento — Consultoria",
     category: "Id Visual · 2023",
     image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80",
-    to: "/brand/consultoria",
+    to: "/trabalho",
   },
 ];
 
@@ -137,7 +137,7 @@ function HomePage() {
               transition: 'transform 0.2s cubic-bezier(0.16, 1, 0.3, 1)'
             }}
           >
-            <Link to="/brand/symplice" className="block group">
+            <Link to="/symplice" className="block group">
               <figure className="project-card relative cursor-none">
                 <div className="media-wrap aspect-[3/4]">
                   <img
@@ -165,7 +165,7 @@ function HomePage() {
           {[...brands, ...brands].map((brand, i) => (
             <Link
               key={`${brand.id}-${i}`}
-              to={`/brand/${brand.id}`}
+              to={brand.id === "symplice" || brand.id === "natrave" || brand.id === "solid" ? `/${brand.id}` : "/trabalho"}
               className="text-4xl md:text-6xl font-bold uppercase tracking-tighter opacity-20 hover:opacity-100 transition-opacity duration-500 flex items-center gap-4"
             >
               <span className="w-4 h-4 bg-foreground rounded-full" />
@@ -231,7 +231,7 @@ function HomePage() {
             {services.map((s, i) => (
               <Link
                 key={s.id}
-                to={`/servico/${s.id}`}
+                to="/servicos"
                 className="scroll-reveal group block"
                 style={{ transitionDelay: `${i * 100}ms` }}
               >

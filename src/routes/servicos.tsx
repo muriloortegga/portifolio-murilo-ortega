@@ -35,6 +35,27 @@ const products = [
     envolve: "Estratégia de conteúdo para web, wireframe e direção de UX/UI, copywriting orientado a conversão, implementação com foco em performance e SEO básico.",
     recebe: "Um site que organiza a comunicação e facilita a conversão.",
   },
+  {
+    num: "04",
+    name: "Mídia Impressa",
+    resolve: "Marcas que precisam tangibilizar sua autoridade no mundo físico. Materiais que não refletem a qualidade do serviço ou do produto.",
+    envolve: "Papelaria corporativa, catálogos, embalagens, materiais editoriais e produção gráfica de alto padrão.",
+    recebe: "Materiais físicos que tangibilizam a qualidade e o posicionamento da marca.",
+  },
+  {
+    num: "05",
+    name: "Mídia OOH",
+    resolve: "Marcas que precisam de visibilidade urbana massiva mas não sabem como ocupar o espaço público com estratégia.",
+    envolve: "Planejamento de campanhas externas, outdoors, sinalização de fachada e anúncios em mobiliário urbano.",
+    recebe: "Campanhas externas com alto impacto visual e fixação de marca.",
+  },
+  {
+    num: "06",
+    name: "Marketing de Influência",
+    resolve: "Marcas que buscam alcance mas sofrem com a falta de confiança do público. Ruído na comunicação com influenciadores.",
+    envolve: "Curadoria de perfis, estratégia de conexão, briefing criativo e gestão de campanhas com porta-vozes da marca.",
+    recebe: "Conexões autênticas que geram confiança e expandem o alcance real.",
+  },
 ];
 
 function ServicosPage() {
