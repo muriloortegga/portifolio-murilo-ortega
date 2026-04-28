@@ -1,0 +1,121 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import { Plus, ArrowRight, BookOpen, PenTool, Search, Layout } from "lucide-react";
+
+export const Route = createFileRoute("/servicos/estruturacao-de-marca")({
+  head: () => ({
+    meta: [
+      { title: "Estruturação de Marca — Murilo Ortega" },
+      { name: "description", content: "Construindo a base sólida que sua marca precisa para liderar." },
+    ],
+  }),
+  component: EstruturacaoMarcaPage,
+});
+
+function EstruturacaoMarcaPage() {
+  const revealRef = useScrollReveal<HTMLDivElement>();
+
+  return (
+    <div ref={revealRef} className="bg-background pt-32 pb-32">
+      {/* Hero */}
+      <section className="ds-section border-t-0 pt-0 pb-24">
+        <div className="container-site">
+          <div className="max-w-4xl">
+            <span className="ds-label mb-8">Service 01</span>
+            <h1 className="ds-title mb-12">
+              Estruturação de Marca:<br />
+              A base de tudo o que<br />
+              você <span className="italic">entrega</span>.
+            </h1>
+            <p className="text-xl md:text-2xl text-secondary uppercase font-medium leading-tight mb-12">
+              Do diagnóstico ao brandbook completo. Construímos identidades que confrontam o comum e elevam o valor percebido do seu negócio.
+            </p>
+            <Link to="/contato" className="btn-primary">
+              Iniciar estruturação <Plus size={18} className="ml-2" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Pillars */}
+      <section className="ds-section py-32 bg-off-white">
+        <div className="container-site">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-px bg-border border border-border">
+            {[
+              { 
+                num: "01", 
+                title: "Diagnóstico & Estratégia", 
+                desc: "Entendimento profundo do mercado, público e diferenciais competitivos. Definimos o território que sua marca irá ocupar.",
+                icon: <Search size={24} />
+              },
+              { 
+                num: "02", 
+                title: "Naming & Tom de Voz", 
+                desc: "Damos nome à sua visão e definimos como ela fala com o mundo. Personalidade e clareza em cada palavra.",
+                icon: <PenTool size={24} />
+              },
+              { 
+                num: "03", 
+                title: "Identidade Visual", 
+                desc: "Construção de logo, tipografia, paleta de cores e sistema visual completo que comunica autoridade instantânea.",
+                icon: <Layout size={24} />
+              },
+              { 
+                num: "04", 
+                title: "Brandbook & Manual", 
+                desc: "A bíblia da sua marca. Todas as regras e diretrizes documentadas para garantir consistência em qualquer canal.",
+                icon: <BookOpen size={24} />
+              }
+            ].map((p, i) => (
+              <div key={i} className="lg:col-span-6 bg-background p-12 md:p-16 space-y-8 group hover:bg-foreground hover:text-background transition-all duration-700">
+                <div className="flex justify-between items-start">
+                  <div className="w-12 h-12 border border-border group-hover:border-background/20 flex items-center justify-center">
+                    {p.icon}
+                  </div>
+                  <span className="text-[10px] font-mono opacity-40">{p.num}</span>
+                </div>
+                <div className="space-y-4">
+                  <h3 className="text-3xl font-bold uppercase tracking-tighter">{p.title}</h3>
+                  <p className="ds-body group-hover:text-background/70">{p.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Case Section */}
+      <section className="ds-section py-32">
+        <div className="container-site">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
+            <div className="lg:col-span-6">
+               <span className="ds-label mb-8">Case em Destaque</span>
+               <h2 className="text-5xl md:text-6xl font-bold uppercase tracking-tighter leading-[0.9] mb-8">Solid +: Fintech Identity & Systems</h2>
+               <p className="ds-body mb-12">
+                 Construímos uma identidade que equilibra a solidez institucional com a agilidade das startups do Reino Unido. Um sistema completo de marca que permitiu a escala global da operação.
+               </p>
+               <Link to="/solid" className="btn btn-arrow">Ver case completo <span className="arrow" /></Link>
+            </div>
+            <div className="lg:col-span-6">
+              <div className="polaroid-frame shadow-2xl">
+                <img src="/solid-full.png" alt="Solid+ Brandbook" className="w-full grayscale hover:grayscale-0 transition-all duration-700" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-48 bg-foreground text-background">
+        <div className="container-site text-center">
+          <h2 className="text-[10vw] font-bold uppercase tracking-tighter leading-[0.8] mb-12">Sua marca pronta para o topo.</h2>
+          <Link to="/contato" className="btn-primary bg-background text-foreground px-12 py-6 text-lg">
+            Solicitar orçamento <Plus size={20} className="ml-2" />
+          </Link>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+export default EstruturacaoMarcaPage;

@@ -18,6 +18,13 @@ import { Route as NatraveRouteImport } from './routes/natrave'
 import { Route as MaxiRouteImport } from './routes/maxi'
 import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServicosIndexRouteImport } from './routes/servicos.index'
+import { Route as ServicosSistemaDeConteudoRouteImport } from './routes/servicos.sistema-de-conteudo'
+import { Route as ServicosPresencaDigitalRouteImport } from './routes/servicos.presenca-digital'
+import { Route as ServicosMidiaOohRouteImport } from './routes/servicos.midia-ooh'
+import { Route as ServicosMidiaImpressaRouteImport } from './routes/servicos.midia-impressa'
+import { Route as ServicosMarketingDeInfluenciaRouteImport } from './routes/servicos.marketing-de-influencia'
+import { Route as ServicosEstruturacaoDeMarcaRouteImport } from './routes/servicos.estruturacao-de-marca'
 import { Route as BrandBrandIdRouteImport } from './routes/brand.$brandId'
 
 const TrabalhoRoute = TrabalhoRouteImport.update({
@@ -65,6 +72,44 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicosIndexRoute = ServicosIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ServicosRoute,
+} as any)
+const ServicosSistemaDeConteudoRoute =
+  ServicosSistemaDeConteudoRouteImport.update({
+    id: '/sistema-de-conteudo',
+    path: '/sistema-de-conteudo',
+    getParentRoute: () => ServicosRoute,
+  } as any)
+const ServicosPresencaDigitalRoute = ServicosPresencaDigitalRouteImport.update({
+  id: '/presenca-digital',
+  path: '/presenca-digital',
+  getParentRoute: () => ServicosRoute,
+} as any)
+const ServicosMidiaOohRoute = ServicosMidiaOohRouteImport.update({
+  id: '/midia-ooh',
+  path: '/midia-ooh',
+  getParentRoute: () => ServicosRoute,
+} as any)
+const ServicosMidiaImpressaRoute = ServicosMidiaImpressaRouteImport.update({
+  id: '/midia-impressa',
+  path: '/midia-impressa',
+  getParentRoute: () => ServicosRoute,
+} as any)
+const ServicosMarketingDeInfluenciaRoute =
+  ServicosMarketingDeInfluenciaRouteImport.update({
+    id: '/marketing-de-influencia',
+    path: '/marketing-de-influencia',
+    getParentRoute: () => ServicosRoute,
+  } as any)
+const ServicosEstruturacaoDeMarcaRoute =
+  ServicosEstruturacaoDeMarcaRouteImport.update({
+    id: '/estruturacao-de-marca',
+    path: '/estruturacao-de-marca',
+    getParentRoute: () => ServicosRoute,
+  } as any)
 const BrandBrandIdRoute = BrandBrandIdRouteImport.update({
   id: '/brand/$brandId',
   path: '/brand/$brandId',
@@ -76,24 +121,37 @@ export interface FileRoutesByFullPath {
   '/contato': typeof ContatoRoute
   '/maxi': typeof MaxiRoute
   '/natrave': typeof NatraveRoute
-  '/servicos': typeof ServicosRoute
+  '/servicos': typeof ServicosRouteWithChildren
   '/sobre': typeof SobreRoute
   '/solid': typeof SolidRoute
   '/symplice': typeof SympliceRoute
   '/trabalho': typeof TrabalhoRoute
   '/brand/$brandId': typeof BrandBrandIdRoute
+  '/servicos/estruturacao-de-marca': typeof ServicosEstruturacaoDeMarcaRoute
+  '/servicos/marketing-de-influencia': typeof ServicosMarketingDeInfluenciaRoute
+  '/servicos/midia-impressa': typeof ServicosMidiaImpressaRoute
+  '/servicos/midia-ooh': typeof ServicosMidiaOohRoute
+  '/servicos/presenca-digital': typeof ServicosPresencaDigitalRoute
+  '/servicos/sistema-de-conteudo': typeof ServicosSistemaDeConteudoRoute
+  '/servicos/': typeof ServicosIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contato': typeof ContatoRoute
   '/maxi': typeof MaxiRoute
   '/natrave': typeof NatraveRoute
-  '/servicos': typeof ServicosRoute
   '/sobre': typeof SobreRoute
   '/solid': typeof SolidRoute
   '/symplice': typeof SympliceRoute
   '/trabalho': typeof TrabalhoRoute
   '/brand/$brandId': typeof BrandBrandIdRoute
+  '/servicos/estruturacao-de-marca': typeof ServicosEstruturacaoDeMarcaRoute
+  '/servicos/marketing-de-influencia': typeof ServicosMarketingDeInfluenciaRoute
+  '/servicos/midia-impressa': typeof ServicosMidiaImpressaRoute
+  '/servicos/midia-ooh': typeof ServicosMidiaOohRoute
+  '/servicos/presenca-digital': typeof ServicosPresencaDigitalRoute
+  '/servicos/sistema-de-conteudo': typeof ServicosSistemaDeConteudoRoute
+  '/servicos': typeof ServicosIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -101,12 +159,19 @@ export interface FileRoutesById {
   '/contato': typeof ContatoRoute
   '/maxi': typeof MaxiRoute
   '/natrave': typeof NatraveRoute
-  '/servicos': typeof ServicosRoute
+  '/servicos': typeof ServicosRouteWithChildren
   '/sobre': typeof SobreRoute
   '/solid': typeof SolidRoute
   '/symplice': typeof SympliceRoute
   '/trabalho': typeof TrabalhoRoute
   '/brand/$brandId': typeof BrandBrandIdRoute
+  '/servicos/estruturacao-de-marca': typeof ServicosEstruturacaoDeMarcaRoute
+  '/servicos/marketing-de-influencia': typeof ServicosMarketingDeInfluenciaRoute
+  '/servicos/midia-impressa': typeof ServicosMidiaImpressaRoute
+  '/servicos/midia-ooh': typeof ServicosMidiaOohRoute
+  '/servicos/presenca-digital': typeof ServicosPresencaDigitalRoute
+  '/servicos/sistema-de-conteudo': typeof ServicosSistemaDeConteudoRoute
+  '/servicos/': typeof ServicosIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -121,18 +186,31 @@ export interface FileRouteTypes {
     | '/symplice'
     | '/trabalho'
     | '/brand/$brandId'
+    | '/servicos/estruturacao-de-marca'
+    | '/servicos/marketing-de-influencia'
+    | '/servicos/midia-impressa'
+    | '/servicos/midia-ooh'
+    | '/servicos/presenca-digital'
+    | '/servicos/sistema-de-conteudo'
+    | '/servicos/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/contato'
     | '/maxi'
     | '/natrave'
-    | '/servicos'
     | '/sobre'
     | '/solid'
     | '/symplice'
     | '/trabalho'
     | '/brand/$brandId'
+    | '/servicos/estruturacao-de-marca'
+    | '/servicos/marketing-de-influencia'
+    | '/servicos/midia-impressa'
+    | '/servicos/midia-ooh'
+    | '/servicos/presenca-digital'
+    | '/servicos/sistema-de-conteudo'
+    | '/servicos'
   id:
     | '__root__'
     | '/'
@@ -145,6 +223,13 @@ export interface FileRouteTypes {
     | '/symplice'
     | '/trabalho'
     | '/brand/$brandId'
+    | '/servicos/estruturacao-de-marca'
+    | '/servicos/marketing-de-influencia'
+    | '/servicos/midia-impressa'
+    | '/servicos/midia-ooh'
+    | '/servicos/presenca-digital'
+    | '/servicos/sistema-de-conteudo'
+    | '/servicos/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -152,7 +237,7 @@ export interface RootRouteChildren {
   ContatoRoute: typeof ContatoRoute
   MaxiRoute: typeof MaxiRoute
   NatraveRoute: typeof NatraveRoute
-  ServicosRoute: typeof ServicosRoute
+  ServicosRoute: typeof ServicosRouteWithChildren
   SobreRoute: typeof SobreRoute
   SolidRoute: typeof SolidRoute
   SympliceRoute: typeof SympliceRoute
@@ -225,6 +310,55 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/servicos/': {
+      id: '/servicos/'
+      path: '/'
+      fullPath: '/servicos/'
+      preLoaderRoute: typeof ServicosIndexRouteImport
+      parentRoute: typeof ServicosRoute
+    }
+    '/servicos/sistema-de-conteudo': {
+      id: '/servicos/sistema-de-conteudo'
+      path: '/sistema-de-conteudo'
+      fullPath: '/servicos/sistema-de-conteudo'
+      preLoaderRoute: typeof ServicosSistemaDeConteudoRouteImport
+      parentRoute: typeof ServicosRoute
+    }
+    '/servicos/presenca-digital': {
+      id: '/servicos/presenca-digital'
+      path: '/presenca-digital'
+      fullPath: '/servicos/presenca-digital'
+      preLoaderRoute: typeof ServicosPresencaDigitalRouteImport
+      parentRoute: typeof ServicosRoute
+    }
+    '/servicos/midia-ooh': {
+      id: '/servicos/midia-ooh'
+      path: '/midia-ooh'
+      fullPath: '/servicos/midia-ooh'
+      preLoaderRoute: typeof ServicosMidiaOohRouteImport
+      parentRoute: typeof ServicosRoute
+    }
+    '/servicos/midia-impressa': {
+      id: '/servicos/midia-impressa'
+      path: '/midia-impressa'
+      fullPath: '/servicos/midia-impressa'
+      preLoaderRoute: typeof ServicosMidiaImpressaRouteImport
+      parentRoute: typeof ServicosRoute
+    }
+    '/servicos/marketing-de-influencia': {
+      id: '/servicos/marketing-de-influencia'
+      path: '/marketing-de-influencia'
+      fullPath: '/servicos/marketing-de-influencia'
+      preLoaderRoute: typeof ServicosMarketingDeInfluenciaRouteImport
+      parentRoute: typeof ServicosRoute
+    }
+    '/servicos/estruturacao-de-marca': {
+      id: '/servicos/estruturacao-de-marca'
+      path: '/estruturacao-de-marca'
+      fullPath: '/servicos/estruturacao-de-marca'
+      preLoaderRoute: typeof ServicosEstruturacaoDeMarcaRouteImport
+      parentRoute: typeof ServicosRoute
+    }
     '/brand/$brandId': {
       id: '/brand/$brandId'
       path: '/brand/$brandId'
@@ -235,12 +369,36 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface ServicosRouteChildren {
+  ServicosEstruturacaoDeMarcaRoute: typeof ServicosEstruturacaoDeMarcaRoute
+  ServicosMarketingDeInfluenciaRoute: typeof ServicosMarketingDeInfluenciaRoute
+  ServicosMidiaImpressaRoute: typeof ServicosMidiaImpressaRoute
+  ServicosMidiaOohRoute: typeof ServicosMidiaOohRoute
+  ServicosPresencaDigitalRoute: typeof ServicosPresencaDigitalRoute
+  ServicosSistemaDeConteudoRoute: typeof ServicosSistemaDeConteudoRoute
+  ServicosIndexRoute: typeof ServicosIndexRoute
+}
+
+const ServicosRouteChildren: ServicosRouteChildren = {
+  ServicosEstruturacaoDeMarcaRoute: ServicosEstruturacaoDeMarcaRoute,
+  ServicosMarketingDeInfluenciaRoute: ServicosMarketingDeInfluenciaRoute,
+  ServicosMidiaImpressaRoute: ServicosMidiaImpressaRoute,
+  ServicosMidiaOohRoute: ServicosMidiaOohRoute,
+  ServicosPresencaDigitalRoute: ServicosPresencaDigitalRoute,
+  ServicosSistemaDeConteudoRoute: ServicosSistemaDeConteudoRoute,
+  ServicosIndexRoute: ServicosIndexRoute,
+}
+
+const ServicosRouteWithChildren = ServicosRoute._addFileChildren(
+  ServicosRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContatoRoute: ContatoRoute,
   MaxiRoute: MaxiRoute,
   NatraveRoute: NatraveRoute,
-  ServicosRoute: ServicosRoute,
+  ServicosRoute: ServicosRouteWithChildren,
   SobreRoute: SobreRoute,
   SolidRoute: SolidRoute,
   SympliceRoute: SympliceRoute,

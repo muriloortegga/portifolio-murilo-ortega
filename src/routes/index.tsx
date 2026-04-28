@@ -288,7 +288,12 @@ function HomePage() {
             {services.map((s, i) => (
               <Link
                 key={s.id}
-                to="/servicos"
+                to={s.id === "branding" ? "/servicos/estruturacao-de-marca" : 
+                    s.id === "conteudo" ? "/servicos/sistema-de-conteudo" : 
+                    s.id === "digital" ? "/servicos/presenca-digital" :
+                    s.id === "impressa" ? "/servicos/midia-impressa" :
+                    s.id === "ooh" ? "/servicos/midia-ooh" :
+                    s.id === "influencia" ? "/servicos/marketing-de-influencia" : "/servicos"}
                 className="scroll-reveal group block"
                 style={{ transitionDelay: `${i * 100}ms` }}
               >
