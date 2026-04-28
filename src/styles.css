@@ -89,13 +89,20 @@
   /* Extended Tokens */
   --radius: 0rem;
   --grid-width: 1425px;
-  --grid-padding: 3rem;
-  --header-height: 6rem;
-  --page-section: clamp(5rem, 8vw, 12rem);
+  --grid-padding: 1.5rem; /* Reduced for mobile */
+  --header-height: 5rem; /* Reduced for mobile */
+  --page-section: clamp(3rem, 10vw, 12rem); /* Adjusted for mobile */
   
   --ease-out: cubic-bezier(0.0, 0.0, 0.2, 1);
   --bd-time-transition-250: 250ms;
   --bd-time-transition-650: 650ms;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --grid-padding: 3rem;
+    --header-height: 6rem;
+  }
 }
 
 @layer base {
@@ -196,39 +203,62 @@
   }
 
   .ds-title {
-    font-size: clamp(2.5rem, 5vw, 5rem);
+    font-size: clamp(2.2rem, 8vw, 5rem); /* Increased minimum slightly for mobile impact, but better scaling */
     font-weight: 300;
     letter-spacing: -0.03em;
-    line-height: 0.95;
+    line-height: 1.0; /* Increased for mobile readability */
     text-transform: uppercase;
   }
 
   .ds-body {
-    font-size: 1.1rem;
-    line-height: 1.7;
+    font-size: 1rem; /* Reduced for mobile */
+    line-height: 1.6;
     color: var(--secondary);
+  }
+
+  @media (min-width: 768px) {
+    .ds-body {
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+    .ds-title {
+      line-height: 0.95;
+    }
   }
 
   .ds-grid-skills {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2px;
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); /* Force 1 col on mobile */
+    gap: 1px; /* Thinner border feel */
     background-color: var(--border);
     border: 1px solid var(--border);
+  }
+  
+  @media (min-width: 768px) {
+    .ds-grid-skills {
+       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
   }
 
   .ds-skill-cell {
     background-color: var(--background);
-    padding: 2.5rem;
+    padding: 2rem; /* Reduced for mobile */
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.25rem;
+  }
+  
+  @media (min-width: 768px) {
+    .ds-skill-cell {
+      padding: 2.5rem;
+      gap: 1.5rem;
+    }
   }
 
   .tag-mono {
     display: inline-block;
-    padding: 4px 10px;
-    font-size: 10px;
+    padding: 3px 8px; /* Reduced for mobile */
+    font-size: 9px; /* Reduced for mobile */
     font-family: var(--font-mono);
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -239,10 +269,18 @@
   /* Polaroid Frame */
   .polaroid-frame {
     background: #fff;
-    padding: 1rem 1rem 4rem 1rem;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-    transform: rotate(-2deg);
+    padding: 0.75rem 0.75rem 3rem 0.75rem; /* Reduced for mobile */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transform: rotate(-1deg);
     transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  @media (min-width: 768px) {
+    .polaroid-frame {
+      padding: 1rem 1rem 4rem 1rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      transform: rotate(-2deg);
+    }
   }
   .polaroid-frame:hover {
     transform: rotate(0deg) scale(1.02);
