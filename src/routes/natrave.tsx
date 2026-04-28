@@ -180,7 +180,7 @@ function ProjetoNaTrave() {
       {/* Full Screen Overlay */}
       {isFullScreen && (
         <div className="fixed inset-0 z-[100] bg-background overflow-y-auto no-scrollbar anim-fade-in">
-          <div className="sticky top-0 right-0 left-0 h-24 flex items-center justify-between container-site z-[101] bg-background/50 backdrop-blur-sm border-b border-border/10">
+          <div className="sticky top-0 right-0 left-0 h-24 flex items-center justify-between container-site z-[101] bg-background/50 backdrop-blur-sm border-b border-border/10 pointer-events-auto">
             <span className="text-xs font-mono uppercase tracking-widest">NaTrave App Case — {activeTab}</span>
             <button 
               onClick={() => setIsFullScreen(false)}
@@ -196,10 +196,6 @@ function ProjetoNaTrave() {
               alt="NaTrave Full Presentation" 
               className="w-full h-auto shadow-2xl"
             />
-            <div className="fixed bottom-12 left-1/2 -translate-x-1/2 z-[102] pointer-events-none flex flex-col items-center gap-3">
-              <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-foreground/40">Explore os detalhes</span>
-              <div className="hint-scroll h-8 w-px bg-foreground/20" />
-            </div>
           </div>
         </div>
       )}

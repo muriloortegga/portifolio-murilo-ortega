@@ -15,8 +15,10 @@ import { Route as SolidRouteImport } from './routes/solid'
 import { Route as SobreRouteImport } from './routes/sobre'
 import { Route as ServicosRouteImport } from './routes/servicos'
 import { Route as NatraveRouteImport } from './routes/natrave'
+import { Route as MaxiRouteImport } from './routes/maxi'
 import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BrandBrandIdRouteImport } from './routes/brand.$brandId'
 
 const TrabalhoRoute = TrabalhoRouteImport.update({
   id: '/trabalho',
@@ -48,6 +50,11 @@ const NatraveRoute = NatraveRouteImport.update({
   path: '/natrave',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MaxiRoute = MaxiRouteImport.update({
+  id: '/maxi',
+  path: '/maxi',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContatoRoute = ContatoRouteImport.update({
   id: '/contato',
   path: '/contato',
@@ -58,80 +65,99 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BrandBrandIdRoute = BrandBrandIdRouteImport.update({
+  id: '/brand/$brandId',
+  path: '/brand/$brandId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contato': typeof ContatoRoute
+  '/maxi': typeof MaxiRoute
   '/natrave': typeof NatraveRoute
   '/servicos': typeof ServicosRoute
   '/sobre': typeof SobreRoute
   '/solid': typeof SolidRoute
   '/symplice': typeof SympliceRoute
   '/trabalho': typeof TrabalhoRoute
+  '/brand/$brandId': typeof BrandBrandIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contato': typeof ContatoRoute
+  '/maxi': typeof MaxiRoute
   '/natrave': typeof NatraveRoute
   '/servicos': typeof ServicosRoute
   '/sobre': typeof SobreRoute
   '/solid': typeof SolidRoute
   '/symplice': typeof SympliceRoute
   '/trabalho': typeof TrabalhoRoute
+  '/brand/$brandId': typeof BrandBrandIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/contato': typeof ContatoRoute
+  '/maxi': typeof MaxiRoute
   '/natrave': typeof NatraveRoute
   '/servicos': typeof ServicosRoute
   '/sobre': typeof SobreRoute
   '/solid': typeof SolidRoute
   '/symplice': typeof SympliceRoute
   '/trabalho': typeof TrabalhoRoute
+  '/brand/$brandId': typeof BrandBrandIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/contato'
+    | '/maxi'
     | '/natrave'
     | '/servicos'
     | '/sobre'
     | '/solid'
     | '/symplice'
     | '/trabalho'
+    | '/brand/$brandId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/contato'
+    | '/maxi'
     | '/natrave'
     | '/servicos'
     | '/sobre'
     | '/solid'
     | '/symplice'
     | '/trabalho'
+    | '/brand/$brandId'
   id:
     | '__root__'
     | '/'
     | '/contato'
+    | '/maxi'
     | '/natrave'
     | '/servicos'
     | '/sobre'
     | '/solid'
     | '/symplice'
     | '/trabalho'
+    | '/brand/$brandId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContatoRoute: typeof ContatoRoute
+  MaxiRoute: typeof MaxiRoute
   NatraveRoute: typeof NatraveRoute
   ServicosRoute: typeof ServicosRoute
   SobreRoute: typeof SobreRoute
   SolidRoute: typeof SolidRoute
   SympliceRoute: typeof SympliceRoute
   TrabalhoRoute: typeof TrabalhoRoute
+  BrandBrandIdRoute: typeof BrandBrandIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -178,6 +204,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NatraveRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/maxi': {
+      id: '/maxi'
+      path: '/maxi'
+      fullPath: '/maxi'
+      preLoaderRoute: typeof MaxiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contato': {
       id: '/contato'
       path: '/contato'
@@ -192,18 +225,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/brand/$brandId': {
+      id: '/brand/$brandId'
+      path: '/brand/$brandId'
+      fullPath: '/brand/$brandId'
+      preLoaderRoute: typeof BrandBrandIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContatoRoute: ContatoRoute,
+  MaxiRoute: MaxiRoute,
   NatraveRoute: NatraveRoute,
   ServicosRoute: ServicosRoute,
   SobreRoute: SobreRoute,
   SolidRoute: SolidRoute,
   SympliceRoute: SympliceRoute,
   TrabalhoRoute: TrabalhoRoute,
+  BrandBrandIdRoute: BrandBrandIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
