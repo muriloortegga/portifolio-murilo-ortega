@@ -161,6 +161,93 @@
 }
 
 @layer components {
+  /* BIA / Polaroid Design System Tokens (Monochrome) */
+  --off-white: #f5f4f0;
+  --light-gray: #e8e7e3;
+  --mid-gray: #b5b4b0;
+  --dark-gray: #3d3d3b;
+  
+  --font-mono: 'DM Mono', monospace;
+}
+
+@layer components {
+  .ds-section {
+    padding: var(--page-section) var(--grid-padding);
+    border-top: 1px solid var(--border);
+  }
+
+  .ds-label {
+    font-size: 10px;
+    font-family: var(--font-mono);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--secondary);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .ds-label::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--foreground);
+    display: inline-block;
+  }
+
+  .ds-title {
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+    text-transform: uppercase;
+  }
+
+  .ds-body {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--secondary);
+  }
+
+  .ds-grid-skills {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2px;
+    background-color: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .ds-skill-cell {
+    background-color: var(--background);
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .tag-mono {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 10px;
+    font-family: var(--font-mono);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid var(--foreground);
+    color: var(--foreground);
+  }
+
+  /* Polaroid Frame */
+  .polaroid-frame {
+    background: #fff;
+    padding: 1rem 1rem 4rem 1rem;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    transform: rotate(-2deg);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .polaroid-frame:hover {
+    transform: rotate(0deg) scale(1.02);
+  }
+
   .container-site {
     max-width: var(--grid-width);
     margin-left: auto;
@@ -361,16 +448,28 @@
     animation: var(--animate-pulse-subtle);
   }
 
-  /* Marquee Animation */
-  @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+  /* Transitions */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-expo: cubic-bezier(0.87, 0, 0.13, 1);
+}
+
+@layer utilities {
+  .ease-out-expo {
+    transition-timing-function: var(--ease-out-expo);
+  }
+}
+
+@layer components {
+  /* Marquee Refinement */
+  @keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
   }
 
   .animate-marquee {
     display: flex;
     width: max-content;
-    animation: marquee 60s linear infinite;
+    animation: marquee-scroll 40s linear infinite;
   }
   
   .animate-marquee:hover {

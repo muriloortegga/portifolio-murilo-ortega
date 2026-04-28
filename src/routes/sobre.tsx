@@ -1,72 +1,311 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import { useState } from "react";
+import { ChevronDown, Plus, ArrowUpRight, Cpu, Layout, PenTool, ClipboardList } from "lucide-react";
+import portrait from "@/assets/murilo-portrait.png";
 
 export const Route = createFileRoute("/sobre")({
   head: () => ({
     meta: [
-      { title: "Sobre — Murilo Ortega" },
-      { name: "description", content: "Quase 10 anos organizando marcas. Estratégia e execução no mesmo lugar." },
-      { property: "og:title", content: "Sobre — Murilo Ortega" },
-      { property: "og:description", content: "Estratégia e execução no mesmo lugar." },
+      { title: "Sobre — Murilo Ortega — Design Estratégico & Identidade de Marca" },
+      { name: "description", content: "10 anos de experiência transformando marcas através de dados, criatividade e estratégia." },
     ],
   }),
   component: SobrePage,
 });
 
+const tools = [
+  { name: "Photoshop", logo: "Ps" },
+  { name: "Illustrator", logo: "Ai" },
+  { name: "After Effects", logo: "Ae" },
+  { name: "Figma", logo: "Fi" },
+  { name: "Canva", logo: "Cv" },
+  { name: "Capcut", logo: "Cc" },
+  { name: "Premiere", logo: "Pr" },
+];
+
+const aiTools = [
+  { name: "Claude AI", desc: "Refinamento de narrativas e análise crítica" },
+  { name: "Antigravity", desc: "Desenvolvimento e performance digital" },
+  { name: "Lovable", desc: "Criação ágil de landing pages e interfaces" },
+  { name: "Manus AI", desc: "Organização e automação de fluxos" },
+  { name: "GPT/Gemini", desc: "Copywriting e lapidação de textos" },
+  { name: "VEO3/Nano Banana", desc: "Geração e elevação visual" },
+];
+
+const brands = [
+  { 
+    id: "symplice", 
+    name: "Symplice", 
+    desc: "Facilitando experiências digitais para grandes corporações através de um sistema de marca focado em clareza.",
+    tag: "Naming & ID Visual",
+    to: "/symplice"
+  },
+  { 
+    id: "natrave", 
+    name: "NaTrave", 
+    desc: "O futebol amador elevado ao nível de elite. Plataforma completa com foco em UX/UI e comunidade.",
+    tag: "Branding & UX/UI",
+    to: "/natrave"
+  },
+  { 
+    id: "solid", 
+    name: "Solid +", 
+    desc: "Traduzindo tecnologia complexa em uma interface institucional humana e acessível para o mercado global.",
+    tag: "Direção & ID Visual",
+    to: "/solid"
+  },
+  { 
+    id: "maxi", 
+    name: "Maxi", 
+    desc: "Equilibrando autoridade acadêmica com dinamismo digital para uma das instituições de ensino mais tradicionais.",
+    tag: "Social Media & OOH",
+    to: "/maxi"
+  },
+  { 
+    id: "vogue", 
+    name: "Vogue", 
+    desc: "Exploração visual e estratégica para a maior autoridade em moda do mundo.",
+    tag: "Brand Case",
+    to: "/brand/vogue"
+  },
+  { 
+    id: "natural", 
+    name: "Natural Pure", 
+    desc: "Posicionamento e design minimalista para marcas que valorizam o essencial.",
+    tag: "Identidade Visual",
+    to: "/brand/natural"
+  }
+];
+
+function BrandBoard() {
+  const [activeBrand, setActiveBrand] = useState<string | null>(null);
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border">
+      {brands.map((brand) => (
+        <div 
+          key={brand.id}
+          className="relative bg-background group cursor-pointer overflow-hidden"
+          onClick={() => setActiveBrand(activeBrand === brand.id ? null : brand.id)}
+          onMouseEnter={() => window.innerWidth > 768 && setActiveBrand(brand.id)}
+          onMouseLeave={() => window.innerWidth > 768 && setActiveBrand(null)}
+        >
+          <div className="p-12 flex flex-col items-center justify-center min-h-[300px] transition-all duration-700">
+            <h3 className="text-4xl font-bold uppercase tracking-tighter transition-all duration-500 group-hover:scale-90 group-hover:opacity-20">
+              {brand.name}
+            </h3>
+            <div className="flex flex-col items-center gap-4 mt-4 transition-all duration-500 group-hover:opacity-0">
+               <span className="text-[10px] font-mono uppercase tracking-widest text-secondary">
+                {brand.tag}
+              </span>
+              <ChevronDown size={14} className={`text-secondary transition-transform duration-500 ${activeBrand === brand.id ? "rotate-180" : ""}`} />
+            </div>
+          </div>
+
+          <div className={`absolute inset-0 bg-foreground text-background p-10 flex flex-col justify-between transition-all duration-700 ease-out-expo ${activeBrand === brand.id ? "translate-y-0" : "translate-y-full"}`}>
+            <div className="space-y-6">
+               <span className="text-[10px] font-mono uppercase tracking-[0.2em] opacity-40 block">{brand.tag}</span>
+               <p className="text-xl leading-snug uppercase font-bold">{brand.desc}</p>
+            </div>
+            <Link to={brand.to} className="flex items-center justify-between group/btn border-t border-background/20 pt-8 mt-auto">
+              <span className="text-sm font-mono uppercase tracking-widest">Ver Projeto</span>
+              <div className="w-10 h-10 rounded-full border border-background/30 flex items-center justify-center group-hover/btn:bg-background group-hover/btn:text-foreground transition-all duration-500">
+                <ArrowUpRight size={18} />
+              </div>
+            </Link>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function SobrePage() {
   const revealRef = useScrollReveal<HTMLDivElement>();
 
   return (
-    <div ref={revealRef} className="pt-32">
-      <section className="section-spacing">
+    <div ref={revealRef} className="bg-background pt-32 pb-32">
+      {/* Hero Section */}
+      <section className="ds-section border-t-0 pt-0">
         <div className="container-site">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            <div className="lg:col-span-4 anim-fade-in">
-              <h1>Sobre</h1>
-            </div>
-            <div className="lg:col-span-8 anim-fade-in delay-250">
-              <p className="text-2xl lg:text-4xl font-bold uppercase line-height-tight tracking-tight mb-12">
-                Estratégia e execução <br />
-                <span className="text-secondary font-medium">no mesmo lugar.</span>
-              </p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-12 border-t border-border">
-                <div className="space-y-6">
-                  <span className="text-[10px] font-mono uppercase tracking-tight text-secondary">A Trajetória</span>
-                  <p className="text-sm text-secondary leading-relaxed">
-                    Quase 10 anos organizando marcas. Trabalhei de ponta a ponta —
-                    do posicionamento ao pixel, do conceito à entrega. Não terceirizo o raciocínio.
-                  </p>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
+            <div className="lg:col-span-7">
+              <span className="ds-label mb-12">Murilo Ortega — Creative Director</span>
+              <h1 className="ds-title mb-12">
+                Marcas que não<br />
+                pedem <span className="italic">licença</span><br />
+                para liderar.
+              </h1>
+              <div className="flex flex-col sm:flex-row gap-12 sm:items-center">
+                <div className="flex flex-col gap-2">
+                   <span className="text-[10px] font-mono uppercase text-secondary">Expertise</span>
+                   <span className="text-sm uppercase font-bold tracking-tight">Design Estratégico & Marcas</span>
                 </div>
-                <div className="space-y-6">
-                  <span className="text-[10px] font-mono uppercase tracking-tight text-secondary">O Modelo</span>
-                  <p className="text-sm text-secondary leading-relaxed">
-                    Opero como um sistema enxuto: controlo a estratégia, aciono
-                    colaboradores quando necessário e mantenho a qualidade centralizada.
-                    Sem burocracia. Com resultado.
-                  </p>
+                <div className="flex flex-col gap-2">
+                   <span className="text-[10px] font-mono uppercase text-secondary">Localização</span>
+                   <span className="text-sm uppercase font-bold tracking-tight">Londrina · PR / Global</span>
                 </div>
               </div>
-
-              <div className="mt-20 pt-12 border-t border-border space-y-8">
-                <span className="text-[10px] font-mono uppercase tracking-tight text-secondary">Conecte-se</span>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-                  {[
-                    { name: "LinkedIn", detail: "Autoridade", url: "#" },
-                    { name: "Upwork", detail: "Internacional", url: "#" },
-                    { name: "Instagram", detail: "Processo", url: "#" }
-                  ].map((link) => (
-                    <a key={link.name} href={link.url} className="group block">
-                      <span className="text-xs font-mono uppercase text-secondary block mb-1">{link.detail}</span>
-                      <span className="text-lg font-bold uppercase group-hover:text-secondary transition-colors underline underline-offset-4 decoration-1">{link.name}</span>
-                    </a>
-                  ))}
+            </div>
+            <div className="lg:col-span-5 flex justify-center lg:justify-end">
+              <div className="polaroid-frame w-full max-w-[400px]">
+                <img 
+                  src={portrait} 
+                  alt="Murilo Ortega Portrait" 
+                  className="w-full grayscale hover:grayscale-0 transition-all duration-700" 
+                />
+                <div className="mt-8 flex justify-between items-end px-2 font-mono italic opacity-40">
+                   <span className="text-[10px]">CREATIVE DIRECTOR</span>
+                   <span className="text-[10px]">MAR '24</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Trajectory Summary */}
+      <section className="ds-section bg-off-white">
+        <div className="container-site">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <div className="lg:col-span-4">
+              <span className="ds-label">Trajetória</span>
+            </div>
+            <div className="lg:col-span-8 space-y-12">
+              <p className="text-3xl lg:text-4xl font-bold uppercase tracking-tighter leading-[0.95] text-foreground">
+                Tenho 10 anos de experiência no mercado de Marketing e, ao longo dessa jornada, adquiri conhecimentos e liderei projetos nas áreas de Publicidade, Branding, Design Gráfico, Audiovisual e Mídias Sociais.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-12 border-t border-border/20">
+                <p className="ds-body">
+                  Nesse portifólio você encontra os meus melhores projetos, e mergulha um pouco mais fundo nesse universo que também mergulhei anos atrás e encontrei na combinação entre dados, criatividade, estratégia e boa experiência do usuário uma forma de performar ainda melhor no mercado atual de Agências e Hubs Criativos.
+                </p>
+                <div className="flex flex-col gap-8">
+                   <div className="flex items-center gap-4 group">
+                      <div className="w-12 h-[1px] bg-foreground group-hover:w-20 transition-all duration-500" />
+                      <span className="text-xs font-mono uppercase tracking-widest">Foco em Performance</span>
+                   </div>
+                   <div className="flex items-center gap-4 group">
+                      <div className="w-12 h-[1px] bg-foreground group-hover:w-20 transition-all duration-500" />
+                      <span className="text-xs font-mono uppercase tracking-widest">Estratégia de Dados</span>
+                   </div>
+                   <div className="flex items-center gap-4 group">
+                      <div className="w-12 h-[1px] bg-foreground group-hover:w-20 transition-all duration-500" />
+                      <span className="text-xs font-mono uppercase tracking-widest">Creative Leadership</span>
+                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Design Tools Marquee */}
+      <section className="py-24 border-t border-border overflow-hidden bg-background">
+        <div className="container-site mb-24">
+          <span className="ds-label mb-8">Especialidades</span>
+          <h2 className="text-7xl font-bold uppercase tracking-tighter leading-[0.8]">Meus Principais <br /><span className="text-secondary">Skills</span></h2>
+        </div>
+        
+        <div className="flex flex-col gap-12">
+          <div className="container-site">
+            <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-secondary">Design & Direção de Arte</span>
+          </div>
+          <div className="animate-marquee flex gap-12 whitespace-nowrap">
+             {[...tools, ...tools, ...tools, ...tools, ...tools, ...tools].map((tool, i) => (
+               <div key={i} className="flex items-center gap-6 group px-4">
+                  <div className="w-32 h-32 border border-border flex items-center justify-center text-5xl font-bold font-mono group-hover:bg-foreground group-hover:text-background transition-all duration-700 ease-out-expo">
+                    {tool.logo}
+                  </div>
+                  <span className="text-3xl font-bold uppercase tracking-tighter opacity-10 group-hover:opacity-100 transition-all duration-700">
+                    {tool.name}
+                  </span>
+               </div>
+             ))}
+          </div>
+        </div>
+        <div className="container-site mt-12">
+           <p className="ds-body max-w-2xl">
+             Utilizo ferramentas como essas para editar imagens, criar ilustrações, peças publicitárias, vídeos e apresentações comerciais de alto nível. Tenho 7 anos de experiência focada em pitchs de vendas e treinamentos institucionais.
+           </p>
+        </div>
+      </section>
+
+      {/* AI & Management Grid */}
+      <section className="ds-section border-t border-border">
+        <div className="container-site">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-border border border-border">
+            {/* AI Tools */}
+            <div className="bg-background p-16 space-y-12">
+               <div className="flex items-center gap-4">
+                 <Cpu size={24} />
+                 <h4 className="text-2xl font-bold uppercase tracking-tighter">Inteligência Artificial</h4>
+               </div>
+               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                 {aiTools.map((tool) => (
+                   <div key={tool.name} className="space-y-2">
+                     <span className="tag-mono">{tool.name}</span>
+                     <p className="text-[11px] text-secondary font-mono leading-tight uppercase">{tool.desc}</p>
+                   </div>
+                 ))}
+               </div>
+               <p className="text-sm text-secondary leading-relaxed pt-12 border-t border-border/10">
+                 Depois de 3 anos de experiência com IA, elas passaram a me ajudar na organização, pontualidade e análise crítica. Elas potencializam meus skills de copywriting, redação e UX, elevando a performance de cada projeto.
+               </p>
+            </div>
+
+            {/* Project Management */}
+            <div className="bg-off-white p-16 space-y-12">
+               <div className="flex items-center gap-4">
+                 <ClipboardList size={24} />
+                 <h4 className="text-2xl font-bold uppercase tracking-tighter">Gestão & Planejamento</h4>
+               </div>
+               <div className="space-y-12">
+                 {["Asana", "Trello", "Notion"].map((tool) => (
+                   <div key={tool} className="flex items-end justify-between border-b border-border pb-4 group">
+                      <span className="text-3xl font-bold uppercase tracking-tighter group-hover:translate-x-4 transition-transform duration-500">{tool}</span>
+                      <span className="text-[10px] font-mono uppercase opacity-40">Gestão de Fluxo</span>
+                   </div>
+                 ))}
+               </div>
+               <p className="text-sm text-secondary leading-relaxed pt-12">
+                 É aqui que organizo, gerencio, e acompanho o andamento dos meus projetos, desde o planejamento até a entrega final. Foco total em organização de briefings e monitoramento de cronogramas.
+               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Brand Board */}
+      <section className="ds-section">
+        <div className="container-site">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+            <div className="max-w-xl">
+              <span className="ds-label mb-8">Marcas & Experiência</span>
+              <h2 className="text-5xl font-bold uppercase tracking-tighter leading-[0.9]">Um ecossistema de marcas que confiam no meu olhar.</h2>
+            </div>
+            <p className="text-[10px] font-mono uppercase tracking-widest text-secondary mb-2">Passe o mouse para explorar os detalhes</p>
+          </div>
+          <BrandBoard />
+        </div>
+      </section>
+
+      {/* Final Call to Action */}
+      <section className="py-48 bg-foreground text-background">
+        <div className="container-site text-center space-y-12">
+          <h2 className="text-[10vw] font-bold uppercase tracking-tighter leading-[0.8] anim-fade-in">Vamos elevar o seu projeto?</h2>
+          <div className="flex flex-col md:flex-row gap-8 justify-center items-center anim-fade-in delay-250">
+            <Link to="/contato" className="btn-primary bg-background text-foreground px-12 py-6 text-lg hover:scale-105 transition-all">
+              Iniciar conversa <Plus size={20} className="ml-2" />
+            </Link>
+            <Link to="/trabalho" className="text-background border-b border-background/30 pb-2 uppercase font-mono text-sm tracking-widest hover:opacity-60 transition-opacity">
+              Explorar Portfolio
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
+
+export default SobrePage;
