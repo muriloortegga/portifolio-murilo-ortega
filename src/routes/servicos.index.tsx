@@ -90,7 +90,7 @@ function ServicosPage() {
         {products.map((p, i) => (
           <Link 
             key={i} 
-            to={`/servicos/${p.slug}`}
+            to={`/servicos/${p.slug}` as string}
             className="scroll-reveal block group border-t border-border first:border-t-0" 
             style={{ transitionDelay: `${i * 100}ms` }}
           >
