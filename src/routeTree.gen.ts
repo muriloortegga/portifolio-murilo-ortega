@@ -18,6 +18,9 @@ import { Route as ServicosRouteImport } from './routes/servicos'
 import { Route as NatraveRouteImport } from './routes/natrave'
 import { Route as MilgrowsRouteImport } from './routes/milgrows'
 import { Route as MaxiRouteImport } from './routes/maxi'
+import { Route as MarcoBoniRouteImport } from './routes/marco-boni'
+import { Route as LivinRouteImport } from './routes/livin'
+import { Route as KmillionRouteImport } from './routes/kmillion'
 import { Route as KapyiRouteImport } from './routes/kapyi'
 import { Route as EvidiveRouteImport } from './routes/evidive'
 import { Route as ContatoRouteImport } from './routes/contato'
@@ -74,6 +77,21 @@ const MilgrowsRoute = MilgrowsRouteImport.update({
 const MaxiRoute = MaxiRouteImport.update({
   id: '/maxi',
   path: '/maxi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarcoBoniRoute = MarcoBoniRouteImport.update({
+  id: '/marco-boni',
+  path: '/marco-boni',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LivinRoute = LivinRouteImport.update({
+  id: '/livin',
+  path: '/livin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KmillionRoute = KmillionRouteImport.update({
+  id: '/kmillion',
+  path: '/kmillion',
   getParentRoute: () => rootRouteImport,
 } as any)
 const KapyiRoute = KapyiRouteImport.update({
@@ -145,6 +163,9 @@ export interface FileRoutesByFullPath {
   '/contato': typeof ContatoRoute
   '/evidive': typeof EvidiveRoute
   '/kapyi': typeof KapyiRoute
+  '/kmillion': typeof KmillionRoute
+  '/livin': typeof LivinRoute
+  '/marco-boni': typeof MarcoBoniRoute
   '/maxi': typeof MaxiRoute
   '/milgrows': typeof MilgrowsRoute
   '/natrave': typeof NatraveRoute
@@ -168,6 +189,9 @@ export interface FileRoutesByTo {
   '/contato': typeof ContatoRoute
   '/evidive': typeof EvidiveRoute
   '/kapyi': typeof KapyiRoute
+  '/kmillion': typeof KmillionRoute
+  '/livin': typeof LivinRoute
+  '/marco-boni': typeof MarcoBoniRoute
   '/maxi': typeof MaxiRoute
   '/milgrows': typeof MilgrowsRoute
   '/natrave': typeof NatraveRoute
@@ -191,6 +215,9 @@ export interface FileRoutesById {
   '/contato': typeof ContatoRoute
   '/evidive': typeof EvidiveRoute
   '/kapyi': typeof KapyiRoute
+  '/kmillion': typeof KmillionRoute
+  '/livin': typeof LivinRoute
+  '/marco-boni': typeof MarcoBoniRoute
   '/maxi': typeof MaxiRoute
   '/milgrows': typeof MilgrowsRoute
   '/natrave': typeof NatraveRoute
@@ -216,6 +243,9 @@ export interface FileRouteTypes {
     | '/contato'
     | '/evidive'
     | '/kapyi'
+    | '/kmillion'
+    | '/livin'
+    | '/marco-boni'
     | '/maxi'
     | '/milgrows'
     | '/natrave'
@@ -239,6 +269,9 @@ export interface FileRouteTypes {
     | '/contato'
     | '/evidive'
     | '/kapyi'
+    | '/kmillion'
+    | '/livin'
+    | '/marco-boni'
     | '/maxi'
     | '/milgrows'
     | '/natrave'
@@ -261,6 +294,9 @@ export interface FileRouteTypes {
     | '/contato'
     | '/evidive'
     | '/kapyi'
+    | '/kmillion'
+    | '/livin'
+    | '/marco-boni'
     | '/maxi'
     | '/milgrows'
     | '/natrave'
@@ -285,6 +321,9 @@ export interface RootRouteChildren {
   ContatoRoute: typeof ContatoRoute
   EvidiveRoute: typeof EvidiveRoute
   KapyiRoute: typeof KapyiRoute
+  KmillionRoute: typeof KmillionRoute
+  LivinRoute: typeof LivinRoute
+  MarcoBoniRoute: typeof MarcoBoniRoute
   MaxiRoute: typeof MaxiRoute
   MilgrowsRoute: typeof MilgrowsRoute
   NatraveRoute: typeof NatraveRoute
@@ -360,6 +399,27 @@ declare module '@tanstack/react-router' {
       path: '/maxi'
       fullPath: '/maxi'
       preLoaderRoute: typeof MaxiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marco-boni': {
+      id: '/marco-boni'
+      path: '/marco-boni'
+      fullPath: '/marco-boni'
+      preLoaderRoute: typeof MarcoBoniRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/livin': {
+      id: '/livin'
+      path: '/livin'
+      fullPath: '/livin'
+      preLoaderRoute: typeof LivinRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kmillion': {
+      id: '/kmillion'
+      path: '/kmillion'
+      fullPath: '/kmillion'
+      preLoaderRoute: typeof KmillionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/kapyi': {
@@ -478,6 +538,9 @@ const rootRouteChildren: RootRouteChildren = {
   ContatoRoute: ContatoRoute,
   EvidiveRoute: EvidiveRoute,
   KapyiRoute: KapyiRoute,
+  KmillionRoute: KmillionRoute,
+  LivinRoute: LivinRoute,
+  MarcoBoniRoute: MarcoBoniRoute,
   MaxiRoute: MaxiRoute,
   MilgrowsRoute: MilgrowsRoute,
   NatraveRoute: NatraveRoute,
