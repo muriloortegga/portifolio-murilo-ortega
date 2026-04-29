@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Plus, ArrowRight, ChevronDown } from "lucide-react";
 
 export const Route = createFileRoute("/trabalho")({
   head: () => ({
@@ -15,133 +17,205 @@ export const Route = createFileRoute("/trabalho")({
 });
 
 const projects = [
-  {
-    name: "Symplice — Identidade de Marca para Startup",
-    category: "Id Visual",
-    year: "2024",
-    image: "/hero-brandding.jpg",
-    to: "/symplice",
-  },
-  {
-    name: "NaTrave App — O Ecossistema do Futebol Amador",
-    category: "Social Media",
-    year: "2024",
-    image: "https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=800&auto=format&fit=crop",
-    to: "/natrave",
-  },
-  {
-    name: "Solid + — Fintech Identity & Systems",
-    category: "Id Visual",
-    year: "2024",
-    image: "/solid-full.png",
-    to: "/solid",
-  },
-  {
-    name: "Outdoor Campaign — Real Estate",
-    category: "Mídia OOH",
-    year: "2023",
-    image: "https://images.unsplash.com/photo-1617478718481-673602164146?w=800&q=80",
-    to: "/trabalho",
-  },
-  {
-    name: "Social media — Marca wellness",
-    category: "Social Media",
-    year: "2024",
-    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80",
-    to: "/trabalho",
-  },
-  {
-    name: "Editorial Design — Brandbook",
-    category: "Mídia Impressa",
-    year: "2023",
-    image: "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800&q=80",
-    to: "/trabalho",
-  },
+  // Social Media
+  { name: "NaTrave", category: "Social Media", year: "2024", image: "/natrave-preview.gif", to: "/natrave" },
+  { name: "Talk2Buy", category: "Social Media", year: "2024", image: "https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=800", to: "/trabalho" },
+  { name: "Evidive", category: "Social Media", year: "2024", image: "/hero-brandding.jpg", to: "/trabalho" },
+  { name: "Colégio Maxi", category: "Social Media", year: "2024", image: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=800", to: "/maxi" },
+  { name: "Milgrows", category: "Social Media", year: "2023", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800", to: "/trabalho" },
+  { name: "Kapyi", category: "Social Media", year: "2023", image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800", to: "/trabalho" },
+  
+  // Id Visual
+  { name: "NaTrave", category: "Id Visual", year: "2024", image: "https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=800", to: "/natrave" },
+  { name: "Symplice", category: "Id Visual", year: "2024", image: "/hero-brandding.jpg", to: "/symplice" },
+  { name: "Kmillion", category: "Id Visual", year: "2024", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800", to: "/trabalho" },
+  { name: "Solid+", category: "Id Visual", year: "2024", image: "/solid-full.png", to: "/solid" },
+  
+  // Mídia Impressa
+  { name: "Marco Boni", category: "Mídia Impressa", year: "2023", image: "https://images.unsplash.com/photo-1544640808-32ca72ac7f37?q=80&w=800", to: "/trabalho" },
+  { name: "Livin Company", category: "Mídia Impressa", year: "2023", image: "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800&q=80", to: "/trabalho" },
+  
+  // Mídia OOH
+  { name: "Colégio Maxi", category: "Mídia OOH", year: "2023", image: "https://images.unsplash.com/photo-1516216628859-9bccecab13ca?q=80&w=1200", to: "/maxi" },
 ];
 
-const categories = ["Social Media", "Id Visual", "Mídia Impressa", "Mídia OOH"];
+const serviceInsights = {
+  "Social Media": {
+    title: "Sistema de Conteúdo",
+    copy: "Social Media como um sistema integrado de autoridade.",
+    preview: "Esqueça postagens isoladas. Criamos um ecossistema de conteúdo que sustenta sua marca e converte audiência em clientes reais.",
+    to: "/servicos/sistema-de-conteudo"
+  },
+  "Id Visual": {
+    title: "Estruturação de Marca",
+    copy: "A base de tudo o que você entrega.",
+    preview: "Do diagnóstico ao brandbook completo. Construímos identidades que confrontam o comum e elevam o valor percebido do seu negócio.",
+    to: "/servicos/estruturacao-de-marca"
+  },
+  "Mídia Impressa": {
+    title: "Mídia Impressa",
+    copy: "Tangibilizando autoridade no mundo físico.",
+    preview: "Catálogos físicos e digitais, diagramação e materiais institucionais. Entregamos qualidade gráfica que tangibiliza a autoridade da sua marca.",
+    to: "/servicos/midia-impressa"
+  },
+  "Mídia OOH": {
+    title: "Mídia OOH",
+    copy: "Visibilidade massiva e autoridade local.",
+    preview: "Do planejamento ao gerenciamento de budget. Criamos campanhas externas que garantem que sua marca seja vista em todos os lugares.",
+    to: "/servicos/midia-ooh"
+  }
+};
 
-const archive = ["Vogue Design", "Natural Pure", "Tech Flow", "Zen Garden", "Studio Max"];
+const categories = ["Social Media", "Id Visual", "Mídia Impressa", "Mídia OOH"] as const;
+type Category = typeof categories[number];
 
 function TrabalhoPage() {
   const revealRef = useScrollReveal<HTMLDivElement>();
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [activeCategory, setActiveCategory] = useState<Category | null>(null);
 
-  const filteredProjects = activeCategory 
-    ? projects.filter(p => p.category === activeCategory)
-    : projects;
+  const currentInsight = activeCategory ? serviceInsights[activeCategory] : null;
 
   return (
-    <div ref={revealRef} className="pt-32">
+    <div ref={revealRef} className="pt-32 pb-32">
       <section className="section-spacing">
         <div className="container-site">
           <div className="mb-20">
-            <h1 className="uppercase line-height-tight tracking-tight anim-fade-in">Conheça meu<br /><span className="text-secondary font-medium">Trabalho</span></h1>
+            <h1 className="uppercase line-height-tight tracking-tight anim-fade-in">
+              Conheça meu<br />
+              <span className="text-secondary font-medium text-8xl md:text-[12vw]">Trabalho</span>
+            </h1>
           </div>
 
           {/* Category Filters */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20 anim-fade-in delay-250">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-px bg-border border border-border mb-20 anim-fade-in delay-250 overflow-hidden">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(activeCategory === cat ? null : cat)}
-                className={`p-6 border border-border text-left transition-all duration-300 hover:bg-foreground hover:text-background group ${
-                  activeCategory === cat ? "bg-foreground text-background" : "bg-card"
+                className={`p-10 text-left transition-all duration-700 group relative flex flex-col justify-between min-h-[160px] ${
+                  activeCategory === cat ? "bg-foreground text-background" : "bg-background hover:bg-off-white"
                 }`}
               >
-                <span className="text-[10px] font-mono uppercase tracking-tighter block mb-2 opacity-60">Área</span>
-                <span className="font-bold text-lg leading-tight block">{cat}</span>
+                <div className="flex justify-between items-start">
+                   <span className="text-[10px] font-mono uppercase tracking-widest opacity-40">0{categories.indexOf(cat) + 1}</span>
+                   <ChevronDown size={14} className={`transition-transform duration-500 ${activeCategory === cat ? "rotate-180" : ""}`} />
+                </div>
+                <span className="font-bold text-3xl uppercase tracking-tighter leading-none">{cat}</span>
               </button>
             ))}
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 transition-all duration-500">
-            {filteredProjects.length > 0 ? (
-              filteredProjects.map((project, i) => (
+          {/* Dropdown Gallery */}
+          <AnimatePresence mode="wait">
+            {activeCategory && (
+              <motion.div
+                key={activeCategory}
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="overflow-hidden"
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-32">
+                  {projects
+                    .filter((p) => p.category === activeCategory)
+                    .map((project, i) => (
+                      <Link 
+                        key={project.name + i} 
+                        to={project.to}
+                        className="group"
+                      >
+                        <figure className="relative aspect-[4/5] bg-off-white overflow-hidden polaroid-frame">
+                          <img
+                            src={project.image}
+                            alt={project.name}
+                            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                            loading="lazy"
+                          />
+                          <div className="absolute inset-0 bg-foreground/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </figure>
+                        <div className="mt-6 flex justify-between items-end">
+                           <div>
+                              <span className="text-[10px] font-mono uppercase text-secondary mb-1 block">{project.year}</span>
+                              <h4 className="text-xl font-bold uppercase tracking-tight">{project.name}</h4>
+                           </div>
+                           <ArrowRight size={18} className="opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all" />
+                        </div>
+                      </Link>
+                    ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Fallback View (When no category is selected) */}
+          {!activeCategory && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 transition-all duration-500 pb-32">
+              {projects.slice(0, 4).map((project, i) => (
                 <Link 
-                  key={project.name} 
+                  key={project.name + i} 
                   to={project.to} 
-                  className={`group ${i === 0 && !activeCategory ? "md:col-span-2" : ""}`}
+                  className={`group ${i === 0 ? "md:col-span-2" : ""}`}
                 >
-                  <figure className="scroll-reveal project-card relative cursor-none">
-                    <div className={`media-wrap ${i === 0 && !activeCategory ? "aspect-[21/9]" : "aspect-[4/3]"}`}>
+                  <figure className="relative cursor-none">
+                    <div className={`media-wrap ${i === 0 ? "aspect-[21/9]" : "aspect-[4/3]"} polaroid-frame shadow-xl`}>
                       <img
                         src={project.image}
                         alt={project.name}
-                        className="w-full h-full object-cover"
-                        loading="lazy"
+                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                       />
                     </div>
                     <figcaption className="mt-8">
                       <span className="card-label">{project.category} · {project.year}</span>
-                      <span className="font-bold text-xl lg:text-2xl uppercase leading-tight block">{project.name}</span>
+                      <span className="font-bold text-3xl uppercase leading-tight block">{project.name}</span>
                     </figcaption>
                   </figure>
                 </Link>
-              ))
-            ) : (
-              <div className="col-span-full py-20 text-center text-secondary">
-                Nenhum projeto encontrado nesta categoria.
-              </div>
-            )}
-          </div>
+              ))}
+            </div>
+          )}
 
-          <div className="mt-32 pt-12 border-t border-border grid grid-cols-1 lg:grid-cols-12 gap-12">
-            <div className="lg:col-span-4">
-              <span className="text-[10px] font-mono uppercase tracking-tight text-secondary">Arquivo de Projetos</span>
-            </div>
-            <div className="lg:col-span-8">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-4 gap-x-12">
-                {archive.map((p) => (
-                  <span key={p} className="text-sm uppercase tracking-tight font-medium py-2 border-b border-border/50">
-                    {p}
+          {/* Dynamic Service Insight Section */}
+          <div className="pt-24 border-t border-border">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeCategory || "default"}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+                className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
+              >
+                <div className="lg:col-span-5">
+                  <span className="ds-label mb-8">
+                    {activeCategory ? `Insight: ${activeCategory}` : "Expertise & Entrega"}
                   </span>
-                ))}
-              </div>
-            </div>
+                  <h2 className="text-5xl md:text-6xl font-bold uppercase tracking-tighter leading-[0.9] mb-8">
+                    {currentInsight ? currentInsight.copy : "Sua marca pronta para o próximo nível."}
+                  </h2>
+                </div>
+                <div className="lg:col-span-7 flex flex-col md:flex-row gap-12 items-start md:items-center">
+                  <p className="text-xl text-secondary uppercase font-medium leading-tight max-w-md">
+                    {currentInsight ? currentInsight.preview : "Combinamos estratégia, design e tecnologia para criar ecossistemas de marca que lideram mercados."}
+                  </p>
+                  {currentInsight && (
+                    <Link to={currentInsight.to} className="btn-primary whitespace-nowrap">
+                      Ver serviço <Plus size={18} className="ml-2" />
+                    </Link>
+                  )}
+                  {!currentInsight && (
+                    <Link to="/servicos" className="btn-primary whitespace-nowrap">
+                      Conhecer serviços <Plus size={18} className="ml-2" />
+                    </Link>
+                  )}
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
       </section>
     </div>
   );
 }
+
+export default TrabalhoPage;
