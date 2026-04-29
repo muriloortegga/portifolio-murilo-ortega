@@ -149,13 +149,13 @@ function SobrePage() {
               </div>
             </div>
             <div className="lg:col-span-5 flex justify-center lg:justify-end order-1 lg:order-2 mb-12 lg:mb-0">
-              <div className="polaroid-frame w-full max-w-[320px] md:max-w-[400px]">
+              <div className="w-full max-w-[320px] md:max-w-[400px] overflow-hidden group">
                 <img 
                   src={portrait} 
                   alt="Murilo Ortega Portrait" 
-                  className="w-full grayscale hover:grayscale-0 transition-all duration-700" 
+                  className="w-full grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" 
                 />
-                <div className="mt-6 md:mt-8 flex justify-between items-end px-2 font-mono italic opacity-40">
+                <div className="mt-4 flex justify-between items-end px-2 font-mono italic opacity-40">
                    <span className="text-[9px]">CREATIVE DIRECTOR</span>
                    <span className="text-[9px]">MAR '24</span>
                 </div>

@@ -125,7 +125,7 @@ function TrabalhoPage() {
                         to={project.to}
                         className="group"
                       >
-                        <figure className="relative aspect-[4/5] bg-off-white overflow-hidden polaroid-frame">
+                        <figure className="relative aspect-[4/5] bg-off-white overflow-hidden shadow-lg border border-border/10">
                           <img
                             src={project.image}
                             alt={project.name}
@@ -158,11 +158,11 @@ function TrabalhoPage() {
                   className={`group ${i === 0 ? "md:col-span-2" : ""}`}
                 >
                   <figure className="relative cursor-none">
-                    <div className={`media-wrap ${i === 0 ? "aspect-[21/9]" : "aspect-[4/3]"} polaroid-frame shadow-xl`}>
+                    <div className={`media-wrap ${i === 0 ? "aspect-[21/9]" : "aspect-[4/3]"} shadow-xl overflow-hidden`}>
                       <img
                         src={project.image}
                         alt={project.name}
-                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 hover:scale-105"
                       />
                     </div>
                     <figcaption className="mt-8">

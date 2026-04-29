@@ -66,8 +66,8 @@ function MidiaImpressaPage() {
         <div className="container-site">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
              <div className="lg:col-span-6">
-                <div className="polaroid-frame -rotate-1 shadow-2xl">
-                   <img src="https://images.unsplash.com/photo-1544640808-32ca72ac7f37?q=80&w=800" alt="Marco Boni Catalog" className="w-full grayscale" />
+                <div className="shadow-2xl overflow-hidden">
+                   <img src="https://images.unsplash.com/photo-1544640808-32ca72ac7f37?q=80&w=800" alt="Marco Boni Catalog" className="w-full grayscale hover:grayscale-0 transition-all duration-700 hover:scale-105" />
                 </div>
              </div>
              <div className="lg:col-span-6">

@@ -97,8 +97,8 @@ function EstruturacaoMarcaPage() {
                <Link to="/solid" className="btn btn-arrow">Ver case completo <span className="arrow" /></Link>
             </div>
             <div className="lg:col-span-6">
-              <div className="polaroid-frame shadow-2xl">
-                <img src="/solid-full.png" alt="Solid+ Brandbook" className="w-full grayscale hover:grayscale-0 transition-all duration-700" />
+              <div className="shadow-2xl overflow-hidden">
+                <img src="/solid-full.png" alt="Solid+ Brandbook" className="w-full grayscale hover:grayscale-0 transition-all duration-700 hover:scale-105" />
               </div>
             </div>
           </div>

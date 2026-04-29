@@ -101,12 +101,12 @@ function MarketingInfluenciaPage() {
             <div className="lg:col-span-5">
               <span className="ds-label mb-8">Case em Destaque</span>
               <h2 className="text-5xl md:text-6xl font-bold uppercase tracking-tighter leading-[0.9] mb-12">De marca nichada a referência aspiracional.</h2>
-              <div className="polaroid-frame w-full max-w-[400px] mb-12">
-                <img src="/hero-brandding.jpg" alt="Case EviDive" className="w-full grayscale" />
-                <div className="mt-8 flex justify-between items-end px-2 font-mono italic opacity-40">
-                   <span className="text-[10px]">CASE EVIDIVE</span>
-                   <span className="text-[10px]">2024</span>
-                </div>
+              <div className="w-full max-w-[400px] mb-12 shadow-xl overflow-hidden">
+                <img src="/hero-brandding.jpg" alt="Case EviDive" className="w-full grayscale hover:grayscale-0 transition-all duration-700 hover:scale-105" />
+              </div>
+              <div className="flex justify-between items-end px-2 font-mono italic opacity-40">
+                <span className="text-[10px]">CASE EVIDIVE</span>
+                <span className="text-[10px]">2024</span>
               </div>
             </div>
             <div className="lg:col-span-7 space-y-16">
