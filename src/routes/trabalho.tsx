@@ -100,9 +100,9 @@ function PortfólioPage() {
       <section className="site-section">
         <div className="site-container">
           <div className="mb-20">
-            <h1 className="uppercase tracking-tighter anim-fade-in leading-[0.8]">
-              Conheça meu<br />
-              <span className="text-secondary font-medium text-7xl md:text-[12vw]">Portfólio</span>
+            <h1 className="uppercase tracking-tighter anim-fade-in leading-[0.85] flex flex-col">
+              <span className="text-4xl md:text-6xl lg:text-8xl mb-2">Conheça meu</span>
+              <span className="text-secondary font-medium text-[18vw] md:text-[12vw]">Trabalho</span>
             </h1>
           </div>
 
