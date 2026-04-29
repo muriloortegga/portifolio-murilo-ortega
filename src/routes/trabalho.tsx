@@ -7,13 +7,13 @@ import { Plus, ArrowRight, ChevronDown } from "lucide-react";
 export const Route = createFileRoute("/trabalho")({
   head: () => ({
     meta: [
-      { title: "Trabalho — Murilo Ortega" },
+      { title: "Portfólio — Murilo Ortega" },
       { name: "description", content: "Projetos selecionados de branding, conteúdo e presença digital." },
-      { property: "og:title", content: "Trabalho — Murilo Ortega" },
+      { property: "og:title", content: "Portfólio — Murilo Ortega" },
       { property: "og:description", content: "Projetos selecionados de branding, conteúdo e presença digital." },
     ],
   }),
-  component: TrabalhoPage,
+  component: PortfólioPage,
 });
 
 const projects = [
@@ -37,6 +37,14 @@ const projects = [
   
   // Mídia OOH
   { name: "Colégio Maxi", category: "Mídia OOH", year: "2023", image: "https://images.unsplash.com/photo-1516216628859-9bccecab13ca?q=80&w=1200", to: "/maxi" },
+
+  // Websites
+  { name: "NaTrave", category: "Websites", year: "2024", image: "/natrave-preview.gif", to: "/natrave" },
+  { name: "Talk2Buy", category: "Websites", year: "2024", image: "https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=800", to: "/talk2buy" },
+  { name: "Kmillion", category: "Websites", year: "2024", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800", to: "/kmillion" },
+
+  // Marketing de Influência
+  { name: "Evidive", category: "Marketing de Influência", year: "2024", image: "/hero-brandding.jpg", to: "/evidive" },
 ];
 
 const serviceInsights = {
@@ -63,44 +71,54 @@ const serviceInsights = {
     copy: "Visibilidade massiva e autoridade local.",
     preview: "Do planejamento ao gerenciamento de budget. Criamos campanhas externas que garantem que sua marca seja vista em todos os lugares.",
     to: "/servicos/midia-ooh"
+  },
+  "Websites": {
+    title: "Presença Digital",
+    copy: "Interfaces que convertem e posicionam.",
+    preview: "Sites e landing pages que organizam sua comunicação, melhoram a percepção de valor e facilitam a conversão do lead.",
+    to: "/servicos/presenca-digital"
+  },
+  "Marketing de Influência": {
+    title: "Marketing de Influência",
+    copy: "Vozes reais gerando impacto real.",
+    preview: "Conectamos sua marca com vozes que geram confiança e expandem seu alcance de forma autêntica e estratégica.",
+    to: "/servicos/marketing-de-influencia"
   }
 };
 
-const categories = ["Social Media", "Id Visual", "Mídia Impressa", "Mídia OOH"] as const;
+const categories = ["Social Media", "Id Visual", "Mídia Impressa", "Mídia OOH", "Websites", "Marketing de Influência"] as const;
 type Category = typeof categories[number];
 
-function TrabalhoPage() {
+function PortfólioPage() {
   const revealRef = useScrollReveal<HTMLDivElement>();
   const [activeCategory, setActiveCategory] = useState<Category | null>(null);
 
   const currentInsight = activeCategory ? serviceInsights[activeCategory] : null;
 
   return (
-    <div ref={revealRef} className="pt-32 pb-32">
+    <div ref={revealRef} className="pt-32 pb-32 bg-background min-h-screen">
       <section className="site-section">
         <div className="site-container">
           <div className="mb-20">
-            <h1 className="uppercase line-height-tight tracking-tight anim-fade-in">
+            <h1 className="uppercase tracking-tighter anim-fade-in leading-[0.8]">
               Conheça meu<br />
-              <span className="text-secondary font-medium text-8xl md:text-[12vw]">Trabalho</span>
+              <span className="text-secondary font-medium text-7xl md:text-[12vw]">Portfólio</span>
             </h1>
           </div>
 
-          {/* Category Filters */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-px bg-border border border-border mb-20 anim-fade-in delay-250 overflow-hidden">
+          {/* Category Filters - Refined Design */}
+          <div className="flex flex-wrap gap-2 mb-20 anim-fade-in delay-250">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(activeCategory === cat ? null : cat)}
-                className={`p-10 text-left transition-all duration-700 group relative flex flex-col justify-between min-h-[160px] ${
-                  activeCategory === cat ? "bg-foreground text-background" : "bg-background hover:bg-off-white"
+                className={`px-6 py-3 text-[10px] font-mono uppercase tracking-[0.2em] transition-all border ${
+                  activeCategory === cat 
+                    ? "bg-foreground text-background border-foreground shadow-lg scale-105" 
+                    : "bg-transparent text-secondary border-border hover:border-foreground/40"
                 }`}
               >
-                <div className="flex justify-between items-start">
-                   <span className="text-[10px] font-mono uppercase tracking-widest opacity-40">0{categories.indexOf(cat) + 1}</span>
-                   <ChevronDown size={14} className={`transition-transform duration-500 ${activeCategory === cat ? "rotate-180" : ""}`} />
-                </div>
-                <span className="font-bold text-3xl uppercase tracking-tighter leading-none">{cat}</span>
+                {cat}
               </button>
             ))}
           </div>
@@ -110,13 +128,13 @@ function TrabalhoPage() {
             {activeCategory && (
               <motion.div
                 key={activeCategory}
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: "auto", opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="overflow-hidden"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="mb-32"
               >
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-32">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {projects
                     .filter((p) => p.category === activeCategory)
                     .map((project, i) => (
@@ -125,14 +143,13 @@ function TrabalhoPage() {
                         to={project.to}
                         className="group"
                       >
-                        <figure className="relative aspect-[4/5] bg-off-white overflow-hidden shadow-lg border border-border/10">
+                        <figure className="relative aspect-[4/5] bg-off-white overflow-hidden border border-border/10">
                           <img
                             src={project.image}
                             alt={project.name}
                             className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
                             loading="lazy"
                           />
-                          <div className="absolute inset-0 bg-foreground/10 opacity-0 group-hover:opacity-100 transition-opacity" />
                         </figure>
                         <div className="mt-6 flex justify-between items-end">
                            <div>
@@ -157,7 +174,7 @@ function TrabalhoPage() {
                   to={project.to} 
                   className={`group ${i === 0 ? "md:col-span-2" : ""}`}
                 >
-                  <figure className="relative cursor-none">
+                  <figure className="relative">
                     <div className={`media-wrap ${i === 0 ? "aspect-[21/9]" : "aspect-[4/3]"} shadow-xl overflow-hidden`}>
                       <img
                         src={project.image}
@@ -218,4 +235,4 @@ function TrabalhoPage() {
   );
 }
 
-export default TrabalhoPage;
+export default PortfólioPage;
