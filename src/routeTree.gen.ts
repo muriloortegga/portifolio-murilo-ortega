@@ -10,12 +10,16 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TrabalhoRouteImport } from './routes/trabalho'
+import { Route as Talk2buyRouteImport } from './routes/talk2buy'
 import { Route as SympliceRouteImport } from './routes/symplice'
 import { Route as SolidRouteImport } from './routes/solid'
 import { Route as SobreRouteImport } from './routes/sobre'
 import { Route as ServicosRouteImport } from './routes/servicos'
 import { Route as NatraveRouteImport } from './routes/natrave'
+import { Route as MilgrowsRouteImport } from './routes/milgrows'
 import { Route as MaxiRouteImport } from './routes/maxi'
+import { Route as KapyiRouteImport } from './routes/kapyi'
+import { Route as EvidiveRouteImport } from './routes/evidive'
 import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicosIndexRouteImport } from './routes/servicos.index'
@@ -30,6 +34,11 @@ import { Route as BrandBrandIdRouteImport } from './routes/brand.$brandId'
 const TrabalhoRoute = TrabalhoRouteImport.update({
   id: '/trabalho',
   path: '/trabalho',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Talk2buyRoute = Talk2buyRouteImport.update({
+  id: '/talk2buy',
+  path: '/talk2buy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SympliceRoute = SympliceRouteImport.update({
@@ -57,9 +66,24 @@ const NatraveRoute = NatraveRouteImport.update({
   path: '/natrave',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MilgrowsRoute = MilgrowsRouteImport.update({
+  id: '/milgrows',
+  path: '/milgrows',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MaxiRoute = MaxiRouteImport.update({
   id: '/maxi',
   path: '/maxi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KapyiRoute = KapyiRouteImport.update({
+  id: '/kapyi',
+  path: '/kapyi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EvidiveRoute = EvidiveRouteImport.update({
+  id: '/evidive',
+  path: '/evidive',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContatoRoute = ContatoRouteImport.update({
@@ -119,12 +143,16 @@ const BrandBrandIdRoute = BrandBrandIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contato': typeof ContatoRoute
+  '/evidive': typeof EvidiveRoute
+  '/kapyi': typeof KapyiRoute
   '/maxi': typeof MaxiRoute
+  '/milgrows': typeof MilgrowsRoute
   '/natrave': typeof NatraveRoute
   '/servicos': typeof ServicosRouteWithChildren
   '/sobre': typeof SobreRoute
   '/solid': typeof SolidRoute
   '/symplice': typeof SympliceRoute
+  '/talk2buy': typeof Talk2buyRoute
   '/trabalho': typeof TrabalhoRoute
   '/brand/$brandId': typeof BrandBrandIdRoute
   '/servicos/estruturacao-de-marca': typeof ServicosEstruturacaoDeMarcaRoute
@@ -138,11 +166,15 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contato': typeof ContatoRoute
+  '/evidive': typeof EvidiveRoute
+  '/kapyi': typeof KapyiRoute
   '/maxi': typeof MaxiRoute
+  '/milgrows': typeof MilgrowsRoute
   '/natrave': typeof NatraveRoute
   '/sobre': typeof SobreRoute
   '/solid': typeof SolidRoute
   '/symplice': typeof SympliceRoute
+  '/talk2buy': typeof Talk2buyRoute
   '/trabalho': typeof TrabalhoRoute
   '/brand/$brandId': typeof BrandBrandIdRoute
   '/servicos/estruturacao-de-marca': typeof ServicosEstruturacaoDeMarcaRoute
@@ -157,12 +189,16 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/contato': typeof ContatoRoute
+  '/evidive': typeof EvidiveRoute
+  '/kapyi': typeof KapyiRoute
   '/maxi': typeof MaxiRoute
+  '/milgrows': typeof MilgrowsRoute
   '/natrave': typeof NatraveRoute
   '/servicos': typeof ServicosRouteWithChildren
   '/sobre': typeof SobreRoute
   '/solid': typeof SolidRoute
   '/symplice': typeof SympliceRoute
+  '/talk2buy': typeof Talk2buyRoute
   '/trabalho': typeof TrabalhoRoute
   '/brand/$brandId': typeof BrandBrandIdRoute
   '/servicos/estruturacao-de-marca': typeof ServicosEstruturacaoDeMarcaRoute
@@ -178,12 +214,16 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/contato'
+    | '/evidive'
+    | '/kapyi'
     | '/maxi'
+    | '/milgrows'
     | '/natrave'
     | '/servicos'
     | '/sobre'
     | '/solid'
     | '/symplice'
+    | '/talk2buy'
     | '/trabalho'
     | '/brand/$brandId'
     | '/servicos/estruturacao-de-marca'
@@ -197,11 +237,15 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/contato'
+    | '/evidive'
+    | '/kapyi'
     | '/maxi'
+    | '/milgrows'
     | '/natrave'
     | '/sobre'
     | '/solid'
     | '/symplice'
+    | '/talk2buy'
     | '/trabalho'
     | '/brand/$brandId'
     | '/servicos/estruturacao-de-marca'
@@ -215,12 +259,16 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/contato'
+    | '/evidive'
+    | '/kapyi'
     | '/maxi'
+    | '/milgrows'
     | '/natrave'
     | '/servicos'
     | '/sobre'
     | '/solid'
     | '/symplice'
+    | '/talk2buy'
     | '/trabalho'
     | '/brand/$brandId'
     | '/servicos/estruturacao-de-marca'
@@ -235,12 +283,16 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContatoRoute: typeof ContatoRoute
+  EvidiveRoute: typeof EvidiveRoute
+  KapyiRoute: typeof KapyiRoute
   MaxiRoute: typeof MaxiRoute
+  MilgrowsRoute: typeof MilgrowsRoute
   NatraveRoute: typeof NatraveRoute
   ServicosRoute: typeof ServicosRouteWithChildren
   SobreRoute: typeof SobreRoute
   SolidRoute: typeof SolidRoute
   SympliceRoute: typeof SympliceRoute
+  Talk2buyRoute: typeof Talk2buyRoute
   TrabalhoRoute: typeof TrabalhoRoute
   BrandBrandIdRoute: typeof BrandBrandIdRoute
 }
@@ -252,6 +304,13 @@ declare module '@tanstack/react-router' {
       path: '/trabalho'
       fullPath: '/trabalho'
       preLoaderRoute: typeof TrabalhoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/talk2buy': {
+      id: '/talk2buy'
+      path: '/talk2buy'
+      fullPath: '/talk2buy'
+      preLoaderRoute: typeof Talk2buyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/symplice': {
@@ -289,11 +348,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NatraveRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/milgrows': {
+      id: '/milgrows'
+      path: '/milgrows'
+      fullPath: '/milgrows'
+      preLoaderRoute: typeof MilgrowsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/maxi': {
       id: '/maxi'
       path: '/maxi'
       fullPath: '/maxi'
       preLoaderRoute: typeof MaxiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kapyi': {
+      id: '/kapyi'
+      path: '/kapyi'
+      fullPath: '/kapyi'
+      preLoaderRoute: typeof KapyiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/evidive': {
+      id: '/evidive'
+      path: '/evidive'
+      fullPath: '/evidive'
+      preLoaderRoute: typeof EvidiveRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contato': {
@@ -396,12 +476,16 @@ const ServicosRouteWithChildren = ServicosRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContatoRoute: ContatoRoute,
+  EvidiveRoute: EvidiveRoute,
+  KapyiRoute: KapyiRoute,
   MaxiRoute: MaxiRoute,
+  MilgrowsRoute: MilgrowsRoute,
   NatraveRoute: NatraveRoute,
   ServicosRoute: ServicosRouteWithChildren,
   SobreRoute: SobreRoute,
   SolidRoute: SolidRoute,
   SympliceRoute: SympliceRoute,
+  Talk2buyRoute: Talk2buyRoute,
   TrabalhoRoute: TrabalhoRoute,
   BrandBrandIdRoute: BrandBrandIdRoute,
 }

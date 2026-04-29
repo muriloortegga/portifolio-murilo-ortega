@@ -151,7 +151,7 @@ function SobrePage() {
               <div className="space-y-8">
                 <div className="flex flex-col gap-1">
                    <span className="text-[10px] font-mono uppercase text-secondary">Expertise</span>
-                   <span className="text-sm md:text-base uppercase font-bold tracking-tight">Design Estratégico & Marcas</span>
+                   <span className="text-sm md:text-base uppercase font-bold tracking-tight">Design Estratégico &amp; Marcas</span>
                 </div>
                 <div className="flex flex-col gap-1">
                    <span className="text-[10px] font-mono uppercase text-secondary">Localização</span>
