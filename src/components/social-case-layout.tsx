@@ -1,0 +1,287 @@
+import { useState, useEffect, useRef } from "react";
+import { motion, useInView, useSpring, useTransform, AnimatePresence } from "framer-motion";
+import { Plus, X, ChevronRight, MessageCircle, Play } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+
+// --- Components ---
+
+export function Counter({ target, label }: { target: number, label: string }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  const spring = useSpring(0, { stiffness: 50, damping: 30 });
+  const display = useTransform(spring, (current) => Math.floor(current).toLocaleString());
+
+  useEffect(() => {
+    if (isInView) {
+      spring.set(target);
+    }
+  }, [isInView, spring, target]);
+
+  return (
+    <div ref={ref} className="text-center p-12 border border-border bg-card">
+      <motion.span className="text-8xl md:text-[12vw] font-bold tracking-tighter block leading-none">
+        {display}
+      </motion.span>
+      <span className="text-xs font-mono uppercase tracking-[0.3em] text-secondary mt-4 block">{label}</span>
+    </div>
+  );
+}
+
+export function SocialHero({ 
+  client, 
+  niche, 
+  phrase, 
+  image 
+}: { 
+  client: string, 
+  niche: string, 
+  phrase: string, 
+  image: string 
+}) {
+  return (
+    <section className="site-section pt-32 pb-24">
+      <div className="site-container">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+          <div className="lg:col-span-7">
+            <span className="site-label mb-8">{niche}</span>
+            <h1 className="text-6xl md:text-8xl font-bold uppercase tracking-tighter leading-[0.85] mb-8">
+              {client} — <br />
+              <span className="text-secondary font-medium italic">{phrase}</span>
+            </h1>
+          </div>
+          <div className="lg:col-span-5">
+            <div className="aspect-[4/3] overflow-hidden shadow-2xl">
+              <img src={image} alt={client} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 hover:scale-105" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function BeforeAfter({ 
+  targetFollowers, 
+  beforeImg, 
+  afterImg 
+}: { 
+  targetFollowers: number, 
+  beforeImg: string, 
+  afterImg: string 
+}) {
+  return (
+    <section className="site-section bg-off-white">
+      <div className="site-container">
+        <div className="mb-16">
+           <span className="site-label mb-4">Antes & Depois</span>
+           <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tighter">Crescimento Exponencial</h2>
+        </div>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+           <div className="lg:col-span-8">
+              <Counter target={targetFollowers} label="Seguidores Alcançados" />
+           </div>
+           <div className="lg:col-span-4 grid grid-cols-2 gap-4">
+              <div className="space-y-4">
+                 <span className="text-[10px] font-mono uppercase opacity-40">Start</span>
+                 <div className="aspect-[9/16] border border-border overflow-hidden bg-background">
+                    <img src={beforeImg} alt="Before" className="w-full h-full object-cover grayscale" />
+                 </div>
+              </div>
+              <div className="space-y-4">
+                 <span className="text-[10px] font-mono uppercase text-green-600">Growth</span>
+                 <div className="aspect-[9/16] border border-border overflow-hidden bg-background shadow-xl">
+                    <img src={afterImg} alt="After" className="w-full h-full object-cover" />
+                 </div>
+              </div>
+           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function TopPosts({ posts }: { posts: { img: string, context: string, stats: string }[] }) {
+  return (
+    <section className="site-section">
+      <div className="site-container">
+        <div className="mb-16">
+           <span className="site-label mb-4">Melhores Posts</span>
+           <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tighter">Performance de Elite</h2>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {posts.map((post, i) => (
+            <div key={i} className="space-y-6 group">
+               <div className="aspect-square overflow-hidden bg-card border border-border">
+                  <img src={post.img} alt="Post" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+               </div>
+               <div className="space-y-2">
+                  <p className="text-[11px] font-mono uppercase tracking-tight text-secondary leading-tight">{post.context}</p>
+                  <p className="text-xl font-bold uppercase tracking-tighter">{post.stats}</p>
+               </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function TopCopies({ copies }: { copies: { text: string, img: string }[] }) {
+  const [selectedCopy, setSelectedCopy] = useState<{ text: string, img: string } | null>(null);
+
+  return (
+    <section className="site-section bg-foreground text-background">
+      <div className="site-container">
+        <div className="mb-16">
+           <span className="site-label text-background/40 before:bg-background mb-4">Melhores Copies</span>
+           <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tighter">Narrativas que Convertem</h2>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+           {copies.map((copy, i) => (
+             <button 
+               key={i} 
+               onClick={() => setSelectedCopy(copy)}
+               className="p-8 border border-background/10 bg-background/5 text-left hover:bg-background/10 transition-all group"
+             >
+                <MessageCircle size={20} className="mb-6 opacity-20 group-hover:opacity-100 transition-opacity" />
+                <p className="text-lg md:text-xl font-medium leading-snug italic group-hover:not-italic transition-all">"{copy.text}"</p>
+                <div className="mt-8 flex justify-end">
+                   <Plus size={16} className="opacity-20 group-hover:opacity-100" />
+                </div>
+             </button>
+           ))}
+        </div>
+      </div>
+
+      <AnimatePresence>
+        {selectedCopy && (
+          <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-12">
+            <motion.div 
+              initial={{ opacity: 0 }} 
+              animate={{ opacity: 1 }} 
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedCopy(null)}
+              className="absolute inset-0 bg-background/90 backdrop-blur-sm cursor-pointer" 
+            />
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="relative max-w-lg w-full bg-card shadow-2xl p-2 z-[201]"
+            >
+               <button 
+                 onClick={() => setSelectedCopy(null)}
+                 className="absolute -top-12 right-0 p-2 text-background hover:scale-110 transition-transform"
+               >
+                 <X size={32} />
+               </button>
+               <img src={selectedCopy.img} alt="Post preview" className="w-full h-auto" />
+               <div className="p-6 bg-card">
+                  <p className="text-sm text-secondary italic">"{selectedCopy.text}"</p>
+               </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+    </section>
+  );
+}
+
+export function GridEvolution({ grids }: { grids: { month: string, img: string }[] }) {
+  return (
+    <section className="site-section">
+      <div className="site-container">
+        <div className="mb-16">
+           <span className="site-label mb-4">Evolução do Grid</span>
+           <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tighter">A Transformação Visual</h2>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+           {grids.map((grid, i) => (
+             <div key={i} className="space-y-6">
+                <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-secondary">{grid.month}</span>
+                <div className="aspect-square overflow-hidden border border-border shadow-lg">
+                   <img src={grid.img} alt={grid.month} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+                </div>
+             </div>
+           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function VerticalGallery({ items }: { items: { type: 'Reel' | 'Story', img: string }[] }) {
+  return (
+    <section className="py-24 md:py-32 border-t border-border overflow-hidden bg-background">
+      <div className="site-container mb-12">
+        <span className="site-label mb-4">Stories & Reels</span>
+        <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tighter">Variedade de Formatos</h2>
+      </div>
+      
+      <div className="flex gap-6 overflow-x-auto no-scrollbar px-[var(--grid-padding)] md:px-[calc((100vw-var(--grid-width))/2+var(--grid-padding))]">
+         {items.map((item, i) => (
+           <div key={i} className="min-w-[240px] md:min-w-[300px] aspect-[9/16] relative group overflow-hidden bg-card border border-border">
+              <img src={item.img} alt={item.type} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
+              <div className="absolute bottom-6 left-6 flex items-center gap-3">
+                 <div className="w-8 h-8 rounded-full bg-background flex items-center justify-center">
+                    <Play size={14} className="fill-foreground ml-0.5" />
+                 </div>
+                 <span className="text-[10px] font-mono uppercase tracking-widest text-background">{item.type}</span>
+              </div>
+           </div>
+         ))}
+      </div>
+    </section>
+  );
+}
+
+export function TestimonialCTA({ 
+  clientName, 
+  clientRole, 
+  testimonial, 
+  clientImage 
+}: { 
+  clientName: string, 
+  clientRole: string, 
+  testimonial: string, 
+  clientImage: string 
+}) {
+  return (
+    <section className="site-section bg-foreground text-background">
+      <div className="site-container">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
+          <div className="lg:col-span-8">
+            <MessageCircle size={40} className="text-background/20 mb-12" />
+            <blockquote className="text-3xl md:text-5xl font-bold uppercase tracking-tighter leading-[0.95] mb-12">
+              "{testimonial}"
+            </blockquote>
+            <div className="flex items-center gap-6">
+               <div className="w-16 h-16 rounded-full overflow-hidden grayscale bg-background/10">
+                  <img src={clientImage} alt={clientName} className="w-full h-full object-cover" />
+               </div>
+               <div>
+                  <span className="text-lg font-bold uppercase block leading-none mb-1">{clientName}</span>
+                  <span className="text-[10px] font-mono uppercase tracking-widest opacity-40">{clientRole}</span>
+               </div>
+            </div>
+          </div>
+          <div className="lg:col-span-4 flex justify-center lg:justify-end">
+            <a 
+              href="https://wa.me/5511941765691?text=gostaria%20de%20fazer%20um%20or%C3%A7amento!" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="btn-primary bg-background text-foreground px-12 py-8 text-xl flex items-center gap-4 hover:scale-105 transition-all"
+            >
+              Fale comigo <ChevronRight size={24} />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

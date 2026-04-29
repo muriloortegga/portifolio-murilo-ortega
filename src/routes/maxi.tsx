@@ -1,149 +1,92 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { 
+  SocialHero, 
+  BeforeAfter, 
+  TopPosts, 
+  TopCopies, 
+  GridEvolution, 
+  VerticalGallery, 
+  TestimonialCTA 
+} from "@/components/social-case-layout";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
-import { useEffect, useState } from "react";
 
 export const Route = createFileRoute("/maxi")({
   head: () => ({
     meta: [
-      { title: "Colégio Maxi — Performance Acadêmica & Tradição" },
-      { name: "description", content: "Case study de Social Media, Motion e OOH para o Colégio Maxi de Londrina." },
+      { title: "Colégio Maxi — Case Study — Murilo Ortega" },
+      { name: "description", content: "Estratégia de Social Media e Performance Acadêmica para o Colégio Maxi." },
     ],
   }),
-  component: MaxiPage,
+  component: ProjetoMaxi,
 });
 
-const categories = [
-  { id: "social", label: "Social Media" },
-  { id: "motion", label: "Motion Design" },
-  { id: "ooh", label: "Mídia OOH" }
-];
-
-const maxiProjects = {
-  social: [
-    { title: "Campanha Vestibular 2024", type: "Social Content", img: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=1200" },
-    { title: "Daily Performance", type: "Instagram Strategy", img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200" },
-    { title: "Institutional Presence", type: "Social Branding", img: "https://images.unsplash.com/photo-1523050335192-ce1dee6507f1?q=80&w=1200" }
-  ],
-  motion: [
-    { title: "Opening Series", type: "Motion Graphics", img: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200" },
-    { title: "Digital Billboard", type: "Animation", img: "https://images.unsplash.com/photo-1551269901-5c5e14c25df7?q=80&w=1200" }
-  ],
-  ooh: [
-    { title: "Avenida Higienópolis", type: "Billboard", img: "https://images.unsplash.com/photo-1516216628859-9bccecab13ca?q=80&w=1200" },
-    { title: "Sinalização Interna", type: "OOH Strategy", img: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1200" }
-  ]
-};
-
-function MaxiPage() {
+function ProjetoMaxi() {
   const revealRef = useScrollReveal<HTMLDivElement>();
-  const [activeTab, setActiveTab] = useState("social");
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
-    <div ref={revealRef} className="bg-background min-h-screen pt-32 pb-32">
-      {/* Header Info */}
-      <section className="site-section">
-        <div className="site-container">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
-            <div className="lg:col-span-8">
-              <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-secondary mb-8 block anim-fade-in">Education & Performance</span>
-              <h1 className="text-6xl md:text-8xl font-bold uppercase tracking-tighter leading-[0.9] anim-fade-in">
-                Colégio <br /><span className="text-secondary font-medium">Maxi</span>
-              </h1>
-            </div>
-            <div className="lg:col-span-4 anim-fade-in delay-250">
-              <p className="text-lg text-secondary leading-relaxed">
-                Tradição que se traduz em resultado. O Colégio Maxi de Londrina exige uma comunicação que equilibre a autoridade acadêmica com o dinamismo do mundo digital.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+    <div ref={revealRef}>
+      <SocialHero 
+        client="Colégio Maxi"
+        niche="Educação & Performance"
+        phrase="Tradição que Evolui"
+        image="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=1200"
+      />
 
-      {/* Main Showcase */}
-      <section className="site-section border-t border-border mt-32">
-        <div className="site-container">
-          {/* Tab Selector */}
-          <div className="flex flex-wrap gap-4 mb-20">
-            {categories.map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => setActiveTab(cat.id)}
-                className={`px-8 py-4 uppercase font-mono text-[10px] tracking-widest border transition-all duration-500 ${
-                  activeTab === cat.id ? "bg-foreground text-background border-foreground" : "bg-transparent border-border hover:border-foreground"
-                }`}
-              >
-                {cat.label}
-              </button>
-            ))}
-          </div>
+      <BeforeAfter 
+        targetFollowers={2500}
+        beforeImg="https://images.unsplash.com/photo-1523050335192-ce1dee6507f1?q=80&w=800"
+        afterImg="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800"
+      />
 
-          {/* Dynamic Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 min-h-[600px] transition-all duration-700">
-            {maxiProjects[activeTab as keyof typeof maxiProjects].map((project, i) => (
-              <div 
-                key={project.title + activeTab} 
-                className="scroll-reveal group relative"
-                style={{ transitionDelay: `${i * 100}ms` }}
-              >
-                <div className="media-wrap aspect-[16/10] bg-card overflow-hidden">
-                  <img 
-                    src={project.img} 
-                    alt={project.title} 
-                    className="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute bottom-8 left-8 right-8 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                    <span className="text-[10px] font-mono uppercase text-secondary block mb-2">{project.type}</span>
-                    <h4 className="text-2xl font-bold uppercase">{project.title}</h4>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <TopPosts 
+        posts={[
+          { img: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=1200", context: "Campanha Vestibular", stats: "85k impressões" },
+          { img: "https://images.unsplash.com/photo-1523050335192-ce1dee6507f1?q=80&w=800", context: "Dia a Dia Acadêmico", stats: "1.2k saves" },
+          { img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800", context: "Eventos", stats: "500+ comments" },
+          { img: "https://images.unsplash.com/photo-1516216628859-9bccecab13ca?q=80&w=1200", context: "OOH Integration", stats: "Viral Reach" },
+        ]}
+      />
 
-      {/* Strategy Section */}
-      <section className="site-section bg-foreground text-background mt-32">
-        <div className="site-container">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-center">
-            <div className="lg:col-span-6">
-              <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter scroll-reveal">Estratégia <br />de Aprovação</h2>
-            </div>
-            <div className="lg:col-span-6 space-y-8 scroll-reveal">
-              <p className="text-xl md:text-2xl opacity-80 leading-snug uppercase">
-                A comunicação para o Maxi não pode ser "leve". Ela precisa transmitir o peso de uma formação sólida e a seriedade de quem prepara para os maiores desafios intelectuais do país.
-              </p>
-              <div className="pt-8 border-t border-background/20 grid grid-cols-2 gap-12">
-                <div>
-                  <span className="text-[10px] font-mono uppercase opacity-50 block mb-4">Foco</span>
-                  <span className="text-lg font-bold uppercase">Resultado Acadêmico</span>
-                </div>
-                <div>
-                  <span className="text-[10px] font-mono uppercase opacity-50 block mb-4">Tom</span>
-                  <span className="text-lg font-bold uppercase">Autoridade & Rigor</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <TopCopies 
+        copies={[
+          { text: "A aprovação começa no hábito. No Maxi, preparamos para os maiores desafios.", img: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=1200" },
+          { text: "Tradição não é sobre o passado, é sobre a base que sustenta o seu futuro.", img: "https://images.unsplash.com/photo-1523050335192-ce1dee6507f1?q=80&w=800" },
+          { text: "Onde o alto desempenho encontra o suporte humano. Isso é ser Maxi.", img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800" },
+        ]}
+      />
 
-      {/* Back Nav */}
-      <section className="py-32">
-        <div className="site-container text-center">
-          <Link to="/trabalho" className="text-sm font-mono uppercase tracking-[0.5em] hover:text-secondary transition-colors">
-            Ver outros trabalhos
-          </Link>
+      <GridEvolution 
+        grids={[
+          { month: "Início: Formalidade", img: "https://images.unsplash.com/photo-1523050335192-ce1dee6507f1?q=80&w=800" },
+          { month: "Transição: Dinamismo", img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800" },
+          { month: "Atual: Autoridade Digital", img: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=1200" },
+        ]}
+      />
+
+      <VerticalGallery 
+        items={[
+          { type: 'Reel', img: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=1200" },
+          { type: 'Story', img: "https://images.unsplash.com/photo-1523050335192-ce1dee6507f1?q=80&w=800" },
+          { type: 'Reel', img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800" },
+          { type: 'Story', img: "https://images.unsplash.com/photo-1516216628859-9bccecab13ca?q=80&w=1200" },
+        ]}
+      />
+
+      <TestimonialCTA 
+        clientName="Diretoria de Marketing"
+        clientRole="Colégio Maxi"
+        testimonial="O trabalho do Murilo trouxe a leveza necessária para as redes sociais sem perder a seriedade que nossa instituição exige. Os números de captação subiram drasticamente."
+        clientImage="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400"
+      />
+
+      <section className="site-section border-t border-border">
+        <div className="site-container flex justify-between items-center">
+          <Link to="/trabalho" className="btn btn-arrow">← Voltar Projetos</Link>
+          <Link to="/natrave" className="btn btn-arrow">Próximo Projeto <span className="arrow" /></Link>
         </div>
       </section>
     </div>
   );
 }
+
+export default ProjetoMaxi;
