@@ -66,12 +66,19 @@ function MidiaImpressaPage() {
         <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
              <div className="lg:col-span-6">
-                <div className="shadow-2xl overflow-hidden">
-                   <img src="https://images.unsplash.com/photo-1544640808-32ca72ac7f37?q=80&w=800" alt="Marco Boni Catalog" className="w-full grayscale hover:grayscale-0 transition-all duration-700 hover:scale-105" />
-                </div>
+                <Link to="/marco-boni" className="block shadow-2xl overflow-hidden group">
+                   <img 
+                     src="https://images.unsplash.com/photo-1544640808-32ca72ac7f37?q=80&w=800" 
+                     alt="Marco Boni Catalog" 
+                     className="w-full grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" 
+                   />
+                </Link>
              </div>
              <div className="lg:col-span-6">
-                <span className="site-label mb-8">Case em Destaque</span>
+                <Link to="/marco-boni" className="inline-block mb-8 hover:scale-105 transition-transform">
+                   <img src="/src/assets/logos/marcoboni.svg" alt="Marco Boni Logo" className="h-12 w-auto object-contain" />
+                </Link>
+                <span className="site-label mb-8 block">Case em Destaque</span>
                 <h2 className="text-5xl md:text-6xl font-bold uppercase tracking-tighter leading-[0.9] mb-8">Marco Boni: O Desafio dos 1000 Produtos</h2>
                 <p className="site-body mb-8">
                    Produzi o catálogo nacional de produtos da marca, desde a fotografia e tratamento de imagens de mais de 1000 itens até a linha editorial, identidade visual e diagramação completa.
@@ -84,7 +91,7 @@ function MidiaImpressaPage() {
                      </div>
                    ))}
                 </div>
-                <Link to="/trabalho" className="btn btn-arrow">Ver detalhes do projeto <span className="arrow" /></Link>
+                <Link to="/marco-boni" className="btn btn-arrow">Ver detalhes do projeto <span className="arrow" /></Link>
              </div>
           </div>
         </div>
