@@ -70,8 +70,8 @@ function ServicosPage() {
 
   return (
     <div ref={revealRef} className="pt-32">
-      <section className="ds-section">
-        <div className="ds-container">
+      <section className="site-section">
+        <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-4 anim-fade-in">
               <h1>Sistemas</h1>
@@ -86,7 +86,7 @@ function ServicosPage() {
         </div>
       </section>
 
-      <section className="ds-container pb-32">
+      <section className="site-container pb-32">
         {products.map((p, i) => (
           <Link 
             key={i} 

@@ -48,8 +48,8 @@ function MaxiPage() {
   return (
     <div ref={revealRef} className="bg-background min-h-screen pt-32 pb-32">
       {/* Header Info */}
-      <section className="ds-section">
-        <div className="ds-container">
+      <section className="site-section">
+        <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
             <div className="lg:col-span-8">
               <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-secondary mb-8 block anim-fade-in">Education & Performance</span>
@@ -67,8 +67,8 @@ function MaxiPage() {
       </section>
 
       {/* Main Showcase */}
-      <section className="ds-section border-t border-border mt-32">
-        <div className="ds-container">
+      <section className="site-section border-t border-border mt-32">
+        <div className="site-container">
           {/* Tab Selector */}
           <div className="flex flex-wrap gap-4 mb-20">
             {categories.map((cat) => (
@@ -111,8 +111,8 @@ function MaxiPage() {
       </section>
 
       {/* Strategy Section */}
-      <section className="ds-section bg-foreground text-background mt-32">
-        <div className="ds-container">
+      <section className="site-section bg-foreground text-background mt-32">
+        <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-center">
             <div className="lg:col-span-6">
               <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter scroll-reveal">Estratégia <br />de Aprovação</h2>
@@ -138,7 +138,7 @@ function MaxiPage() {
 
       {/* Back Nav */}
       <section className="py-32">
-        <div className="ds-container text-center">
+        <div className="site-container text-center">
           <Link to="/trabalho" className="text-sm font-mono uppercase tracking-[0.5em] hover:text-secondary transition-colors">
             Ver outros trabalhos
           </Link>

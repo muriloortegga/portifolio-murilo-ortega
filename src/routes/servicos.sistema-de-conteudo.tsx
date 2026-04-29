@@ -18,11 +18,11 @@ function SistemaConteudoPage() {
   return (
     <div ref={revealRef} className="bg-background pt-32 pb-32">
       {/* Hero */}
-      <section className="ds-section border-t-0 pt-0 pb-24">
-        <div className="ds-container">
+      <section className="site-section border-t-0 pt-0 pb-24">
+        <div className="site-container">
           <div className="max-w-4xl">
-            <span className="ds-label mb-8">Service 02</span>
-            <h1 className="ds-title mb-12">
+            <span className="site-label mb-8">Service 02</span>
+            <h1 className="site-title mb-12">
               Social Media como um<br />
               sistema <span className="italic">integrado</span><br />
               de autoridade.
@@ -43,10 +43,10 @@ function SistemaConteudoPage() {
       </section>
 
       {/* Passo a Passo */}
-      <section className="ds-section py-32 bg-off-white">
-        <div className="ds-container">
+      <section className="site-section py-32 bg-off-white">
+        <div className="site-container">
           <div className="max-w-2xl mb-24">
-            <span className="ds-label mb-8">O Fluxo</span>
+            <span className="site-label mb-8">O Fluxo</span>
             <h2 className="text-5xl font-bold uppercase tracking-tighter">Como funciona o nosso serviço de Social Media:</h2>
           </div>
           <div className="space-y-4">
@@ -77,8 +77,8 @@ function SistemaConteudoPage() {
       </section>
 
       {/* Case Section */}
-      <section className="ds-section py-32">
-        <div className="ds-container">
+      <section className="site-section py-32">
+        <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
             <div className="lg:col-span-6 order-2 lg:order-1">
                <div className="shadow-2xl overflow-hidden">
@@ -86,9 +86,9 @@ function SistemaConteudoPage() {
                </div>
             </div>
             <div className="lg:col-span-6 order-1 lg:order-2">
-               <span className="ds-label mb-8">Performance em Conteúdo</span>
+               <span className="site-label mb-8">Performance em Conteúdo</span>
                <h2 className="text-5xl md:text-6xl font-bold uppercase tracking-tighter leading-[0.9] mb-8">NaTrave: O Ecossistema do Futebol</h2>
-               <p className="ds-body mb-12">
+               <p className="site-body mb-12">
                  Construímos um fluxo de conteúdo que elevou a percepção de uma plataforma amadora ao nível de elite. Copywriting agressivo e design de alta performance garantiram retenção e crescimento orgânico constante.
                </p>
                <Link to="/natrave" className="btn btn-arrow">Ver case de conteúdo <span className="arrow" /></Link>
@@ -99,7 +99,7 @@ function SistemaConteudoPage() {
 
       {/* CTA */}
       <section className="py-48 bg-foreground text-background">
-        <div className="ds-container text-center">
+        <div className="site-container text-center">
           <h2 className="text-[8vw] font-bold uppercase tracking-tighter leading-[0.8] mb-12">Sua marca sempre presente.<br /><span className="text-secondary italic">Sempre no topo.</span></h2>
           <a href="https://calendly.com/contato-muriloortega1/30min" target="_blank" rel="noopener noreferrer" className="btn-primary bg-background text-foreground px-12 py-6 text-lg">
             Agendar reunião de diagnóstico <Plus size={20} className="ml-2" />

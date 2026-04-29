@@ -31,8 +31,8 @@ function ProjetoNaTrave() {
   return (
     <div ref={revealRef} className="pt-32">
       {/* Header */}
-      <section className="ds-section pb-12">
-        <div className="ds-container">
+      <section className="site-section pb-12">
+        <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-8 anim-fade-in">
               <span className="text-orange-500 font-mono text-[10px] uppercase tracking-[0.2em] mb-4 block">Projeto Autoral</span>
@@ -51,7 +51,7 @@ function ProjetoNaTrave() {
       </section>
 
       {/* Meta Bar */}
-      <section className="ds-container border-t border-b border-border py-8 mb-20 anim-fade-in delay-250">
+      <section className="site-container border-t border-b border-border py-8 mb-20 anim-fade-in delay-250">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <span className="text-[10px] font-mono uppercase tracking-tight text-secondary block mb-1">Papel</span>
@@ -73,7 +73,7 @@ function ProjetoNaTrave() {
       </section>
 
       {/* Dual Toggle Selection */}
-      <section className="ds-container mb-20">
+      <section className="site-container mb-20">
         <div className="flex items-center gap-4 anim-fade-in delay-500">
           <button 
             onClick={() => setActiveTab("marca")}
@@ -100,7 +100,7 @@ function ProjetoNaTrave() {
       <div className="relative min-h-[800px]">
         {activeTab === "marca" ? (
           <section key="marca" className="anim-fade-in">
-            <div className="ds-container">
+            <div className="site-container">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20">
                 <div className="lg:col-span-4">
                    <div className="p-8 bg-orange-500/5 border border-orange-500/20 rounded-sm">
@@ -138,7 +138,7 @@ function ProjetoNaTrave() {
           </section>
         ) : (
           <section key="social" className="anim-fade-in">
-            <div className="ds-container">
+            <div className="site-container">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20">
                 <div className="lg:col-span-4">
                    <div className="p-8 bg-green-500/5 border border-green-500/20 rounded-sm">
@@ -180,7 +180,7 @@ function ProjetoNaTrave() {
       {/* Full Screen Overlay */}
       {isFullScreen && (
         <div className="fixed inset-0 z-[100] bg-background overflow-y-auto no-scrollbar anim-fade-in">
-          <div className="sticky top-0 right-0 left-0 h-24 flex items-center justify-between ds-container z-[101] bg-background/50 backdrop-blur-sm border-b border-border/10 pointer-events-auto">
+          <div className="sticky top-0 right-0 left-0 h-24 flex items-center justify-between site-container z-[101] bg-background/50 backdrop-blur-sm border-b border-border/10 pointer-events-auto">
             <span className="text-xs font-mono uppercase tracking-widest">NaTrave App Case — {activeTab}</span>
             <button 
               onClick={() => setIsFullScreen(false)}
@@ -201,8 +201,8 @@ function ProjetoNaTrave() {
       )}
 
       {/* Footer Nav */}
-      <section className="ds-section border-t border-border mt-32">
-        <div className="ds-container flex justify-between items-center">
+      <section className="site-section border-t border-border mt-32">
+        <div className="site-container flex justify-between items-center">
           <Link to="/" className="btn btn-arrow">← Voltar Home <span className="arrow hidden" /></Link>
           <Link to="/solid" className="btn btn-arrow">Próximo Projeto <span className="arrow" /></Link>
         </div>

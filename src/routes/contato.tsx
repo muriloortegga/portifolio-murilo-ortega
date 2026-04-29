@@ -18,8 +18,8 @@ function ContatoPage() {
 
   return (
     <div ref={revealRef} className="pt-32">
-      <section className="ds-section">
-        <div className="ds-container">
+      <section className="site-section">
+        <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-4 anim-fade-in">
               <h1>Contato</h1>

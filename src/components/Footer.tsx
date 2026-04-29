@@ -4,8 +4,8 @@ export function Footer() {
   return (
     <footer className="border-t border-border mt-20">
       {/* CTA Block */}
-      <div className="ds-section">
-        <div className="ds-container">
+      <div className="site-section">
+        <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
             <div className="lg:col-span-8">
               <h2 className="line-height-tight">
@@ -26,7 +26,7 @@ export function Footer() {
       </div>
 
       {/* Footer base */}
-      <div className="ds-container border-t border-border py-12 flex flex-col md:flex-row items-center justify-between gap-8">
+      <div className="site-container border-t border-border py-12 flex flex-col md:flex-row items-center justify-between gap-8">
         <span className="text-[10px] font-mono uppercase tracking-tight text-secondary">
           © {new Date().getFullYear()} Murilo Ortega
         </span>

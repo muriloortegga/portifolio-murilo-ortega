@@ -18,11 +18,11 @@ function EstruturacaoMarcaPage() {
   return (
     <div ref={revealRef} className="bg-background pt-32 pb-32">
       {/* Hero */}
-      <section className="ds-section border-t-0 pt-0 pb-24">
-        <div className="ds-container">
+      <section className="site-section border-t-0 pt-0 pb-24">
+        <div className="site-container">
           <div className="max-w-4xl">
-            <span className="ds-label mb-8">Service 01</span>
-            <h1 className="ds-title mb-12">
+            <span className="site-label mb-8">Service 01</span>
+            <h1 className="site-title mb-12">
               Estruturação de Marca:<br />
               A base de tudo o que<br />
               você <span className="italic">entrega</span>.
@@ -38,8 +38,8 @@ function EstruturacaoMarcaPage() {
       </section>
 
       {/* Pillars */}
-      <section className="ds-section py-32 bg-off-white">
-        <div className="ds-container">
+      <section className="site-section py-32 bg-off-white">
+        <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-px bg-border border border-border">
             {[
               { 
@@ -76,7 +76,7 @@ function EstruturacaoMarcaPage() {
                 </div>
                 <div className="space-y-4">
                   <h3 className="text-3xl font-bold uppercase tracking-tighter">{p.title}</h3>
-                  <p className="ds-body group-hover:text-background/70">{p.desc}</p>
+                  <p className="site-body group-hover:text-background/70">{p.desc}</p>
                 </div>
               </div>
             ))}
@@ -85,13 +85,13 @@ function EstruturacaoMarcaPage() {
       </section>
 
       {/* Case Section */}
-      <section className="ds-section py-32">
-        <div className="ds-container">
+      <section className="site-section py-32">
+        <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
             <div className="lg:col-span-6">
-               <span className="ds-label mb-8">Case em Destaque</span>
+               <span className="site-label mb-8">Case em Destaque</span>
                <h2 className="text-5xl md:text-6xl font-bold uppercase tracking-tighter leading-[0.9] mb-8">Solid +: Fintech Identity & Systems</h2>
-               <p className="ds-body mb-12">
+               <p className="site-body mb-12">
                  Construímos uma identidade que equilibra a solidez institucional com a agilidade das startups do Reino Unido. Um sistema completo de marca que permitiu a escala global da operação.
                </p>
                <Link to="/solid" className="btn btn-arrow">Ver case completo <span className="arrow" /></Link>
@@ -107,7 +107,7 @@ function EstruturacaoMarcaPage() {
 
       {/* CTA */}
       <section className="py-48 bg-foreground text-background">
-        <div className="ds-container text-center">
+        <div className="site-container text-center">
           <h2 className="text-[10vw] font-bold uppercase tracking-tighter leading-[0.8] mb-12">Sua marca pronta para o topo.</h2>
           <a href="https://wa.me/5511941765691?text=gostaria%20de%20fazer%20um%20or%C3%A7amento!" target="_blank" rel="noopener noreferrer" className="btn-primary bg-background text-foreground px-12 py-6 text-lg">
             Solicitar orçamento <Plus size={20} className="ml-2" />

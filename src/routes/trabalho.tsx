@@ -77,8 +77,8 @@ function TrabalhoPage() {
 
   return (
     <div ref={revealRef} className="pt-32 pb-32">
-      <section className="ds-section">
-        <div className="ds-container">
+      <section className="site-section">
+        <div className="site-container">
           <div className="mb-20">
             <h1 className="uppercase line-height-tight tracking-tight anim-fade-in">
               Conheça meu<br />
@@ -166,7 +166,7 @@ function TrabalhoPage() {
                       />
                     </div>
                     <figcaption className="mt-8">
-                      <span className="ds-card-label">{project.category} · {project.year}</span>
+                      <span className="site-card-label">{project.category} · {project.year}</span>
                       <span className="font-bold text-3xl uppercase leading-tight block">{project.name}</span>
                     </figcaption>
                   </figure>
@@ -187,7 +187,7 @@ function TrabalhoPage() {
                 className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
               >
                 <div className="lg:col-span-5">
-                  <span className="ds-label mb-8">
+                  <span className="site-label mb-8">
                     {activeCategory ? `Insight: ${activeCategory}` : "Expertise & Entrega"}
                   </span>
                   <h2 className="text-5xl md:text-6xl font-bold uppercase tracking-tighter leading-[0.9] mb-8">

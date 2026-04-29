@@ -18,11 +18,11 @@ function MarketingInfluenciaPage() {
   return (
     <div ref={revealRef} className="bg-background pt-32 pb-32">
       {/* 1. HERO */}
-      <section className="ds-section border-t-0 pt-0 pb-24">
-        <div className="ds-container">
+      <section className="site-section border-t-0 pt-0 pb-24">
+        <div className="site-container">
           <div className="max-w-4xl">
-            <span className="ds-label mb-8">Marketing de Influência</span>
-            <h1 className="ds-title mb-12">
+            <span className="site-label mb-8">Marketing de Influência</span>
+            <h1 className="site-title mb-12">
               Influência não é sobre alcance. <br />
               É sobre <span className="italic">desejo</span>, autoridade e conversão.
             </h1>
@@ -42,8 +42,8 @@ function MarketingInfluenciaPage() {
       </section>
 
       {/* 2. QUEBRA DE CRENÇA */}
-      <section className="ds-section bg-foreground text-background py-32">
-        <div className="ds-container">
+      <section className="site-section bg-foreground text-background py-32">
+        <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter leading-[0.85]">
               A maioria das<br />marcas erra aqui:
@@ -67,23 +67,23 @@ function MarketingInfluenciaPage() {
       </section>
 
       {/* 3. INTRO DO MÉTODO */}
-      <section id="metodo" className="ds-section py-32">
-        <div className="ds-container">
+      <section id="metodo" className="site-section py-32">
+        <div className="site-container">
           <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
             <div className="max-w-xl">
-              <span className="ds-label mb-8">Framework</span>
-              <h2 className="ds-title">Influence Growth Framework</h2>
+              <span className="site-label mb-8">Framework</span>
+              <h2 className="site-title">Influence Growth Framework</h2>
             </div>
-            <p className="ds-body max-w-sm">Desenvolvemos um sistema próprio que integra o posicionamento à narrativa de influência.</p>
+            <p className="site-body max-w-sm">Desenvolvemos um sistema próprio que integra o posicionamento à narrativa de influência.</p>
           </div>
-          <div className="ds-grid-skills">
+          <div className="site-grid-skills">
             {[
               { title: "Posicionamento de marca", icon: <Star size={24} /> },
               { title: "Curadoria estratégica", icon: <Users size={24} /> },
               { title: "Produção orientada por narrativa", icon: <Zap size={24} /> },
               { title: "Distribuição com intenção de funil", icon: <ArrowRight size={24} /> }
             ].map((item, i) => (
-              <div key={i} className="ds-skill-cell">
+              <div key={i} className="site-skill-cell">
                 <div className="w-12 h-12 border border-border flex items-center justify-center mb-4">
                   {item.icon}
                 </div>
@@ -95,11 +95,11 @@ function MarketingInfluenciaPage() {
       </section>
 
       {/* 4. O CASE EVIDIVE (PROVA) */}
-      <section className="ds-section bg-off-white py-32">
-        <div className="ds-container">
+      <section className="site-section bg-off-white py-32">
+        <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
             <div className="lg:col-span-5">
-              <span className="ds-label mb-8">Case em Destaque</span>
+              <span className="site-label mb-8">Case em Destaque</span>
               <h2 className="text-5xl md:text-6xl font-bold uppercase tracking-tighter leading-[0.9] mb-12">De marca nichada a referência aspiracional.</h2>
               <div className="w-full max-w-[400px] mb-12 shadow-xl overflow-hidden">
                 <img src="/hero-brandding.jpg" alt="Case EviDive" className="w-full grayscale hover:grayscale-0 transition-all duration-700 hover:scale-105" />
@@ -154,10 +154,10 @@ function MarketingInfluenciaPage() {
       </section>
 
       {/* 5. COMO FUNCIONA (PROCESSO) */}
-      <section className="ds-section py-32">
-        <div className="ds-container">
+      <section className="site-section py-32">
+        <div className="site-container">
           <div className="max-w-3xl mb-24">
-            <span className="ds-label mb-8">O Processo</span>
+            <span className="site-label mb-8">O Processo</span>
             <h2 className="text-5xl font-bold uppercase tracking-tighter">Aqui você mostra que é método — não feeling.</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-px bg-border border border-border">
@@ -179,8 +179,8 @@ function MarketingInfluenciaPage() {
       </section>
 
       {/* 6. DIFERENCIAL */}
-      <section className="ds-section bg-foreground text-background py-32">
-        <div className="ds-container text-center">
+      <section className="site-section bg-foreground text-background py-32">
+        <div className="site-container text-center">
           <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter leading-[0.8] mb-12">
             Não gerenciamos influenciadores.<br />
             <span className="text-secondary italic">Construímos sistemas</span> de crescimento.
@@ -197,11 +197,11 @@ function MarketingInfluenciaPage() {
       </section>
 
       {/* 7. PARA QUEM É */}
-      <section className="ds-section py-32">
-        <div className="ds-container">
+      <section className="site-section py-32">
+        <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
             <div>
-              <span className="ds-label mb-8">Target</span>
+              <span className="site-label mb-8">Target</span>
               <h2 className="text-5xl font-bold uppercase tracking-tighter">Esse serviço é para marcas que:</h2>
             </div>
             <div className="space-y-6">
@@ -223,7 +223,7 @@ function MarketingInfluenciaPage() {
 
       {/* 8. CTA FINAL */}
       <section className="py-48 bg-foreground text-background border-t border-background/10">
-        <div className="ds-container text-center space-y-12">
+        <div className="site-container text-center space-y-12">
           <h2 className="text-[8vw] font-bold uppercase tracking-tighter leading-[0.8]">Pare de testar.<br />Comece a <span className="italic text-secondary">influenciar</span>.</h2>
           <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
             <a href="https://wa.me/5511941765691?text=gostaria%20de%20fazer%20um%20or%C3%A7amento!" target="_blank" rel="noopener noreferrer" className="btn-primary bg-background text-foreground px-12 py-6 text-lg hover:scale-105 transition-all text-center">

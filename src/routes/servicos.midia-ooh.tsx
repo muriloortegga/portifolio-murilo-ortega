@@ -18,11 +18,11 @@ function MidiaOOHPage() {
   return (
     <div ref={revealRef} className="bg-background pt-32 pb-32">
       {/* Hero */}
-      <section className="ds-section border-t-0 pt-0 pb-24">
-        <div className="ds-container">
+      <section className="site-section border-t-0 pt-0 pb-24">
+        <div className="site-container">
           <div className="max-w-4xl">
-            <span className="ds-label mb-8">Service 05</span>
-            <h1 className="ds-title mb-12">
+            <span className="site-label mb-8">Service 05</span>
+            <h1 className="site-title mb-12">
               Mídia OOH:<br />
               Dominando a paisagem<br />
               <span className="italic">urbana</span> com impacto.
@@ -38,14 +38,14 @@ function MidiaOOHPage() {
       </section>
 
       {/* Ecosystem */}
-      <section className="ds-section py-32 bg-off-white">
-        <div className="ds-container">
+      <section className="site-section py-32 bg-off-white">
+        <div className="site-container">
            <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
             <div className="max-w-xl">
-              <span className="ds-label mb-8">Ecossistema OOH</span>
+              <span className="site-label mb-8">Ecossistema OOH</span>
               <h2 className="text-5xl font-bold uppercase tracking-tighter">Gestão Completa de Mídia Off</h2>
             </div>
-            <p className="ds-body max-w-sm">Cuidamos de cada detalhe para que sua marca ocupe o espaço público com estratégia.</p>
+            <p className="site-body max-w-sm">Cuidamos de cada detalhe para que sua marca ocupe o espaço público com estratégia.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-border border border-border">
              {[
@@ -67,8 +67,8 @@ function MidiaOOHPage() {
       </section>
 
       {/* Case Maxi */}
-      <section className="ds-section py-32">
-        <div className="ds-container">
+      <section className="site-section py-32">
+        <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
              <div className="lg:col-span-6 order-2 lg:order-1">
                 <div className="shadow-2xl overflow-hidden">
@@ -76,9 +76,9 @@ function MidiaOOHPage() {
                 </div>
              </div>
              <div className="lg:col-span-6 order-1 lg:order-2">
-                <span className="ds-label mb-8">Case em Destaque</span>
+                <span className="site-label mb-8">Case em Destaque</span>
                 <h2 className="text-5xl md:text-6xl font-bold uppercase tracking-tighter leading-[0.9] mb-8">Colégio Maxi: Visibilidade Urbana</h2>
-                <p className="ds-body mb-8">
+                <p className="site-body mb-8">
                    Administração completa da mídia off do Colégio Maxi, um dos mais tradicionais de Londrina. Gerenciamos desde o planejamento estratégico até o acompanhamento de fornecedores e entrega gráfica de outdoors e painéis.
                 </p>
                 <div className="space-y-4 mb-12">
@@ -97,7 +97,7 @@ function MidiaOOHPage() {
 
       {/* CTA */}
       <section className="py-48 bg-foreground text-background">
-        <div className="ds-container text-center">
+        <div className="site-container text-center">
           <h2 className="text-[10vw] font-bold uppercase tracking-tighter leading-[0.8] mb-12">Sua marca em todos os lugares.</h2>
           <a href="https://wa.me/5511941765691?text=gostaria%20de%20fazer%20um%20or%C3%A7amento!" target="_blank" rel="noopener noreferrer" className="btn-primary bg-background text-foreground px-12 py-6 text-lg">
             Consultar especialistas OOH <Plus size={20} className="ml-2" />

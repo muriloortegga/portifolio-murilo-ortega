@@ -178,20 +178,12 @@
 }
 
 @layer components {
-  .ds-section {
-    padding-top: var(--page-section);
-    padding-bottom: var(--page-section);
+  .site-section {
+    padding: var(--page-section) var(--grid-padding);
+    border-top: 1px solid var(--border);
   }
 
-  .ds-container {
-    max-width: var(--grid-width);
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: var(--grid-padding);
-    padding-right: var(--grid-padding);
-  }
-
-  .ds-label {
+  .site-label {
     font-size: 10px;
     font-family: var(--font-mono);
     letter-spacing: 0.16em;
@@ -202,70 +194,71 @@
     gap: 12px;
   }
   
-  .ds-label::before {
+  .site-label::before {
     content: '';
     width: 24px;
     height: 1px;
-    background: currentColor;
+    background: var(--foreground);
     display: inline-block;
   }
 
-  .ds-title {
-    font-size: clamp(3.5rem, 5.2vw, 6rem); 
-    line-height: 0.9; 
-    letter-spacing: -0.05em;
+  .site-title {
+    font-size: clamp(2.2rem, 8vw, 5rem);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1.0;
     text-transform: uppercase;
   }
 
-  .ds-body {
+  .site-body {
     font-size: 1rem;
     line-height: 1.6;
     color: var(--secondary);
   }
 
   @media (min-width: 768px) {
-    .ds-body {
+    .site-body {
       font-size: 1.1rem;
       line-height: 1.7;
     }
-    .ds-title {
+    .site-title {
       line-height: 0.95;
     }
   }
 
-  .ds-grid-skills {
+  .site-grid-skills {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); /* Force 1 col on mobile */
-    gap: 1px; /* Thinner border feel */
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    gap: 1px;
     background-color: var(--border);
     border: 1px solid var(--border);
   }
   
   @media (min-width: 768px) {
-    .ds-grid-skills {
+    .site-grid-skills {
        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     }
   }
 
-  .ds-skill-cell {
+  .site-skill-cell {
     background-color: var(--background);
-    padding: 2rem; /* Reduced for mobile */
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
   }
   
   @media (min-width: 768px) {
-    .ds-skill-cell {
+    .site-skill-cell {
       padding: 2.5rem;
       gap: 1.5rem;
     }
   }
 
-  .ds-tag-mono {
+  .tag-mono {
     display: inline-block;
-    padding: 3px 8px; /* Reduced for mobile */
-    font-size: 9px; /* Reduced for mobile */
+    padding: 3px 8px;
+    font-size: 9px;
     font-family: var(--font-mono);
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -273,7 +266,28 @@
     color: var(--foreground);
   }
 
+  .site-card-label {
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: var(--secondary);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
 
+  .site-container {
+    max-width: var(--grid-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--grid-padding);
+    padding-right: var(--grid-padding);
+  }
+
+  .section-spacing {
+    padding-top: var(--page-section);
+    padding-bottom: var(--page-section);
+  }
 
   /* Buttons */
   .btn {
@@ -371,7 +385,7 @@
     line-height: 1.3;
   }
 
-  .project-card .ds-card-label {
+  .project-card .card-label {
     font-size: 0.75rem;
     font-family: var(--font-mono);
     text-transform: uppercase;
@@ -449,7 +463,7 @@
   
   body.has-fullscreen .site-header,
   body.has-fullscreen .project-card,
-  body.has-fullscreen .container-site:not(.fixed) {
+  body.has-fullscreen .site-container:not(.fixed) {
     pointer-events: none;
   }
   
