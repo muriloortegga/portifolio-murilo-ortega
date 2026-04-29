@@ -2,6 +2,7 @@ import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/r
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Cursor } from "@/components/Cursor";
+import { ContextNav } from "@/components/ContextNav";
 
 import appCss from "../styles.css?url";
 
@@ -90,6 +91,7 @@ function RootComponent() {
     <>
       <Cursor />
       <Header />
+      <ContextNav />
       <main className="animate-fade-in">
         <Outlet />
       </main>
