@@ -35,10 +35,10 @@ function ContatoPage() {
                     Se você sente que sua marca está abaixo do nível do seu negócio, é aqui que começa.
                   </p>
                   <div className="flex flex-col gap-4">
-                    <a href="mailto:contato@muriloortega.com" className="btn btn-arrow">
+                    <a href="https://wa.me/5511941765691?text=gostaria%20de%20fazer%20um%20or%C3%A7amento!" target="_blank" rel="noopener noreferrer" className="btn btn-arrow">
                       Enviar mensagem <span className="arrow" />
                     </a>
-                    <a href="#" className="btn btn-arrow">
+                    <a href="https://calendly.com/contato-muriloortega1/30min" target="_blank" rel="noopener noreferrer" className="btn btn-arrow">
                       Agendar Chamada <span className="arrow" />
                     </a>
                   </div>

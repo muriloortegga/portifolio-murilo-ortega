@@ -3,10 +3,10 @@ import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { to: "/trabalho" as const, label: "Trabalho" },
-  { to: "/servicos" as const, label: "Serviços" },
-  { to: "/sobre" as const, label: "Sobre" },
-  { to: "/contato" as const, label: "Contato" },
+  { to: "/trabalho", label: "Trabalho" },
+  { to: "/servicos", label: "Serviços" },
+  { to: "/sobre", label: "Sobre" },
+  { to: "https://wa.me/5511941765691?text=gostaria%20de%20fazer%20um%20or%C3%A7amento!", label: "Contato", isExternal: true },
 ];
 
 export function Header() {
@@ -35,16 +35,28 @@ export function Header() {
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (
-              <Link
-                key={link.to}
-                to={link.to}
-                className="text-sm font-regular uppercase tracking-tight text-foreground/60 transition-opacity duration-250 hover:opacity-100"
-                activeProps={{
-                  className: "text-foreground opacity-100",
-                }}
-              >
-                {link.label}
-              </Link>
+              link.isExternal ? (
+                <a
+                  key={link.to}
+                  href={link.to}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-regular uppercase tracking-tight text-foreground/60 transition-opacity duration-250 hover:opacity-100"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className="text-sm font-regular uppercase tracking-tight text-foreground/60 transition-opacity duration-250 hover:opacity-100"
+                  activeProps={{
+                    className: "text-foreground opacity-100",
+                  }}
+                >
+                  {link.label}
+                </Link>
+              )
             ))}
           </nav>
 
@@ -87,14 +99,27 @@ export function Header() {
           </div>
           <nav className="flex flex-col items-start container-site mt-12 gap-8">
             {navLinks.map((link) => (
-              <Link
-                key={link.to}
-                to={link.to}
-                className="text-[40px] text-foreground font-bold uppercase leading-none tracking-tight"
-                onClick={() => setMenuOpen(false)}
-              >
-                {link.label}
-              </Link>
+              link.isExternal ? (
+                <a
+                  key={link.to}
+                  href={link.to}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[40px] text-foreground font-bold uppercase leading-none tracking-tight"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className="text-[40px] text-foreground font-bold uppercase leading-none tracking-tight"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              )
             ))}
           </nav>
         </div>

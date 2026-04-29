@@ -30,9 +30,9 @@ function MidiaImpressaPage() {
             <p className="text-xl md:text-2xl text-secondary uppercase font-medium leading-tight mb-12">
               Catálogos físicos e digitais, diagramação, linha editorial e materiais institucionais. Entregamos qualidade gráfica que tangibiliza a autoridade da sua marca no mundo físico.
             </p>
-            <Link to="/contato" className="btn-primary">
+            <a href="https://wa.me/5511941765691?text=gostaria%20de%20fazer%20um%20or%C3%A7amento!" target="_blank" rel="noopener noreferrer" className="btn-primary">
               Iniciar projeto gráfico <Plus size={18} className="ml-2" />
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -94,9 +94,9 @@ function MidiaImpressaPage() {
       <section className="py-48 bg-foreground text-background">
         <div className="container-site text-center">
           <h2 className="text-[10vw] font-bold uppercase tracking-tighter leading-[0.8] mb-12">O material que sua marca merece.</h2>
-          <Link to="/contato" className="btn-primary bg-background text-foreground px-12 py-6 text-lg">
+          <a href="https://wa.me/5511941765691?text=gostaria%20de%20fazer%20um%20or%C3%A7amento!" target="_blank" rel="noopener noreferrer" className="btn-primary bg-background text-foreground px-12 py-6 text-lg">
             Solicitar orçamento gráfico <Plus size={20} className="ml-2" />
-          </Link>
+          </a>
         </div>
       </section>
     </div>

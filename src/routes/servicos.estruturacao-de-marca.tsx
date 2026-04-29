@@ -30,9 +30,9 @@ function EstruturacaoMarcaPage() {
             <p className="text-xl md:text-2xl text-secondary uppercase font-medium leading-tight mb-12">
               Do diagnóstico ao brandbook completo. Construímos identidades que confrontam o comum e elevam o valor percebido do seu negócio.
             </p>
-            <Link to="/contato" className="btn-primary">
+            <a href="https://wa.me/5511941765691?text=gostaria%20de%20fazer%20um%20or%C3%A7amento!" target="_blank" rel="noopener noreferrer" className="btn-primary">
               Iniciar estruturação <Plus size={18} className="ml-2" />
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -109,9 +109,9 @@ function EstruturacaoMarcaPage() {
       <section className="py-48 bg-foreground text-background">
         <div className="container-site text-center">
           <h2 className="text-[10vw] font-bold uppercase tracking-tighter leading-[0.8] mb-12">Sua marca pronta para o topo.</h2>
-          <Link to="/contato" className="btn-primary bg-background text-foreground px-12 py-6 text-lg">
+          <a href="https://wa.me/5511941765691?text=gostaria%20de%20fazer%20um%20or%C3%A7amento!" target="_blank" rel="noopener noreferrer" className="btn-primary bg-background text-foreground px-12 py-6 text-lg">
             Solicitar orçamento <Plus size={20} className="ml-2" />
-          </Link>
+          </a>
         </div>
       </section>
     </div>

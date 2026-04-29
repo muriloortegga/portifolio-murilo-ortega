@@ -30,9 +30,9 @@ function PresencaDigitalPage() {
             <p className="text-xl md:text-2xl text-secondary uppercase font-medium leading-tight mb-12">
               Sua marca merece uma casa digital que reflita o seu valor. Este site que você navega agora foi feito por mim — e é esse o nível de excelência que sua marca irá receber.
             </p>
-            <Link to="/contato" className="btn-primary">
+            <a href="https://wa.me/5511941765691?text=gostaria%20de%20fazer%20um%20or%C3%A7amento!" target="_blank" rel="noopener noreferrer" className="btn-primary">
               Construir minha casa digital <Plus size={18} className="ml-2" />
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -102,9 +102,9 @@ function PresencaDigitalPage() {
       <section className="py-48 bg-foreground text-background">
         <div className="container-site text-center">
           <h2 className="text-[10vw] font-bold uppercase tracking-tighter leading-[0.8] mb-12">O próximo grande site pode ser o seu.</h2>
-          <Link to="/contato" className="btn-primary bg-background text-foreground px-12 py-6 text-lg">
+          <a href="https://calendly.com/contato-muriloortega1/30min" target="_blank" rel="noopener noreferrer" className="btn-primary bg-background text-foreground px-12 py-6 text-lg">
             Agendar reunião estratégica <Plus size={20} className="ml-2" />
-          </Link>
+          </a>
         </div>
       </section>
     </div>

@@ -295,9 +295,9 @@ function SobrePage() {
         <div className="container-site text-center space-y-8 md:space-y-12">
           <h2 className="text-[15vw] md:text-[10vw] font-bold uppercase tracking-tighter leading-[0.8] anim-fade-in">Vamos elevar o seu projeto?</h2>
           <div className="flex flex-col md:flex-row gap-6 md:gap-8 justify-center items-center anim-fade-in delay-250">
-            <Link to="/contato" className="btn-primary bg-background text-foreground px-10 md:px-12 py-4 md:py-6 text-base md:text-lg hover:scale-105 transition-all w-full md:w-auto">
+            <a href="https://wa.me/5511941765691?text=gostaria%20de%20fazer%20um%20or%C3%A7amento!" target="_blank" rel="noopener noreferrer" className="btn-primary bg-background text-foreground px-10 md:px-12 py-4 md:py-6 text-base md:text-lg hover:scale-105 transition-all w-full md:w-auto text-center">
               Iniciar conversa <Plus size={18} className="ml-2" />
-            </Link>
+            </a>
             <Link to="/trabalho" className="text-background border-b border-background/30 pb-2 uppercase font-mono text-xs md:text-sm tracking-widest hover:opacity-60 transition-opacity">
               Explorar Portfolio
             </Link>

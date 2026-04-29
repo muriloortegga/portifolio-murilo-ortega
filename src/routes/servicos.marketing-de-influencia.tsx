@@ -30,9 +30,9 @@ function MarketingInfluenciaPage() {
               Criamos sistemas de marketing de influência que posicionam marcas como referência e transformam audiência em clientes.
             </p>
             <div className="flex flex-col sm:flex-row gap-6">
-              <Link to="/contato" className="btn-primary">
+              <a href="https://wa.me/5511941765691?text=gostaria%20de%20fazer%20um%20or%C3%A7amento!" target="_blank" rel="noopener noreferrer" className="btn-primary">
                 Quero aplicar isso na minha marca <Plus size={18} className="ml-2" />
-              </Link>
+              </a>
               <button onClick={() => document.getElementById('metodo')?.scrollIntoView({behavior: 'smooth'})} className="btn-secondary">
                 Ver como funciona
               </button>
@@ -226,12 +226,12 @@ function MarketingInfluenciaPage() {
         <div className="container-site text-center space-y-12">
           <h2 className="text-[8vw] font-bold uppercase tracking-tighter leading-[0.8]">Pare de testar.<br />Comece a <span className="italic text-secondary">influenciar</span>.</h2>
           <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
-            <Link to="/contato" className="btn-primary bg-background text-foreground px-12 py-6 text-lg hover:scale-105 transition-all">
+            <a href="https://wa.me/5511941765691?text=gostaria%20de%20fazer%20um%20or%C3%A7amento!" target="_blank" rel="noopener noreferrer" className="btn-primary bg-background text-foreground px-12 py-6 text-lg hover:scale-105 transition-all text-center">
               Quero aplicar isso na minha marca
-            </Link>
-            <Link to="/contato" className="flex items-center gap-4 text-background border-b border-background/30 pb-2 uppercase font-mono text-sm tracking-widest hover:opacity-60 transition-opacity">
+            </a>
+            <a href="https://wa.me/5511941765691?text=gostaria%20de%20fazer%20um%20or%C3%A7amento!" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-background border-b border-background/30 pb-2 uppercase font-mono text-sm tracking-widest hover:opacity-60 transition-opacity">
               Falar com especialista <MessageSquare size={18} />
-            </Link>
+            </a>
           </div>
         </div>
       </section>

@@ -14,7 +14,7 @@ export function Footer() {
               </h2>
             </div>
             <div className="lg:col-span-4 flex flex-col gap-6 items-start lg:items-end">
-              <a href="mailto:contato@muriloortega.com" className="btn btn-arrow">
+              <a href="https://wa.me/5511941765691?text=gostaria%20de%20fazer%20um%20or%C3%A7amento!" target="_blank" rel="noopener noreferrer" className="btn btn-arrow">
                 Fale comigo <span className="arrow" />
               </a>
               <Link to="/trabalho" className="btn btn-arrow">

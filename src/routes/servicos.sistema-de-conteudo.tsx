@@ -31,12 +31,12 @@ function SistemaConteudoPage() {
               Esqueça postagens isoladas. Criamos um ecossistema de conteúdo que sustenta sua marca e converte audiência em clientes reais.
             </p>
             <div className="flex flex-col sm:flex-row gap-6">
-              <Link to="/contato" className="btn-primary">
+              <a href="https://wa.me/5511941765691?text=gostaria%20de%20fazer%20um%20or%C3%A7amento!" target="_blank" rel="noopener noreferrer" className="btn-primary">
                 Implementar sistema <Plus size={18} className="ml-2" />
-              </Link>
-              <Link to="/contato" className="btn-secondary">
+              </a>
+              <a href="https://calendly.com/contato-muriloortega1/30min" target="_blank" rel="noopener noreferrer" className="btn-secondary">
                 Agendar Diagnóstico Grátis <MessageSquare size={18} className="ml-2" />
-              </Link>
+              </a>
             </div>
           </div>
         </div>
@@ -101,9 +101,9 @@ function SistemaConteudoPage() {
       <section className="py-48 bg-foreground text-background">
         <div className="container-site text-center">
           <h2 className="text-[8vw] font-bold uppercase tracking-tighter leading-[0.8] mb-12">Sua marca sempre presente.<br /><span className="text-secondary italic">Sempre no topo.</span></h2>
-          <Link to="/contato" className="btn-primary bg-background text-foreground px-12 py-6 text-lg">
+          <a href="https://calendly.com/contato-muriloortega1/30min" target="_blank" rel="noopener noreferrer" className="btn-primary bg-background text-foreground px-12 py-6 text-lg">
             Agendar reunião de diagnóstico <Plus size={20} className="ml-2" />
-          </Link>
+          </a>
         </div>
       </section>
     </div>

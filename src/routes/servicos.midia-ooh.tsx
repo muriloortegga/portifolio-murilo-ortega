@@ -30,9 +30,9 @@ function MidiaOOHPage() {
             <p className="text-xl md:text-2xl text-secondary uppercase font-medium leading-tight mb-12">
               Do planejamento e orçamento com fornecedores até a administração de budget e entrega final. Criamos campanhas externas que garantem visibilidade massiva e autoridade local.
             </p>
-            <Link to="/contato" className="btn-primary">
+            <a href="https://wa.me/5511941765691?text=gostaria%20de%20fazer%20um%20or%C3%A7amento!" target="_blank" rel="noopener noreferrer" className="btn-primary">
               Planejar campanha OOH <Plus size={18} className="ml-2" />
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -99,9 +99,9 @@ function MidiaOOHPage() {
       <section className="py-48 bg-foreground text-background">
         <div className="container-site text-center">
           <h2 className="text-[10vw] font-bold uppercase tracking-tighter leading-[0.8] mb-12">Sua marca em todos os lugares.</h2>
-          <Link to="/contato" className="btn-primary bg-background text-foreground px-12 py-6 text-lg">
+          <a href="https://wa.me/5511941765691?text=gostaria%20de%20fazer%20um%20or%C3%A7amento!" target="_blank" rel="noopener noreferrer" className="btn-primary bg-background text-foreground px-12 py-6 text-lg">
             Consultar especialistas OOH <Plus size={20} className="ml-2" />
-          </Link>
+          </a>
         </div>
       </section>
     </div>
