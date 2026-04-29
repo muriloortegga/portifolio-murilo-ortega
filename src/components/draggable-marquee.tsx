@@ -57,13 +57,8 @@ export function DraggableMarquee({ items, baseVelocity = -1.8 }: DraggableMarque
             key={`${logo.name}-${i}`}
             to={(["natrave", "solid", "symplice", "maxi"].includes(logo.name.toLowerCase()) 
               ? `/${logo.name.toLowerCase()}` 
-<<<<<<< HEAD
-              : `/trabalho`}
-            className="flex items-center justify-center min-w-[250px] md:min-w-[500px] shrink-0 group transition-transform hover:scale-105 duration-500 active:scale-95"
-=======
               : `/trabalho`) as string}
-            className="flex items-center justify-center min-w-[200px] md:min-w-[400px] shrink-0 group transition-transform hover:scale-105 duration-500 active:scale-95"
->>>>>>> 2e9878873f1da75629bc26d572ea5f16a1224eab
+            className="flex items-center justify-center min-w-[250px] md:min-w-[500px] shrink-0 group transition-transform hover:scale-105 duration-500 active:scale-95"
           >
             <img
               src={logo.url}
