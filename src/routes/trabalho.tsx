@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, ArrowRight, ChevronDown } from "lucide-react";
 
