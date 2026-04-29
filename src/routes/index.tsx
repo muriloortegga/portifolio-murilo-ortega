@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { useState, useEffect } from "react";
+import { DraggableMarquee } from "@/components/draggable-marquee";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -207,39 +208,16 @@ function HomePage() {
       </section>
 
       {/* Brand Marquee */}
-      <section className="py-32 overflow-hidden">
-        <div className="site-container mb-12">
+      <section className="py-32 overflow-hidden border-t border-border/5">
+        <div className="site-container mb-16">
           <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-secondary scroll-reveal">Experiência</span>
           <h3 className="text-xl font-bold uppercase mt-2 scroll-reveal">Marcas que já trabalhei</h3>
         </div>
-        <div className="animate-marquee flex items-center gap-24 whitespace-nowrap">
-          {dynamicLogos.length > 0 ? (
-            [...dynamicLogos, ...dynamicLogos].map((logo, i) => (
-              <Link 
-                key={i} 
-                to={["natrave", "solid", "symplice", "maxi"].includes(logo.name.toLowerCase()) ? `/${logo.name.toLowerCase()}` : `/brand/${logo.name.toLowerCase()}`}
-                className="flex items-center justify-center min-w-[300px] md:min-w-[500px] group transition-transform hover:scale-110 duration-500"
-              >
-                <img 
-                  src={logo.url} 
-                  alt={logo.name} 
-                  className="h-[180px] md:h-[240px] w-auto object-contain transition-all duration-500" 
-                />
-              </Link>
-            ))
-          ) : (
-            [...brands, ...brands].map((brand, i) => (
-              <Link
-                key={`${brand.id}-${i}`}
-                to={brand.id === "symplice" || brand.id === "natrave" || brand.id === "solid" ? `/${brand.id}` : "/trabalho"}
-                className="text-4xl md:text-6xl font-bold uppercase tracking-tighter opacity-20 hover:opacity-100 transition-opacity duration-500 flex items-center gap-4"
-              >
-                <span className="w-4 h-4 bg-foreground rounded-full" />
-                {brand.name}
-              </Link>
-            ))
-          )}
-        </div>
+        
+        <DraggableMarquee 
+          items={dynamicLogos.length > 0 ? dynamicLogos : brands.map(b => ({ name: b.name, url: "" }))} 
+          baseVelocity={-0.5}
+        />
       </section>
 
       {/* Positioning */}

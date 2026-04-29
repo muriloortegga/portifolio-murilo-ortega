@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { 
-  SocialHero, 
   BeforeAfter, 
   TopPosts, 
   TopCopies, 
@@ -9,9 +8,9 @@ import {
   VerticalGallery, 
   TestimonialCTA 
 } from "@/components/social-case-layout";
-import { VisualIdentityLayout } from "@/components/visual-identity-layout";
+import { BrandHeader } from "@/components/brand-header";
 import { ServiceSelector } from "@/components/service-selector";
-import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import { Maximize2, X } from "lucide-react";
 
 export const Route = createFileRoute("/natrave")({
   head: () => ({
@@ -24,16 +23,40 @@ export const Route = createFileRoute("/natrave")({
 });
 
 function ProjetoNaTrave() {
-  const revealRef = useScrollReveal<HTMLDivElement>();
-  const [activeService, setActiveService] = useState("social");
+  const [activeService, setActiveService] = useState("marca"); // Marca is default
+  const [isFullScreen, setIsFullScreen] = useState(false);
+
+  useEffect(() => {
+    if (isFullScreen) {
+      document.body.classList.add("has-fullscreen");
+    } else {
+      document.body.classList.remove("has-fullscreen");
+    }
+    return () => document.body.classList.remove("has-fullscreen");
+  }, [isFullScreen]);
 
   const services = [
-    { id: "social", label: "Social Media" },
-    { id: "marca", label: "Id Visual" }
+    { id: "marca", label: "Id Visual" },
+    { id: "social", label: "Social Media" }
+  ];
+
+  const metaData = [
+    { label: "Papel", value: "Direção & Design" },
+    { label: "Ano", value: "2024" },
+    { label: "Plataforma", value: "iOS & Android" },
+    { label: "Skills", value: "UX/UI, Social" }
   ];
 
   return (
-    <div ref={revealRef}>
+    <div className="bg-background">
+      <BrandHeader 
+        client="NaTrave App"
+        phrase="Virando o Jogo"
+        description="O futebol amador elevado ao nível de elite. Uma plataforma para conectar jogadores, organizadores e a paixão pelo esporte sem burocracia."
+        niche="Projeto Autoral — Esporte & Tech"
+        meta={metaData}
+      />
+
       <ServiceSelector 
         options={services} 
         activeId={activeService} 
@@ -42,13 +65,6 @@ function ProjetoNaTrave() {
 
       {activeService === "social" ? (
         <div className="anim-fade-in">
-          <SocialHero 
-            client="NaTrave App"
-            niche="Esporte & Tecnologia"
-            phrase="Virando o Jogo"
-            image="/natrave-preview.gif"
-          />
-
           <BeforeAfter 
             targetFollowers={1250}
             beforeImg="https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=800"
@@ -97,13 +113,41 @@ function ProjetoNaTrave() {
           />
         </div>
       ) : (
-        <VisualIdentityLayout 
-          client="NaTrave App"
-          phrase="Identidade de Elite"
-          description="Criação da marca e sistema visual para um nicho que exige reconhecimento imediato e vigor esportivo. O futebol amador elevado ao nível profissional."
-          mainImage="/natrave-preview.gif"
-          showcaseImage="/natrave-marca.png"
-        />
+        <div className="anim-fade-in site-container pb-32">
+           <div className="relative w-full h-[700px] overflow-hidden border border-border group cursor-ns-resize" onClick={() => setIsFullScreen(true)}>
+             <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors z-10 flex items-center justify-center pointer-events-none">
+                <div className="bg-background/80 backdrop-blur px-6 py-3 border border-border opacity-0 group-hover:opacity-100 transition-all">
+                   <Maximize2 size={18} className="inline-block" />
+                   <span className="ml-2 text-[10px] font-mono uppercase tracking-widest">Ver Case Completo</span>
+                </div>
+             </div>
+             <div className="w-full h-full overflow-y-auto no-scrollbar scroll-smooth">
+                <img src="/natrave-marca.png" alt="NaTrave Branding Showcase" className="w-full h-auto" />
+             </div>
+           </div>
+        </div>
+      )}
+
+      {/* Full Screen Overlay */}
+      {isFullScreen && (
+        <div className="fixed inset-0 z-[100] bg-background overflow-y-auto no-scrollbar anim-fade-in">
+          <div className="sticky top-0 right-0 left-0 h-24 flex items-center justify-between site-container z-[101] bg-background/50 backdrop-blur-sm border-b border-border/10 pointer-events-auto">
+            <span className="text-xs font-mono uppercase tracking-widest">NaTrave App Case — Branding</span>
+            <button 
+              onClick={() => setIsFullScreen(false)}
+              className="p-4 bg-foreground text-background transition-transform hover:scale-110"
+            >
+              <X size={24} />
+            </button>
+          </div>
+          <div>
+            <img 
+              src="/natrave-marca.png" 
+              alt="NaTrave Full Presentation" 
+              className="w-full h-auto shadow-2xl"
+            />
+          </div>
+        </div>
       )}
 
       <section className="site-section border-t border-border mt-32">

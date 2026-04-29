@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { 
-  SocialHero, 
   BeforeAfter, 
   TopPosts, 
   TopCopies, 
@@ -9,9 +8,9 @@ import {
   VerticalGallery, 
   TestimonialCTA 
 } from "@/components/social-case-layout";
-import { GenericProjectLayout } from "@/components/generic-project-layout";
+import { BrandHeader } from "@/components/brand-header";
 import { ServiceSelector } from "@/components/service-selector";
-import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import { GenericProjectLayout } from "@/components/generic-project-layout";
 
 export const Route = createFileRoute("/maxi")({
   head: () => ({
@@ -24,7 +23,6 @@ export const Route = createFileRoute("/maxi")({
 });
 
 function ProjetoMaxi() {
-  const revealRef = useScrollReveal<HTMLDivElement>();
   const [activeService, setActiveService] = useState("social");
 
   const services = [
@@ -32,8 +30,23 @@ function ProjetoMaxi() {
     { id: "ooh", label: "Mídia OOH" }
   ];
 
+  const metaData = [
+    { label: "Cliente", value: "Colégio Maxi" },
+    { label: "Ano", value: "2024" },
+    { label: "Local", value: "Londrina — PR" },
+    { label: "Skills", value: "Social, OOH" }
+  ];
+
   return (
-    <div ref={revealRef}>
+    <div className="bg-background">
+      <BrandHeader 
+        client="Colégio Maxi"
+        phrase="Tradição que Evolui"
+        description="A união entre a solidez de uma instituição tradicional e o dinamismo do mundo contemporâneo. Uma estratégia completa que conecta o físico ao digital."
+        niche="Educação & Performance"
+        meta={metaData}
+      />
+
       <ServiceSelector 
         options={services} 
         activeId={activeService} 
@@ -42,13 +55,6 @@ function ProjetoMaxi() {
 
       {activeService === "social" ? (
         <div className="anim-fade-in">
-          <SocialHero 
-            client="Colégio Maxi"
-            niche="Educação & Performance"
-            phrase="Tradição que Evolui"
-            image="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=1200"
-          />
-
           <BeforeAfter 
             targetFollowers={2500}
             beforeImg="https://images.unsplash.com/photo-1523050335192-ce1dee6507f1?q=80&w=800"
@@ -97,13 +103,12 @@ function ProjetoMaxi() {
           />
         </div>
       ) : (
-        <GenericProjectLayout 
-          client="Colégio Maxi"
-          phrase="Impacto Urbano"
-          description="Campanhas externas, outdoors e sinalização que dominam a paisagem urbana com impacto visual. Estratégia de OOH integrada à jornada do aluno."
-          serviceLabel="Mídia OOH"
-          mainImage="https://images.unsplash.com/photo-1516216628859-9bccecab13ca?q=80&w=1200"
-        />
+        <div className="anim-fade-in site-container pb-32">
+          <p className="text-xl text-secondary uppercase font-medium leading-tight max-w-2xl mb-12">
+            Campanhas externas, outdoors e sinalização que dominam a paisagem urbana com impacto visual. Estratégia de OOH integrada à jornada do aluno.
+          </p>
+          <img src="https://images.unsplash.com/photo-1516216628859-9bccecab13ca?q=80&w=1200" alt="Maxi OOH" className="w-full h-auto border border-border" />
+        </div>
       )}
 
       <section className="site-section border-t border-border mt-32">

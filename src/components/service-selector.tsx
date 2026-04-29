@@ -16,16 +16,16 @@ export function ServiceSelector({
   onChange: (id: string) => void 
 }) {
   return (
-    <section className="site-container pt-32 mb-12">
-      <div className="flex flex-wrap items-center gap-4">
+    <section className="site-container mb-12">
+      <div className="flex flex-wrap items-center gap-3">
         {options.map((option) => (
           <button
             key={option.id}
             onClick={() => onChange(option.id)}
             className={cn(
-              "px-8 py-4 text-xs font-mono uppercase tracking-[0.2em] transition-all border",
+              "px-6 py-3 text-[10px] font-mono uppercase tracking-[0.2em] transition-all border",
               activeId === option.id 
-                ? "bg-foreground text-background border-foreground shadow-lg scale-105" 
+                ? "bg-foreground text-background border-foreground" 
                 : "bg-transparent text-secondary border-border hover:border-foreground/40"
             )}
           >
