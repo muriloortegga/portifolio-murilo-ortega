@@ -77,8 +77,8 @@ function TrabalhoPage() {
 
   return (
     <div ref={revealRef} className="pt-32 pb-32">
-      <section className="section-spacing">
-        <div className="container-site">
+      <section className="ds-section">
+        <div className="ds-container">
           <div className="mb-20">
             <h1 className="uppercase line-height-tight tracking-tight anim-fade-in">
               Conheça meu<br />
@@ -166,7 +166,7 @@ function TrabalhoPage() {
                       />
                     </div>
                     <figcaption className="mt-8">
-                      <span className="card-label">{project.category} · {project.year}</span>
+                      <span className="ds-card-label">{project.category} · {project.year}</span>
                       <span className="font-bold text-3xl uppercase leading-tight block">{project.name}</span>
                     </figcaption>
                   </figure>

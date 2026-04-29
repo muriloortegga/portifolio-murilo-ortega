@@ -23,7 +23,7 @@ function BrandPage() {
     <div ref={revealRef} className="bg-background min-h-screen pt-24">
       {/* Hero Section */}
       <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
-        <div className="container-site relative z-10 text-center">
+        <div className="ds-container relative z-10 text-center">
           <span className="text-[10px] font-mono uppercase tracking-[0.3em] mb-8 block anim-fade-in">Brand Case</span>
           <h1 className="text-[12vw] leading-[0.8] tracking-tighter uppercase anim-fade-in">
             {brandName}
@@ -35,8 +35,8 @@ function BrandPage() {
       </section>
 
       {/* Visual System */}
-      <section className="section-spacing border-t border-border">
-        <div className="container-site">
+      <section className="ds-section border-t border-border">
+        <div className="ds-container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div className="scroll-reveal aspect-square bg-card overflow-hidden">
                <img 
@@ -57,8 +57,8 @@ function BrandPage() {
       </section>
 
       {/* Placeholder for content */}
-      <section className="section-spacing bg-card">
-        <div className="container-site text-center">
+      <section className="ds-section bg-card">
+        <div className="ds-container text-center">
           <h2 className="text-4xl font-bold uppercase mb-8">Mais detalhes em breve</h2>
           <Link to="/trabalho" className="text-link">Voltar para Projetos</Link>
         </div>

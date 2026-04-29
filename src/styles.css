@@ -179,8 +179,16 @@
 
 @layer components {
   .ds-section {
-    padding: var(--page-section) var(--grid-padding);
-    border-top: 1px solid var(--border);
+    padding-top: var(--page-section);
+    padding-bottom: var(--page-section);
+  }
+
+  .ds-container {
+    max-width: var(--grid-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--grid-padding);
+    padding-right: var(--grid-padding);
   }
 
   .ds-label {
@@ -198,20 +206,19 @@
     content: '';
     width: 24px;
     height: 1px;
-    background: var(--foreground);
+    background: currentColor;
     display: inline-block;
   }
 
   .ds-title {
-    font-size: clamp(2.2rem, 8vw, 5rem); /* Increased minimum slightly for mobile impact, but better scaling */
-    font-weight: 300;
-    letter-spacing: -0.03em;
-    line-height: 1.0; /* Increased for mobile readability */
+    font-size: clamp(3.5rem, 5.2vw, 6rem); 
+    line-height: 0.9; 
+    letter-spacing: -0.05em;
     text-transform: uppercase;
   }
 
   .ds-body {
-    font-size: 1rem; /* Reduced for mobile */
+    font-size: 1rem;
     line-height: 1.6;
     color: var(--secondary);
   }
@@ -255,7 +262,7 @@
     }
   }
 
-  .tag-mono {
+  .ds-tag-mono {
     display: inline-block;
     padding: 3px 8px; /* Reduced for mobile */
     font-size: 9px; /* Reduced for mobile */
@@ -267,18 +274,6 @@
   }
 
 
-  .container-site {
-    max-width: var(--grid-width);
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: var(--grid-padding);
-    padding-right: var(--grid-padding);
-  }
-
-  .section-spacing {
-    padding-top: var(--page-section);
-    padding-bottom: var(--page-section);
-  }
 
   /* Buttons */
   .btn {
@@ -376,7 +371,7 @@
     line-height: 1.3;
   }
 
-  .project-card .card-label {
+  .project-card .ds-card-label {
     font-size: 0.75rem;
     font-family: var(--font-mono);
     text-transform: uppercase;

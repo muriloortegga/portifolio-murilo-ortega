@@ -19,7 +19,7 @@ function SistemaConteudoPage() {
     <div ref={revealRef} className="bg-background pt-32 pb-32">
       {/* Hero */}
       <section className="ds-section border-t-0 pt-0 pb-24">
-        <div className="container-site">
+        <div className="ds-container">
           <div className="max-w-4xl">
             <span className="ds-label mb-8">Service 02</span>
             <h1 className="ds-title mb-12">
@@ -44,7 +44,7 @@ function SistemaConteudoPage() {
 
       {/* Passo a Passo */}
       <section className="ds-section py-32 bg-off-white">
-        <div className="container-site">
+        <div className="ds-container">
           <div className="max-w-2xl mb-24">
             <span className="ds-label mb-8">O Fluxo</span>
             <h2 className="text-5xl font-bold uppercase tracking-tighter">Como funciona o nosso serviço de Social Media:</h2>
@@ -78,7 +78,7 @@ function SistemaConteudoPage() {
 
       {/* Case Section */}
       <section className="ds-section py-32">
-        <div className="container-site">
+        <div className="ds-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
             <div className="lg:col-span-6 order-2 lg:order-1">
                <div className="shadow-2xl overflow-hidden">
@@ -99,7 +99,7 @@ function SistemaConteudoPage() {
 
       {/* CTA */}
       <section className="py-48 bg-foreground text-background">
-        <div className="container-site text-center">
+        <div className="ds-container text-center">
           <h2 className="text-[8vw] font-bold uppercase tracking-tighter leading-[0.8] mb-12">Sua marca sempre presente.<br /><span className="text-secondary italic">Sempre no topo.</span></h2>
           <a href="https://calendly.com/contato-muriloortega1/30min" target="_blank" rel="noopener noreferrer" className="btn-primary bg-background text-foreground px-12 py-6 text-lg">
             Agendar reunião de diagnóstico <Plus size={20} className="ml-2" />

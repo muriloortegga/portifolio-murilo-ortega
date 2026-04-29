@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { ChevronDown, Plus, ArrowUpRight, Cpu, Layout, PenTool, ClipboardList } from "lucide-react";
 import portrait from "@/assets/murilo-portrait.png";
 
@@ -126,48 +127,66 @@ function SobrePage() {
 
   return (
     <div ref={revealRef} className="bg-background pt-24 pb-24 md:pt-32 md:pb-32">
-      {/* Hero Section */}
-      <section className="ds-section border-t-0 pt-0 pb-12 md:pb-24">
-        <div className="container-site">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-20 items-center">
-            <div className="lg:col-span-7 order-2 lg:order-1">
-              <span className="ds-label mb-6 md:mb-12">Murilo Ortega — Creative Director</span>
-              <h1 className="ds-title mb-8 md:mb-12">
-                Marcas que não<br className="hidden md:block" />
-                pedem <span className="italic">licença</span><br className="hidden md:block" />
-                para liderar.
-              </h1>
-              <div className="flex flex-col sm:flex-row gap-8 md:gap-12 sm:items-center border-t border-border/10 pt-8 mt-4 md:border-none md:pt-0 md:mt-0">
-                <div className="flex flex-col gap-1">
-                   <span className="text-[9px] font-mono uppercase text-secondary">Expertise</span>
-                   <span className="text-xs md:text-sm uppercase font-bold tracking-tight">Design Estratégico & Marcas</span>
-                </div>
-                <div className="flex flex-col gap-1">
-                   <span className="text-[9px] font-mono uppercase text-secondary">Localização</span>
-                   <span className="text-xs md:text-sm uppercase font-bold tracking-tight">Londrina · PR / Global</span>
-                </div>
+      {/* Hero Section - Full Screen Impact */}
+      <section className="relative h-screen min-h-[700px] flex items-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={portrait} 
+            alt="Murilo Ortega Portrait" 
+            className="w-full h-full object-cover grayscale brightness-50" 
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+        </div>
+
+        <div className="ds-container relative z-10 w-full pt-24">
+          <div className="max-w-4xl">
+            <motion.span 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="ds-label mb-8 text-background/80 before:bg-background/80"
+            >
+              Murilo Ortega — Creative Director
+            </motion.span>
+            <motion.h1 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-background text-[12vw] md:text-[8vw] font-bold uppercase tracking-tighter leading-[0.85] mb-12"
+            >
+              Marcas que não<br />
+              pedem <span className="italic text-secondary">licença</span><br />
+              para liderar.
+            </h1 >
+            
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="flex flex-col sm:flex-row gap-8 md:gap-16 sm:items-center border-t border-background/20 pt-8"
+            >
+              <div className="flex flex-col gap-1">
+                 <span className="text-[9px] font-mono uppercase text-background/50">Expertise</span>
+                 <span className="text-sm md:text-base uppercase font-bold tracking-tight text-background">Design Estratégico & Marcas</span>
               </div>
-            </div>
-            <div className="lg:col-span-5 flex justify-center lg:justify-end order-1 lg:order-2 mb-12 lg:mb-0">
-              <div className="w-full max-w-[320px] md:max-w-[400px] overflow-hidden group">
-                <img 
-                  src={portrait} 
-                  alt="Murilo Ortega Portrait" 
-                  className="w-full grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" 
-                />
-                <div className="mt-4 flex justify-between items-end px-2 font-mono italic opacity-40">
-                   <span className="text-[9px]">CREATIVE DIRECTOR</span>
-                   <span className="text-[9px]">MAR '24</span>
-                </div>
+              <div className="flex flex-col gap-1">
+                 <span className="text-[9px] font-mono uppercase text-background/50">Localização</span>
+                 <span className="text-sm md:text-base uppercase font-bold tracking-tight text-background">Londrina · PR / Global</span>
               </div>
-            </div>
+            </motion.div>
           </div>
+        </div>
+
+        {/* Scroll Hint */}
+        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-background/30 anim-pulse-subtle">
+           <span className="text-[10px] font-mono uppercase tracking-widest">Scroll to explore</span>
+           <div className="w-[1px] h-12 bg-background/20" />
         </div>
       </section>
 
       {/* Trajectory Summary */}
       <section className="ds-section bg-off-white">
-        <div className="container-site">
+        <div className="ds-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-4">
               <span className="ds-label">Trajetória</span>
@@ -202,13 +221,13 @@ function SobrePage() {
 
       {/* Design Tools Marquee */}
       <section className="py-16 md:py-24 border-t border-border overflow-hidden bg-background">
-        <div className="container-site mb-16 md:mb-24">
+        <div className="ds-container mb-16 md:mb-24">
           <span className="ds-label mb-6 md:mb-8">Especialidades</span>
           <h2 className="text-5xl md:text-7xl font-bold uppercase tracking-tighter leading-[0.85] md:leading-[0.8]">Meus Principais <br /><span className="text-secondary">Skills</span></h2>
         </div>
         
         <div className="flex flex-col gap-8 md:gap-12">
-          <div className="container-site">
+          <div className="ds-container">
             <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-secondary">Design & Direção de Arte</span>
           </div>
           <div className="animate-marquee flex gap-8 md:gap-12 whitespace-nowrap">
@@ -224,7 +243,7 @@ function SobrePage() {
              ))}
           </div>
         </div>
-        <div className="container-site mt-8 md:mt-12">
+        <div className="ds-container mt-8 md:mt-12">
            <p className="ds-body max-w-2xl">
              Utilizo ferramentas como essas para editar imagens, criar ilustrações, peças publicitárias, vídeos e apresentações comerciais de alto nível. Tenho 7 anos de experiência focada em pitchs de vendas e treinamentos institucionais.
            </p>
@@ -233,7 +252,7 @@ function SobrePage() {
 
       {/* AI & Management Grid */}
       <section className="ds-section border-t border-border p-0 md:ds-section">
-        <div className="container-site px-0 md:px-[var(--grid-padding)]">
+        <div className="ds-container px-0 md:px-[var(--grid-padding)]">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-border border-x md:border-border">
             {/* AI Tools */}
             <div className="bg-background p-8 md:p-16 space-y-8 md:space-y-12">
@@ -244,7 +263,7 @@ function SobrePage() {
                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
                  {aiTools.map((tool) => (
                    <div key={tool.name} className="space-y-2">
-                     <span className="tag-mono">{tool.name}</span>
+                     <span className="ds-tag-mono">{tool.name}</span>
                      <p className="text-[10px] md:text-[11px] text-secondary font-mono leading-tight uppercase">{tool.desc}</p>
                    </div>
                  ))}
@@ -278,7 +297,7 @@ function SobrePage() {
 
       {/* Brand Board */}
       <section className="ds-section pt-16 md:pt-24 pb-0 md:pb-24">
-        <div className="container-site">
+        <div className="ds-container">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-20 gap-8">
             <div className="max-w-xl">
               <span className="ds-label mb-6 md:mb-8">Marcas & Experiência</span>
@@ -292,7 +311,7 @@ function SobrePage() {
 
       {/* Final Call to Action */}
       <section className="py-24 md:py-48 bg-foreground text-background">
-        <div className="container-site text-center space-y-8 md:space-y-12">
+        <div className="ds-container text-center space-y-8 md:space-y-12">
           <h2 className="text-[15vw] md:text-[10vw] font-bold uppercase tracking-tighter leading-[0.8] anim-fade-in">Vamos elevar o seu projeto?</h2>
           <div className="flex flex-col md:flex-row gap-6 md:gap-8 justify-center items-center anim-fade-in delay-250">
             <a href="https://wa.me/5511941765691?text=gostaria%20de%20fazer%20um%20or%C3%A7amento!" target="_blank" rel="noopener noreferrer" className="btn-primary bg-background text-foreground px-10 md:px-12 py-4 md:py-6 text-base md:text-lg hover:scale-105 transition-all w-full md:w-auto text-center">

@@ -128,7 +128,7 @@ function ProjectCard({ project, index }: { project: any, index: number }) {
           />
         </div>
         <figcaption className="mt-6">
-          <span className="card-label">{project.category}</span>
+          <span className="ds-card-label">{project.category}</span>
           <span className="font-medium text-lg leading-tight block">{project.name}</span>
         </figcaption>
       </figure>
@@ -152,7 +152,7 @@ function HomePage() {
     <div ref={revealRef}>
       {/* Hero */}
       <section className="min-h-screen flex items-center pt-24 pb-12 overflow-hidden">
-        <div className="container-site w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="ds-container w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7">
             <div
               style={{ 
@@ -196,7 +196,7 @@ function HomePage() {
                 </div>
                 <figcaption className="mt-6 flex items-center justify-between">
                   <div>
-                    <span className="card-label">Branding · 2024</span>
+                    <span className="ds-card-label">Branding · 2024</span>
                     <span className="font-medium text-lg uppercase leading-tight block">Symplice — Identidade de<br />Marca para Startup</span>
                   </div>
                 </figcaption>
@@ -208,7 +208,7 @@ function HomePage() {
 
       {/* Brand Marquee */}
       <section className="py-32 overflow-hidden">
-        <div className="container-site mb-12">
+        <div className="ds-container mb-12">
           <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-secondary scroll-reveal">Experiência</span>
           <h3 className="text-xl font-bold uppercase mt-2 scroll-reveal">Marcas que já trabalhei</h3>
         </div>
@@ -243,8 +243,8 @@ function HomePage() {
       </section>
 
       {/* Positioning */}
-      <section className="section-spacing border-t border-border">
-        <div className="container-site">
+      <section className="ds-section border-t border-border">
+        <div className="ds-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             <div className="lg:col-span-4">
               <span className="text-[10px] font-mono uppercase tracking-tight text-secondary">
@@ -261,8 +261,8 @@ function HomePage() {
       </section>
 
       {/* Work Preview */}
-      <section className="section-spacing border-t border-border">
-        <div className="container-site">
+      <section className="ds-section border-t border-border">
+        <div className="ds-container">
           <div className="flex items-center justify-between mb-12">
             <span className="text-[10px] font-mono uppercase tracking-tight text-secondary">Projetos Selecionados</span>
             <Link to="/trabalho" className="text-link">Ver todos</Link>
@@ -276,8 +276,8 @@ function HomePage() {
       </section>
 
       {/* Services */}
-      <section className="section-spacing border-t border-border relative z-10 bg-background">
-        <div className="container-site">
+      <section className="ds-section border-t border-border relative z-10 bg-background">
+        <div className="ds-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20">
             <div className="lg:col-span-4">
               <span className="text-[10px] font-mono uppercase tracking-tight text-secondary">Nossa Expertise</span>

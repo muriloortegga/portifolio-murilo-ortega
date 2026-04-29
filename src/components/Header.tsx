@@ -27,7 +27,7 @@ export function Header() {
           scrolled ? "bg-background/40 backdrop-blur-3xl border-b border-border/10 shadow-sm" : "bg-transparent"
         )}
       >
-        <div className="container-site flex items-center justify-between h-24">
+        <div className="ds-container flex items-center justify-between h-24">
           <Link to="/" className="text-foreground text-lg font-bold tracking-tight uppercase">
             Murilo Ortega
           </Link>
@@ -78,7 +78,7 @@ export function Header() {
       {/* Mobile overlay */}
       {menuOpen && (
         <div className="fixed inset-0 z-[60] bg-background flex flex-col">
-          <div className="container-site flex items-center justify-between h-24">
+          <div className="ds-container flex items-center justify-between h-24">
             <Link
               to="/"
               className="text-foreground text-lg font-bold tracking-tight uppercase"
@@ -97,7 +97,7 @@ export function Header() {
               </svg>
             </button>
           </div>
-          <nav className="flex flex-col items-start container-site mt-12 gap-8">
+          <nav className="flex flex-col items-start ds-container mt-12 gap-8">
             {navLinks.map((link) => (
               link.isExternal ? (
                 <a

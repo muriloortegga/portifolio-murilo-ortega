@@ -29,8 +29,8 @@ function ProjetoSymplice() {
   return (
     <div ref={revealRef} className="pt-32">
       {/* Header */}
-      <section className="section-spacing pb-12">
-        <div className="container-site">
+      <section className="ds-section pb-12">
+        <div className="ds-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-12 anim-fade-in">
               <h1>
@@ -43,7 +43,7 @@ function ProjetoSymplice() {
       </section>
 
       {/* Meta Bar */}
-      <section className="container-site border-t border-b border-border py-8 mb-20 anim-fade-in delay-250">
+      <section className="ds-container border-t border-b border-border py-8 mb-20 anim-fade-in delay-250">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <span className="text-[10px] font-mono uppercase tracking-tight text-secondary block mb-1">Cliente</span>
@@ -65,8 +65,8 @@ function ProjetoSymplice() {
       </section>
 
       {/* Narrative Section */}
-      <section className="section-spacing pt-0">
-        <div className="container-site">
+      <section className="ds-section pt-0">
+        <div className="ds-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-4 anim-fade-in delay-250">
               <span className="text-[10px] font-mono uppercase tracking-tight text-secondary block mb-6">O Conceito</span>
@@ -100,7 +100,7 @@ function ProjetoSymplice() {
 
       {/* Showcase Section */}
       <section className="pb-32">
-        <div className="container-site">
+        <div className="ds-container">
           <div className="relative">
             <span className="text-[10px] font-mono uppercase tracking-tight text-secondary mb-6 block">Case Study Visual (Clique para expandir)</span>
             
@@ -130,7 +130,7 @@ function ProjetoSymplice() {
       {/* Full Screen Overlay */}
       {isFullScreen && (
         <div className="fixed inset-0 z-[100] bg-background overflow-y-auto no-scrollbar anim-fade-in">
-          <div className="sticky top-0 right-0 left-0 h-24 flex items-center justify-between container-site z-[101] bg-background/50 backdrop-blur-sm border-b border-border/10 pointer-events-auto">
+          <div className="sticky top-0 right-0 left-0 h-24 flex items-center justify-between ds-container z-[101] bg-background/50 backdrop-blur-sm border-b border-border/10 pointer-events-auto">
             <span className="text-xs font-mono uppercase tracking-widest">Symplice — Brand ID Concept</span>
             <button 
               onClick={() => setIsFullScreen(false)}
@@ -151,8 +151,8 @@ function ProjetoSymplice() {
       )}
 
       {/* Footer Nav */}
-      <section className="section-spacing border-t border-border">
-        <div className="container-site flex justify-between items-center">
+      <section className="ds-section border-t border-border">
+        <div className="ds-container flex justify-between items-center">
           <Link to="/" className="btn btn-arrow">← Voltar Home <span className="arrow hidden" /></Link>
           <Link to="/natrave" className="btn btn-arrow">Próximo Projeto <span className="arrow" /></Link>
         </div>
