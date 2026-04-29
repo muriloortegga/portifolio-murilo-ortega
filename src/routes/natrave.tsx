@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { 
   SocialHero, 
   BeforeAfter, 
@@ -8,12 +9,14 @@ import {
   VerticalGallery, 
   TestimonialCTA 
 } from "@/components/social-case-layout";
+import { VisualIdentityLayout } from "@/components/visual-identity-layout";
+import { ServiceSelector } from "@/components/service-selector";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 export const Route = createFileRoute("/natrave")({
   head: () => ({
     meta: [
-      { title: "NaTrave App — Case Study — Murilo Ortega" },
+      { title: "NaTrave App — Murilo Ortega" },
       { name: "description", content: "Estratégia de Social Media e Branding para o NaTrave App." },
     ],
   }),
@@ -22,64 +25,88 @@ export const Route = createFileRoute("/natrave")({
 
 function ProjetoNaTrave() {
   const revealRef = useScrollReveal<HTMLDivElement>();
+  const [activeService, setActiveService] = useState("social");
+
+  const services = [
+    { id: "social", label: "Social Media" },
+    { id: "marca", label: "Id Visual" }
+  ];
 
   return (
     <div ref={revealRef}>
-      <SocialHero 
-        client="NaTrave App"
-        niche="Esporte & Tecnologia"
-        phrase="Virando o Jogo"
-        image="/natrave-preview.gif"
+      <ServiceSelector 
+        options={services} 
+        activeId={activeService} 
+        onChange={setActiveService} 
       />
 
-      <BeforeAfter 
-        targetFollowers={1250}
-        beforeImg="https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=800"
-        afterImg="/natrave-social.png"
-      />
+      {activeService === "social" ? (
+        <div className="anim-fade-in">
+          <SocialHero 
+            client="NaTrave App"
+            niche="Esporte & Tecnologia"
+            phrase="Virando o Jogo"
+            image="/natrave-preview.gif"
+          />
 
-      <TopPosts 
-        posts={[
-          { img: "https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=800", context: "Engajamento Orgânico", stats: "+15k reach" },
-          { img: "/natrave-marca.png", context: "Brand Awareness", stats: "4.8k likes" },
-          { img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800", context: "Comunidade", stats: "320 shares" },
-          { img: "/natrave-social.png", context: "Conversão", stats: "12% CTR" },
-        ]}
-      />
+          <BeforeAfter 
+            targetFollowers={1250}
+            beforeImg="https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=800"
+            afterImg="/natrave-social.png"
+          />
 
-      <TopCopies 
-        copies={[
-          { text: "O futebol amador nunca mais será o mesmo. O app que profissionaliza sua paixão.", img: "/natrave-social.png" },
-          { text: "Cansado de organizar pelada no WhatsApp? Conheça o NaTrave.", img: "/natrave-marca.png" },
-          { text: "Seu time, sua história, seu campo. Tudo em um só lugar.", img: "https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=800" },
-        ]}
-      />
+          <TopPosts 
+            posts={[
+              { img: "https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=800", context: "Engajamento Orgânico", stats: "+15k reach" },
+              { img: "/natrave-marca.png", context: "Brand Awareness", stats: "4.8k likes" },
+              { img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800", context: "Comunidade", stats: "320 shares" },
+              { img: "/natrave-social.png", context: "Conversão", stats: "12% CTR" },
+            ]}
+          />
 
-      <GridEvolution 
-        grids={[
-          { month: "Mês 01: Estruturação", img: "https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=800" },
-          { month: "Mês 02: Expansão", img: "/natrave-social.png" },
-          { month: "Mês 03: Consolidação", img: "/natrave-marca.png" },
-        ]}
-      />
+          <TopCopies 
+            copies={[
+              { text: "O futebol amador nunca mais será o mesmo. O app que profissionaliza sua paixão.", img: "/natrave-social.png" },
+              { text: "Cansado de organizar pelada no WhatsApp? Conheça o NaTrave.", img: "/natrave-marca.png" },
+              { text: "Seu time, sua história, seu campo. Tudo em um só lugar.", img: "https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=800" },
+            ]}
+          />
 
-      <VerticalGallery 
-        items={[
-          { type: 'Reel', img: "https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=800" },
-          { type: 'Story', img: "/natrave-social.png" },
-          { type: 'Reel', img: "/natrave-marca.png" },
-          { type: 'Story', img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800" },
-        ]}
-      />
+          <GridEvolution 
+            grids={[
+              { month: "Mês 01: Estruturação", img: "https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=800" },
+              { month: "Mês 02: Expansão", img: "/natrave-social.png" },
+              { month: "Mês 03: Consolidação", img: "/natrave-marca.png" },
+            ]}
+          />
 
-      <TestimonialCTA 
-        clientName="Fundador NaTrave"
-        clientRole="CEO & Founder"
-        testimonial="O Murilo não apenas desenhou o app, ele construiu a voz da nossa comunidade. O crescimento no Social foi o motor da nossa tração inicial."
-        clientImage="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400"
-      />
+          <VerticalGallery 
+            items={[
+              { type: 'Reel', img: "https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=800" },
+              { type: 'Story', img: "/natrave-social.png" },
+              { type: 'Reel', img: "/natrave-marca.png" },
+              { type: 'Story', img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800" },
+            ]}
+          />
 
-      <section className="site-section border-t border-border">
+          <TestimonialCTA 
+            clientName="Fundador NaTrave"
+            clientRole="CEO & Founder"
+            testimonial="O Murilo não apenas desenhou o app, ele construiu a voz da nossa comunidade. O crescimento no Social foi o motor da nossa tração inicial."
+            clientImage="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400"
+          />
+        </div>
+      ) : (
+        <VisualIdentityLayout 
+          client="NaTrave App"
+          phrase="Identidade de Elite"
+          description="Criação da marca e sistema visual para um nicho que exige reconhecimento imediato e vigor esportivo. O futebol amador elevado ao nível profissional."
+          mainImage="/natrave-preview.gif"
+          showcaseImage="/natrave-marca.png"
+        />
+      )}
+
+      <section className="site-section border-t border-border mt-32">
         <div className="site-container flex justify-between items-center">
           <Link to="/trabalho" className="btn btn-arrow">← Voltar Projetos</Link>
           <Link to="/solid" className="btn btn-arrow">Próximo Projeto <span className="arrow" /></Link>
