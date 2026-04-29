@@ -6,7 +6,10 @@ import {
   useMotionValue,
   useAnimationFrame,
 } from "framer-motion";
-import { wrap } from "@motionone/utils";
+const wrap = (min: number, max: number, v: number) => {
+  const rangeSize = max - min;
+  return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
+};
 import { Link } from "@tanstack/react-router";
 
 interface DraggableMarqueeProps {
