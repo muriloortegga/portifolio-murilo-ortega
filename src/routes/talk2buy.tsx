@@ -25,7 +25,8 @@ function ProjetoTalk2Buy() {
   const [activeService, setActiveService] = useState("social");
 
   const services = [
-    { id: "social", label: "Social Media" }
+    { id: "social", label: "Social Media" },
+    { id: "websites", label: "Websites" }
   ];
 
   const metaData = [
@@ -99,6 +100,15 @@ function ProjetoTalk2Buy() {
             testimonial="O Murilo transformou nossa presença digital em um motor de vendas. Ele não vende apenas posts, ele entrega escala e previsibilidade."
             clientImage="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=400"
           />
+        </div>
+      )}
+
+      {activeService === "websites" && (
+        <div className="anim-fade-in site-container pb-32">
+          <p className="text-xl text-secondary uppercase font-medium leading-tight max-w-2xl mb-12">
+            E-commerce de alto impacto focado em conversão e experiência do usuário. Transformando cliques em clientes fiéis através de design estratégico.
+          </p>
+          <img src="https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=1200" alt="Talk2Buy Website" className="w-full h-auto border border-border grayscale" />
         </div>
       )}
 

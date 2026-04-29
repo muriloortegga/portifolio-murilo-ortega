@@ -25,7 +25,8 @@ function ProjetoEviDive() {
   const [activeService, setActiveService] = useState("social");
 
   const services = [
-    { id: "social", label: "Social Media" }
+    { id: "social", label: "Social Media" },
+    { id: "influencia", label: "Influência" }
   ];
 
   const metaData = [
@@ -99,6 +100,15 @@ function ProjetoEviDive() {
             testimonial="O Murilo não criou apenas posts, ele criou um destino digital. Hoje a EviDive é percebida como uma marca premium de lifestyle."
             clientImage="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400"
           />
+        </div>
+      )}
+
+      {activeService === "influencia" && (
+        <div className="anim-fade-in site-container pb-32">
+          <p className="text-xl text-secondary uppercase font-medium leading-tight max-w-2xl mb-12">
+            Estratégia de curadoria e conexão com vozes que compartilham o lifestyle subaquático. Transformando influência em comunidade real.
+          </p>
+          <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1200" alt="Evidive Influence" className="w-full h-auto border border-border grayscale" />
         </div>
       )}
 

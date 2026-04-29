@@ -164,9 +164,7 @@ function HomePage() {
               }}
             >
               <h1 className="anim-fade-in">
-                Marcas que não<br />
-                pedem <span className="text-secondary font-medium">licença</span><br />
-                para liderar.
+                TRANSFORMO MARCAS COMUNS EM MARCAS COM <span className="text-secondary font-medium">IMPACTO REAL</span>
               </h1>
               <p className="mt-10 text-lg lg:text-xl text-secondary leading-relaxed max-w-[600px] anim-fade-in delay-250">
                 Design que confronta o comum e eleva o digital. Branding, conteúdo e presença digital conectados em um sistema de alto nível.
@@ -174,7 +172,7 @@ function HomePage() {
             </div>
             <div className="mt-12 anim-fade-in delay-500" style={{ transform: `translateY(${scrollY * 0.1}px)` }}>
               <Link to="/trabalho" className="btn btn-arrow">
-                Ver trabalho <span className="arrow" />
+                Ver portfólio <span className="arrow" />
               </Link>
             </div>
           </div>

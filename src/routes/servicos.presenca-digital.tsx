@@ -81,9 +81,9 @@ function PresencaDigitalPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border border border-border">
              {[
-               { name: "Talk2Buy", tag: "E-commerce & UX", to: "/trabalho" },
-               { name: "Kmillion", tag: "Landing Page High Ticket", to: "/trabalho" },
-               { name: "EviDive", tag: "Branding & Web", to: "/trabalho" },
+               { name: "Talk2Buy", tag: "E-commerce & UX", to: "/talk2buy" },
+               { name: "Kmillion", tag: "Landing Page High Ticket", to: "/kmillion" },
+               { name: "EviDive", tag: "Branding & Web", to: "/evidive" },
                { name: "NaTrave", tag: "Plataforma Digital", to: "/natrave" }
              ].map((c, i) => (
                <Link key={i} to={c.to} className="bg-background p-12 md:p-16 group hover:bg-foreground hover:text-background transition-all duration-700 space-y-6">

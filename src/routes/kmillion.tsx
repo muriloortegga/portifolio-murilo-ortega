@@ -17,7 +17,8 @@ function ProjetoKmillion() {
   const [activeService, setActiveService] = useState("marca");
 
   const services = [
-    { id: "marca", label: "Id Visual" }
+    { id: "marca", label: "Id Visual" },
+    { id: "websites", label: "Websites" }
   ];
 
   const metaData = [
@@ -43,17 +44,28 @@ function ProjetoKmillion() {
         onChange={setActiveService} 
       />
 
-      <div className="anim-fade-in site-container pb-32">
-         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200" alt="Kmillion Branding" className="w-full h-auto border border-border shadow-2xl mb-12" />
-         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200" alt="Kmillion Data" className="w-full h-auto border border-border" />
-            <div className="flex flex-col justify-center">
-               <p className="text-sm text-secondary leading-relaxed uppercase font-medium">
-                  Mais do que uma ferramenta, um ecossistema de inteligência promocional. Cada elemento visual foi pensado para reforçar a percepção de uma marca ágil e confiável.
-               </p>
-            </div>
-         </div>
-      </div>
+      {activeService === "marca" && (
+        <div className="anim-fade-in site-container pb-32">
+           <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200" alt="Kmillion Branding" className="w-full h-auto border border-border shadow-2xl mb-12" />
+           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200" alt="Kmillion Data" className="w-full h-auto border border-border" />
+              <div className="flex flex-col justify-center">
+                 <p className="text-sm text-secondary leading-relaxed uppercase font-medium">
+                    Mais do que uma ferramenta, um ecossistema de inteligência promocional. Cada elemento visual foi pensado para reforçar a percepção de uma marca ágil e confiável.
+                 </p>
+              </div>
+           </div>
+        </div>
+      )}
+
+      {activeService === "websites" && (
+        <div className="anim-fade-in site-container pb-32">
+          <p className="text-xl text-secondary uppercase font-medium leading-tight max-w-2xl mb-12">
+            Landing page de alta conversão focada em resultados e autoridade. Design limpo que direciona a atenção do usuário para o que importa.
+          </p>
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200" alt="Kmillion Website" className="w-full h-auto border border-border shadow-2xl" />
+        </div>
+      )}
 
       <section className="site-section border-t border-border mt-32">
         <div className="site-container flex justify-between items-center">

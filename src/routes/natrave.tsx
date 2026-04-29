@@ -37,7 +37,8 @@ function ProjetoNaTrave() {
 
   const services = [
     { id: "marca", label: "Id Visual" },
-    { id: "social", label: "Social Media" }
+    { id: "social", label: "Social Media" },
+    { id: "websites", label: "Websites" }
   ];
 
   const metaData = [
@@ -63,7 +64,7 @@ function ProjetoNaTrave() {
         onChange={setActiveService} 
       />
 
-      {activeService === "social" ? (
+      {activeService === "social" && (
         <div className="anim-fade-in">
           <BeforeAfter 
             targetFollowers={1250}
@@ -112,7 +113,9 @@ function ProjetoNaTrave() {
             clientImage="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400"
           />
         </div>
-      ) : (
+      )}
+
+      {activeService === "marca" && (
         <div className="anim-fade-in site-container pb-32">
            <div className="relative w-full h-[700px] overflow-hidden border border-border group cursor-ns-resize" onClick={() => setIsFullScreen(true)}>
              <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors z-10 flex items-center justify-center pointer-events-none">
@@ -124,6 +127,18 @@ function ProjetoNaTrave() {
              <div className="w-full h-full overflow-y-auto no-scrollbar scroll-smooth">
                 <img src="/natrave-marca.png" alt="NaTrave Branding Showcase" className="w-full h-auto" />
              </div>
+           </div>
+        </div>
+      )}
+
+      {activeService === "websites" && (
+        <div className="anim-fade-in site-container pb-32">
+           <p className="text-xl text-secondary uppercase font-medium leading-tight max-w-2xl mb-12">
+            Desenvolvimento de plataforma focada em performance e comunidade para o futebol amador. Interfaces limpas e foco total na experiência do atleta.
+           </p>
+           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <img src="/natrave-preview.gif" alt="NaTrave Website" className="w-full h-auto border border-border" />
+              <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800" alt="NaTrave Website" className="w-full h-auto border border-border grayscale" />
            </div>
         </div>
       )}
