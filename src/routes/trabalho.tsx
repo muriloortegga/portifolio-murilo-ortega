@@ -92,6 +92,17 @@ type Category = typeof categories[number];
 function PortfólioPage() {
   const revealRef = useScrollReveal<HTMLDivElement>();
   const [activeCategory, setActiveCategory] = useState<Category | null>(null);
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+
+  const cyclingWords = ["Social Media", "Id Visual", "Branding", "Mídia Impressa", "Mídia OOH", "Websites", "Influência"];
+
+  useEffect(() => {
+    if (activeCategory) return;
+    const interval = setInterval(() => {
+      setCurrentWordIndex((prev) => (prev + 1) % cyclingWords.length);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, [activeCategory, cyclingWords.length]);
 
   const currentInsight = activeCategory ? serviceInsights[activeCategory] : null;
 
@@ -106,8 +117,43 @@ function PortfólioPage() {
             </h1>
           </div>
 
+          {/* Conceptual Hero (Visible only when no category is selected) */}
+          <AnimatePresence mode="wait">
+            {!activeCategory && (
+              <motion.div 
+                initial={{ opacity: 0, filter: "blur(10px)" }}
+                animate={{ opacity: 1, filter: "blur(0px)" }}
+                exit={{ opacity: 0, filter: "blur(20px)", y: -50 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="py-20 md:py-40 border-y border-border/50 mb-20 flex flex-col items-center text-center"
+              >
+                <span className="text-xs font-mono uppercase tracking-[0.4em] text-secondary mb-12">Explorar Categorias</span>
+                <div className="text-4xl md:text-6xl lg:text-7xl font-bold uppercase tracking-tighter leading-none max-w-4xl">
+                  8 anos de experiência com: <br className="hidden md:block" />
+                  <div className="h-[1.2em] relative overflow-hidden inline-block align-bottom md:block mt-4">
+                    <AnimatePresence mode="wait">
+                      <motion.span
+                        key={cyclingWords[currentWordIndex]}
+                        initial={{ y: "100%" }}
+                        animate={{ y: "0%" }}
+                        exit={{ y: "-100%" }}
+                        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                        className="text-secondary block"
+                      >
+                        {cyclingWords[currentWordIndex]}
+                      </motion.span>
+                    </AnimatePresence>
+                  </div>
+                </div>
+                <p className="mt-12 text-sm text-secondary uppercase tracking-widest max-w-lg mx-auto leading-relaxed">
+                  Selecione uma área abaixo para ver como transformamos estratégia em impacto visual real.
+                </p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
           {/* Category Filters - Refined Design */}
-          <div className="flex flex-wrap gap-2 mb-20 anim-fade-in delay-250">
+          <div className="flex flex-wrap justify-center gap-2 mb-20 anim-fade-in delay-250 sticky top-24 z-30 bg-background/80 backdrop-blur py-4">
             {categories.map((cat) => (
               <button
                 key={cat}
@@ -128,9 +174,9 @@ function PortfólioPage() {
             {activeCategory && (
               <motion.div
                 key={activeCategory}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                exit={{ opacity: 0, y: 40, filter: "blur(10px)" }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 className="mb-32"
               >
@@ -164,33 +210,6 @@ function PortfólioPage() {
               </motion.div>
             )}
           </AnimatePresence>
-
-          {/* Fallback View (When no category is selected) */}
-          {!activeCategory && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 transition-all duration-500 pb-32">
-              {projects.slice(0, 4).map((project, i) => (
-                <Link 
-                  key={project.name + i} 
-                  to={project.to} 
-                  className={`group ${i === 0 ? "md:col-span-2" : ""}`}
-                >
-                  <figure className="relative">
-                    <div className={`media-wrap ${i === 0 ? "aspect-[21/9]" : "aspect-[4/3]"} shadow-xl overflow-hidden`}>
-                      <img
-                        src={project.image}
-                        alt={project.name}
-                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 hover:scale-105"
-                      />
-                    </div>
-                    <figcaption className="mt-8">
-                      <span className="site-card-label">{project.category} · {project.year}</span>
-                      <span className="font-bold text-3xl uppercase leading-tight block">{project.name}</span>
-                    </figcaption>
-                  </figure>
-                </Link>
-              ))}
-            </div>
-          )}
 
           {/* Dynamic Service Insight Section */}
           <div className="pt-24 border-t border-border">
