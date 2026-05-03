@@ -70,8 +70,7 @@ function ProjetoNaTrave() {
           <PerformanceHero 
             followers={2250}
             contentCount={100}
-            beforeImg="/assets/projects/natrave/social/mockups/before.png" 
-            afterImg="/assets/projects/natrave/social/mockups/after.png"
+            mockupImg="/assets/projects/natrave/social/mockups/performance-overview.png" 
           />
 
           <CopyFeature 

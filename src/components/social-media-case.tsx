@@ -29,45 +29,35 @@ function Counter({ target, label, suffix = "" }: { target: number; label: string
 export function PerformanceHero({ 
   followers, 
   contentCount, 
-  beforeImg, 
-  afterImg,
+  mockupImg,
   anchorText = "Identidade e base consolidada"
 }: { 
   followers: number; 
   contentCount: number; 
-  beforeImg: string; 
-  afterImg: string;
+  mockupImg: string;
   anchorText?: string;
 }) {
   return (
     <section className="min-h-screen w-full flex flex-col justify-center site-section border-none bg-background overflow-hidden">
       <div className="site-container grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        <div className="lg:col-span-6 z-10">
+        <div className="lg:col-span-5 z-10">
           <Counter target={followers} label="Seguidores" />
-          <Counter target={contentCount} label="Conteúdos Criados" suffix="+" />
-          <p className="site-label mt-8 before:bg-foreground">{anchorText}</p>
+          <div className="mt-[-2rem] md:mt-[-4rem]">
+            <Counter target={contentCount} label="Conteúdos Criados" suffix="+" />
+          </div>
+          <p className="site-label mt-12 before:bg-foreground">{anchorText}</p>
         </div>
         
-        <div className="lg:col-span-6 relative h-[60vh] md:h-[80vh] flex items-center justify-center lg:justify-end gap-4 md:gap-8">
-          {/* Mockups as loose images */}
+        <div className="lg:col-span-7 relative h-auto flex items-center justify-center lg:justify-end">
+          {/* Single Consolidated Mockup Entry Animation */}
           <motion.div 
-            initial={{ y: 100, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ x: 100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             viewport={{ once: true }}
-            className="w-1/2 max-w-[320px] relative"
+            className="w-full relative"
           >
-             <img src={beforeImg} alt="Antes" className="w-full h-auto drop-shadow-2xl" />
-          </motion.div>
-
-          <motion.div 
-            initial={{ y: 150, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-            viewport={{ once: true }}
-            className="w-1/2 max-w-[320px] relative"
-          >
-             <img src={afterImg} alt="Depois" className="w-full h-auto drop-shadow-2xl" />
+             <img src={mockupImg} alt="Performance Mockup" className="w-full h-auto drop-shadow-2xl" />
           </motion.div>
         </div>
       </div>
