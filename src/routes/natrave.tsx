@@ -75,12 +75,8 @@ function ProjetoNaTrave() {
 
           <CopyFeature 
             headline="COPYWRITING, REDAÇÃO E DESIGN QUE IA NENHUMA CONSEGUE CRIAR."
-            bgColor="#004124" // NaTrave Green
-            posts={[
-              { img: "/assets/projects/natrave/social/posts/copy-01.jpg", label: "Quote de Atleta" },
-              { img: "/assets/projects/natrave/social/posts/copy-02.jpg", label: "Post Institucional" },
-              { img: "/assets/projects/natrave/social/posts/copy-03.jpg", label: "Cobertura de Jogo" },
-            ]}
+            bgImage="/assets/projects/natrave/social/backgrounds/dirt-field.jpg"
+            mockupImg="/assets/projects/natrave/social/mockups/copy-showcase.png"
           />
 
           <FeedTimeline 

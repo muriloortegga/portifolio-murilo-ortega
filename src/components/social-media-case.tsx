@@ -68,13 +68,13 @@ export function PerformanceHero({
 // --- Section 2: Copy Feature ---
 export function CopyFeature({ 
   headline, 
-  posts, 
-  bgColor = "#000000",
+  mockupImg, 
+  bgImage,
   accentColor = "#FF6B00"
 }: { 
   headline: string; 
-  posts: { img: string; label: string }[];
-  bgColor?: string;
+  mockupImg: string;
+  bgImage?: string;
   accentColor?: string;
 }) {
   const containerRef = useRef(null);
@@ -83,13 +83,22 @@ export function CopyFeature({
     offset: ["start end", "end start"]
   });
 
+  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
+
   return (
     <section 
       ref={containerRef}
-      className="site-section min-h-screen flex flex-col justify-center overflow-hidden"
-      style={{ backgroundColor: bgColor }}
+      className="site-section min-h-screen flex flex-col justify-center overflow-hidden relative"
     >
-      <div className="site-container">
+      {/* Background Texture */}
+      {bgImage && (
+        <div className="absolute inset-0 z-0">
+          <img src={bgImage} alt="Background Texture" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-black/40" /> {/* Subtle overlay for legibility */}
+        </div>
+      )}
+
+      <div className="site-container relative z-10">
         <motion.h2 
           className="text-white text-5xl md:text-8xl font-black uppercase leading-[0.85] tracking-tighter mb-24 max-w-5xl"
           initial={{ opacity: 0, x: -50 }}
@@ -99,30 +108,19 @@ export function CopyFeature({
           {headline}
         </motion.h2>
 
-        <div className="relative flex flex-col md:flex-row items-center justify-between gap-12 md:gap-4 h-auto md:h-[700px]">
-          {posts.map((post, i) => {
-            const y = useTransform(scrollYProgress, [0, 1], [100 * (i + 1), -100 * (i + 1)]);
-            const rotate = i === 0 ? -5 : i === 1 ? 0 : 5;
-
-            return (
-              <motion.div 
-                key={i}
-                style={{ y, rotate }}
-                whileHover={{ scale: 1.04, zIndex: 10, rotate: 0 }}
-                className="w-full md:w-[30%] relative cursor-pointer"
-              >
-                <img src={post.img} alt={post.label} className="w-full h-auto" />
-                <div className="absolute -bottom-8 left-0 right-0 text-center opacity-40">
-                  <span className="text-[10px] font-mono uppercase text-white/60 tracking-widest">{post.label}</span>
-                </div>
-              </motion.div>
-            );
-          })}
+        <div className="relative flex items-center justify-center h-auto md:min-h-[600px]">
+          <motion.div 
+            style={{ y }}
+            whileHover={{ scale: 1.02 }}
+            className="w-full md:w-[90%] lg:w-[80%] relative cursor-pointer"
+          >
+            <img src={mockupImg} alt="Copy Showcase" className="w-full h-auto drop-shadow-2xl" />
+          </motion.div>
         </div>
 
-        <div className="mt-40 border-t border-white/10 pt-8">
-          <p className="text-white/40 font-mono text-[10px] uppercase tracking-widest">
-            + {posts.length * 40} peças estratégicas entregues
+        <div className="mt-40 border-t border-white/20 pt-8">
+          <p className="text-white/60 font-mono text-[10px] uppercase tracking-widest">
+            Conteúdo denso, humano e focado em conversão.
           </p>
         </div>
       </div>
