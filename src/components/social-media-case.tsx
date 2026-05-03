@@ -38,9 +38,9 @@ export function PerformanceHero({
   anchorText?: string;
 }) {
   return (
-    <section className="min-h-screen w-full flex flex-col justify-center site-section border-none bg-background overflow-hidden">
+    <section className="min-h-screen w-full flex flex-col justify-center site-section border-none bg-background overflow-hidden py-24 md:py-0">
       <div className="site-container grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        <div className="lg:col-span-5 z-10">
+        <div className="lg:col-span-4 z-10 order-2 lg:order-1">
           <Counter target={followers} label="Seguidores" />
           <div className="mt-[-2rem] md:mt-[-4rem]">
             <Counter target={contentCount} label="Conteúdos Criados" suffix="+" />
@@ -48,14 +48,14 @@ export function PerformanceHero({
           <p className="site-label mt-12 before:bg-foreground">{anchorText}</p>
         </div>
         
-        <div className="lg:col-span-7 relative h-auto flex items-center justify-center lg:justify-end">
-          {/* Single Consolidated Mockup Entry Animation */}
+        <div className="lg:col-span-8 relative h-auto flex items-center justify-center lg:justify-end order-1 lg:order-2">
+          {/* Single Consolidated Mockup Entry Animation - Increased Scale */}
           <motion.div 
-            initial={{ x: 100, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ x: 50, opacity: 0, scale: 0.9 }}
+            whileInView={{ x: 0, opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             viewport={{ once: true }}
-            className="w-full relative"
+            className="w-[110%] md:w-[120%] lg:w-[130%] relative lg:-right-[10%]"
           >
              <img src={mockupImg} alt="Performance Mockup" className="w-full h-auto drop-shadow-2xl" />
           </motion.div>
