@@ -49,19 +49,15 @@ export function PerformanceHero({
         </div>
         
         <div className="lg:col-span-6 relative h-[60vh] md:h-[80vh] flex items-center justify-center lg:justify-end gap-4 md:gap-8">
-          {/* iPhone Mockups Entry Animation */}
+          {/* Mockups as loose images */}
           <motion.div 
             initial={{ y: 100, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             viewport={{ once: true }}
-            className="w-1/2 max-w-[280px] aspect-[9/19.5] bg-card border-[6px] md:border-[12px] border-black rounded-[2.5rem] md:rounded-[3rem] overflow-hidden shadow-2xl relative"
+            className="w-1/2 max-w-[320px] relative"
           >
-             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-6 bg-black rounded-b-xl z-20" /> {/* Dynamic Island mockup */}
-             <img src={beforeImg} alt="Antes" className="w-full h-full object-cover grayscale" />
-             <div className="absolute bottom-4 left-0 right-0 text-center">
-                <span className="bg-black/80 text-white text-[8px] font-mono px-2 py-1 uppercase">Antes</span>
-             </div>
+             <img src={beforeImg} alt="Antes" className="w-full h-auto drop-shadow-2xl" />
           </motion.div>
 
           <motion.div 
@@ -69,13 +65,9 @@ export function PerformanceHero({
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
             viewport={{ once: true }}
-            className="w-1/2 max-w-[280px] aspect-[9/19.5] bg-card border-[6px] md:border-[12px] border-black rounded-[2.5rem] md:rounded-[3rem] overflow-hidden shadow-2xl relative"
+            className="w-1/2 max-w-[320px] relative"
           >
-             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-6 bg-black rounded-b-xl z-20" />
-             <img src={afterImg} alt="Depois" className="w-full h-full object-cover" />
-             <div className="absolute bottom-4 left-0 right-0 text-center">
-                <span className="bg-[#FF6B00] text-white text-[8px] font-mono px-2 py-1 uppercase">Depois</span>
-             </div>
+             <img src={afterImg} alt="Depois" className="w-full h-auto drop-shadow-2xl" />
           </motion.div>
         </div>
       </div>
@@ -117,9 +109,8 @@ export function CopyFeature({
           {headline}
         </motion.h2>
 
-        <div className="relative flex flex-col md:flex-row items-center justify-between gap-12 md:gap-4 h-auto md:h-[600px]">
+        <div className="relative flex flex-col md:flex-row items-center justify-between gap-12 md:gap-4 h-auto md:h-[700px]">
           {posts.map((post, i) => {
-            // Different parallax speeds for each mockup
             const y = useTransform(scrollYProgress, [0, 1], [100 * (i + 1), -100 * (i + 1)]);
             const rotate = i === 0 ? -5 : i === 1 ? 0 : 5;
 
@@ -128,18 +119,18 @@ export function CopyFeature({
                 key={i}
                 style={{ y, rotate }}
                 whileHover={{ scale: 1.04, zIndex: 10, rotate: 0 }}
-                className="w-full md:w-[30%] aspect-[9/16] bg-card border-4 border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden cursor-pointer transition-shadow hover:shadow-[0_40px_80px_rgba(0,0,0,0.8)]"
+                className="w-full md:w-[30%] relative cursor-pointer"
               >
-                <img src={post.img} alt={post.label} className="w-full h-full object-cover" />
-                <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
-                  <span className="text-[10px] font-mono uppercase text-white/60">{post.label}</span>
+                <img src={post.img} alt={post.label} className="w-full h-auto" />
+                <div className="absolute -bottom-8 left-0 right-0 text-center opacity-40">
+                  <span className="text-[10px] font-mono uppercase text-white/60 tracking-widest">{post.label}</span>
                 </div>
               </motion.div>
             );
           })}
         </div>
 
-        <div className="mt-32 border-t border-white/10 pt-8">
+        <div className="mt-40 border-t border-white/10 pt-8">
           <p className="text-white/40 font-mono text-[10px] uppercase tracking-widest">
             + {posts.length * 40} peças estratégicas entregues
           </p>
@@ -165,7 +156,6 @@ export function FeedTimeline({
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (sectionRef.current) {
-        const rect = sectionRef.current.getBoundingClientRect();
         setCursorPos({ x: e.clientX, y: e.clientY });
       }
     };
@@ -180,7 +170,6 @@ export function FeedTimeline({
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
-      {/* Custom Cursor Overlay */}
       <AnimatePresence>
         {isHovering && (
           <motion.div 
@@ -220,22 +209,22 @@ export function FeedTimeline({
 
         <motion.div 
           layout
-          className="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-4"
+          className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8"
         >
           <AnimatePresence mode="popLayout">
             {states[activeState].posts.map((post, i) => (
               <motion.div 
                 key={`${activeState}-${i}`}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.4, delay: i * 0.05 }}
-                className="aspect-square bg-card relative group overflow-hidden"
+                className="relative group"
               >
-                <img src={post} alt="Feed Post" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-6 text-center">
-                   <p className="text-white text-[10px] font-mono uppercase tracking-tighter leading-tight">
-                     Post Estratégico <br/> {states[activeState].label}
+                <img src={post} alt="Feed Post" className="w-full h-auto drop-shadow-xl" />
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-6 text-center bg-background/10 backdrop-blur-sm">
+                   <p className="text-foreground text-[10px] font-mono uppercase tracking-tighter leading-tight font-bold">
+                     {states[activeState].label}
                    </p>
                 </div>
               </motion.div>
@@ -310,7 +299,7 @@ function VideoCard({
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay }}
       viewport={{ once: true }}
-      className={`relative group overflow-hidden bg-card border border-border min-h-[300px] ${className}`}
+      className={`relative group ${className}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -321,18 +310,16 @@ function VideoCard({
         muted
         loop
         playsInline
-        className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+        className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-700 drop-shadow-2xl"
       />
       
-      <div className="absolute top-6 left-6 flex items-center gap-2">
+      <div className="absolute top-6 left-6 flex items-center gap-2 z-10">
         <div className="bg-white/20 backdrop-blur px-3 py-1 rounded-full flex items-center gap-2">
           <div className={`w-2 h-2 rounded-full bg-[#FF6B00] ${isHovered ? 'animate-pulse' : ''}`} />
           <span className="text-[8px] font-mono text-white uppercase tracking-widest">{video.category}</span>
         </div>
       </div>
 
-      <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
-      
       {!isHovered && (
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur flex items-center justify-center border border-white/20">
