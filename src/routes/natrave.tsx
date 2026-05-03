@@ -1,11 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import { 
-  BeforeAfter, 
-  TopPosts, 
-  TopCopies, 
-  GridEvolution, 
-  VerticalGallery, 
+  PerformanceHero, 
+  CopyFeature, 
+  FeedTimeline, 
+  VideoGallery 
+} from "@/components/social-media-case";
+import { 
   TestimonialCTA 
 } from "@/components/social-case-layout";
 import { BrandHeader } from "@/components/brand-header";
@@ -66,43 +67,55 @@ function ProjetoNaTrave() {
 
       {activeService === "social" && (
         <div className="anim-fade-in">
-          <BeforeAfter 
-            targetFollowers={1250}
-            beforeImg="https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=800"
-            afterImg="/natrave-social.png"
+          <PerformanceHero 
+            followers={2250}
+            contentCount={100}
+            beforeImg="/natrave-social.png" // Placeholder - Use actual path
+            afterImg="/natrave-marca.png"  // Placeholder - Use actual path
           />
 
-          <TopPosts 
+          <CopyFeature 
+            headline="COPYWRITING, REDAÇÃO E DESIGN QUE IA NENHUMA CONSEGUE CRIAR."
+            bgColor="#004124" // NaTrave Green
             posts={[
-              { img: "https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=800", context: "Engajamento Orgânico", stats: "+15k reach" },
-              { img: "/natrave-marca.png", context: "Brand Awareness", stats: "4.8k likes" },
-              { img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800", context: "Comunidade", stats: "320 shares" },
-              { img: "/natrave-social.png", context: "Conversão", stats: "12% CTR" },
+              { img: "https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=800", label: "Quote de Atleta" },
+              { img: "/natrave-marca.png", label: "Post Institucional" },
+              { img: "/natrave-social.png", label: "Cobertura de Jogo" },
             ]}
           />
 
-          <TopCopies 
-            copies={[
-              { text: "O futebol amador nunca mais será o mesmo. O app que profissionaliza sua paixão.", img: "/natrave-social.png" },
-              { text: "Cansado de organizar pelada no WhatsApp? Conheça o NaTrave.", img: "/natrave-marca.png" },
-              { text: "Seu time, sua história, seu campo. Tudo em um só lugar.", img: "https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=800" },
+          <FeedTimeline 
+            states={[
+              { 
+                label: "Mês 1", 
+                posts: [
+                  "/natrave-social.png", "https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=800", "/natrave-marca.png",
+                  "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800", "/natrave-social.png", "/natrave-marca.png"
+                ] 
+              },
+              { 
+                label: "Mês 3", 
+                posts: [
+                  "/natrave-marca.png", "/natrave-social.png", "https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=800",
+                  "/natrave-marca.png", "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800", "/natrave-social.png"
+                ] 
+              },
+              { 
+                label: "Mês 6", 
+                posts: [
+                  "/natrave-social.png", "/natrave-marca.png", "/natrave-social.png",
+                  "https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=800", "/natrave-marca.png", "/natrave-social.png"
+                ] 
+              },
             ]}
           />
 
-          <GridEvolution 
-            grids={[
-              { month: "Mês 01: Estruturação", img: "https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=800" },
-              { month: "Mês 02: Expansão", img: "/natrave-social.png" },
-              { month: "Mês 03: Consolidação", img: "/natrave-marca.png" },
-            ]}
-          />
-
-          <VerticalGallery 
-            items={[
-              { type: 'Reel', img: "https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=800" },
-              { type: 'Story', img: "/natrave-social.png" },
-              { type: 'Reel', img: "/natrave-marca.png" },
-              { type: 'Story', img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800" },
+          <VideoGallery 
+            videos={[
+              { url: "/natrave-preview.gif", category: "Reels", poster: "/natrave-social.png" }, // Using gif as placeholder for video
+              { url: "/natrave-preview.gif", category: "Stories" },
+              { url: "/natrave-preview.gif", category: "Institucional" },
+              { url: "/natrave-preview.gif", category: "Cobertura" },
             ]}
           />
 
