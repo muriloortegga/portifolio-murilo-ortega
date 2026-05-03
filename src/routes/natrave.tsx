@@ -70,17 +70,17 @@ function ProjetoNaTrave() {
           <PerformanceHero 
             followers={2250}
             contentCount={100}
-            beforeImg="/natrave-social.png" // Placeholder - Use actual path
-            afterImg="/natrave-marca.png"  // Placeholder - Use actual path
+            beforeImg="/assets/projects/natrave/social/mockups/before.png" 
+            afterImg="/assets/projects/natrave/social/mockups/after.png"
           />
 
           <CopyFeature 
             headline="COPYWRITING, REDAÇÃO E DESIGN QUE IA NENHUMA CONSEGUE CRIAR."
             bgColor="#004124" // NaTrave Green
             posts={[
-              { img: "https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=800", label: "Quote de Atleta" },
-              { img: "/natrave-marca.png", label: "Post Institucional" },
-              { img: "/natrave-social.png", label: "Cobertura de Jogo" },
+              { img: "/assets/projects/natrave/social/posts/copy-01.jpg", label: "Quote de Atleta" },
+              { img: "/assets/projects/natrave/social/posts/copy-02.jpg", label: "Post Institucional" },
+              { img: "/assets/projects/natrave/social/posts/copy-03.jpg", label: "Cobertura de Jogo" },
             ]}
           />
 
@@ -89,22 +89,22 @@ function ProjetoNaTrave() {
               { 
                 label: "Mês 1", 
                 posts: [
-                  "/natrave-social.png", "https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=800", "/natrave-marca.png",
-                  "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800", "/natrave-social.png", "/natrave-marca.png"
+                  "/assets/projects/natrave/social/posts/feed-01.jpg", "/assets/projects/natrave/social/posts/feed-02.jpg", "/assets/projects/natrave/social/posts/feed-03.jpg",
+                  "/assets/projects/natrave/social/posts/feed-04.jpg", "/assets/projects/natrave/social/posts/feed-05.jpg", "/assets/projects/natrave/social/posts/feed-06.jpg"
                 ] 
               },
               { 
                 label: "Mês 3", 
                 posts: [
-                  "/natrave-marca.png", "/natrave-social.png", "https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=800",
-                  "/natrave-marca.png", "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800", "/natrave-social.png"
+                  "/assets/projects/natrave/social/posts/feed-07.jpg", "/assets/projects/natrave/social/posts/feed-08.jpg", "/assets/projects/natrave/social/posts/feed-09.jpg",
+                  "/assets/projects/natrave/social/posts/feed-10.jpg", "/assets/projects/natrave/social/posts/feed-11.jpg", "/assets/projects/natrave/social/posts/feed-12.jpg"
                 ] 
               },
               { 
                 label: "Mês 6", 
                 posts: [
-                  "/natrave-social.png", "/natrave-marca.png", "/natrave-social.png",
-                  "https://images.unsplash.com/photo-1543351611-58f69d7c1781?q=80&w=800", "/natrave-marca.png", "/natrave-social.png"
+                  "/assets/projects/natrave/social/posts/feed-13.jpg", "/assets/projects/natrave/social/posts/feed-14.jpg", "/assets/projects/natrave/social/posts/feed-15.jpg",
+                  "/assets/projects/natrave/social/posts/feed-16.jpg", "/assets/projects/natrave/social/posts/feed-17.jpg", "/assets/projects/natrave/social/posts/feed-18.jpg"
                 ] 
               },
             ]}
@@ -112,10 +112,10 @@ function ProjetoNaTrave() {
 
           <VideoGallery 
             videos={[
-              { url: "/natrave-preview.gif", category: "Reels", poster: "/natrave-social.png" }, // Using gif as placeholder for video
-              { url: "/natrave-preview.gif", category: "Stories" },
-              { url: "/natrave-preview.gif", category: "Institucional" },
-              { url: "/natrave-preview.gif", category: "Cobertura" },
+              { url: "/assets/projects/natrave/social/videos/video-01.mp4", category: "Reels", poster: "/assets/projects/natrave/social/posts/feed-01.jpg" },
+              { url: "/assets/projects/natrave/social/videos/video-02.mp4", category: "Stories" },
+              { url: "/assets/projects/natrave/social/videos/video-03.mp4", category: "Institucional" },
+              { url: "/assets/projects/natrave/social/videos/video-04.mp4", category: "Cobertura" },
             ]}
           />
 
